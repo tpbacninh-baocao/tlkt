@@ -13,7 +13,7 @@ Tài liệu tham chiếu: SPEC = `docs/SPEC.md` · ARCH = `docs/ARCHITECTURE.md`
   *Chấp nhận:* workflow chạy `npm ci`, `npm run check`, upload `dist`.
 
 ## Phase 1 – Lõi nghiệp vụ (`src/core`, không giao diện)
-- [ ] **T03 ⭐ Lịch làm việc** (`core/lich`): kiểu ngày ARCH §4.1; ngày nghỉ từ `rules/ngay-nghi.json` + cài đặt; `laNgayLamViec`, `congNLV`, `congNgay`, `congNgayKhongLui`, `congThang`, `lui`, `demNLV`, `congGioLV`; chế độ thận trọng; định dạng tiếng Việt (dd/mm/yyyy, thứ).
+- [x] **T03 ⭐ Lịch làm việc** (`core/lich`): kiểu ngày ARCH §4.1; ngày nghỉ từ `rules/ngay-nghi.json` + cài đặt; `laNgayLamViec`, `congNLV`, `congNgay`, `congNgayKhongLui`, `congThang`, `lui`, `demNLV`, `congGioLV`; chế độ thận trọng; định dạng tiếng Việt (dd/mm/yyyy, thứ).
   *Chấp nhận:* nhóm W01–W04 và H01 đạt; test biên năm, 29/02, ngày làm bù, thận trọng.
 - [ ] **T04 ⭐ Bộ quy tắc** (`core/quyTac`): nạp JSON, gộp `keThua` + `ghiDe`, áp patch người dùng (ARCH §4.8), chọn bộ theo D0 (ARCH §4.7), hàm `tinhHan(dacTaHan, mocDaBiet, ngữCảnh)` theo bảng ARCH §4.4; hạn mục tiêu = hạn pháp lý − đệm.
   *Chấp nhận:* R01–R04 đạt; test patch + khôi phục mặc định.

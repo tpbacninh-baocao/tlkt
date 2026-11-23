@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T03
-- Nhiệm vụ xong gần nhất: T02
-- `npm run check`: sạch (1 test)
+- Nhiệm vụ đang làm: T04
+- Nhiệm vụ xong gần nhất: T03
+- `npm run check`: sạch (27 đạt / 27 tổng)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -20,6 +20,11 @@
 - Giả định đã chọn (nếu có): …
 - Còn tồn: …
 -->
+
+### 2026-11-23 – T03 Lịch làm việc
+- Đã làm: core/lich: ngày ISO tự viết (epoch), NLV, cộng ngày/tháng, lùi, đếm NLV, giờ làm việc, chế độ thận trọng, định dạng tiếng Việt.
+- Test: 27 đạt / 27 tổng
+- Giả định đã chọn: Chế độ thận trọng: ngày sự kiện tính là ngày 1 cả với ngày lịch và tháng (tháng: lùi 1 ngày), không lùi qua ngày nghỉ.
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.
