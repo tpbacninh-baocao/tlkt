@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T10
-- Nhiệm vụ xong gần nhất: T09
-- `npm run check`: sạch (218 đạt / 218 tổng (N01–N08 đạt thật))
+- Nhiệm vụ đang làm: T11
+- Nhiệm vụ xong gần nhất: T10
+- `npm run check`: sạch (248 đạt / 248 tổng)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -54,6 +54,11 @@
 - Đã làm: core/viec: cú pháp lặp (NGAY, TUAN, THANG, THANG:CUOI[-n], QUY:CUOI-n, NAM), lần kế tiếp, hoàn thành + tạo lần sau, mẫu việc thường xuyên + đồng bộ, nhận diện hạn tiếng Việt, nhóm/SLA/điểm ưu tiên. Bật lại 8 ca nhóm N trong acceptance.
 - Test: 218 đạt / 218 tổng (N01–N08 đạt thật)
 - Giả định đã chọn: THANG:CUOI-n trừ n NGÀY LỊCH rồi lùi về ngày làm việc trước. Việc xong muộn → lần kế tiếp bỏ qua các lần đã trôi qua. Điểm ưu tiên việc ngoài cuộc: lãnh đạo giao +2, hệ số 1,5 (LANH_DAO/VAN_BAN/THUONG_XUYEN) hoặc 1 (TU_DAT).
+
+### 2026-11-23 – T10 Nhắc việc, .ics, Google Lịch
+- Đã làm: core/nhacViec: sinhLichNhac theo bảng ARCH §8.1 (hạn pháp lý/nội bộ/tùy chọn, nhật ký iTNK 16:30/17:15/07:45, yêu cầu tài liệu, vướng mắc, bản tin sáng, rà soát tuần, kế hoạch năm từ 10, theo dõi nộp tiền hằng tuần, nhắc trước lưu trữ 30 ngày), giờ yên lặng, khóa ổn định, ẩn danh; taoICS RFC 5545 (CRLF, gập 75 octet, escape, UID ổn định, VALARM); linkGoogleLich; caiDatMacDinh.
+- Test: 248 đạt / 248 tổng
+- Giả định đã chọn: Nhắc bám theo HẠN MỤC TIÊU (hạn pháp lý − đệm); riêng ngày hạn pháp lý có báo thức 07:30 và quá hạn nhắc 08:00 mỗi NLV tính từ sau hạn pháp lý. Bước dự kiến (mốc chưa có ngày thật) không nhắc. DTSTART dạng giờ địa phương không múi giờ; DTSTAMP quy đổi UTC (VN = UTC+7).
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

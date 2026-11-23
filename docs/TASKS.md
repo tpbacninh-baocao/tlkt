@@ -27,7 +27,7 @@ Tài liệu tham chiếu: SPEC = `docs/SPEC.md` · ARCH = `docs/ARCHITECTURE.md`
   *Chấp nhận:* test một cuộc đi từ D0 đến X sinh đúng số việc từng mốc; có GIA_HAN/TAM_DUNG/BAI_BO sinh thêm đúng việc; 2 lần nộp tiền → 2 việc TTR_NOP.
 - [x] **T09 Việc ngoài cuộc** (`core/viec`): lặp lại (ARCH §7), tạo lần kế tiếp, mẫu từ `rules/mau-viec-thuong-xuyen.json`, **nhận diện hạn tiếng Việt**.
   *Chấp nhận:* N01–N08 đạt; test mỗi kiểu `lap`.
-- [ ] **T10 Nhắc việc** (`core/nhacViec`): `sinhLichNhac` theo bảng ARCH §8.1; giờ yên lặng; khóa ổn định; tạo chuỗi `.ics` (RFC 5545: CRLF, gập dòng, escape, UID ổn định, VALARM) và link Google Lịch; ẩn danh.
+- [x] **T10 Nhắc việc** (`core/nhacViec`): `sinhLichNhac` theo bảng ARCH §8.1; giờ yên lặng; khóa ổn định; tạo chuỗi `.ics` (RFC 5545: CRLF, gập dòng, escape, UID ổn định, VALARM) và link Google Lịch; ẩn danh.
   *Chấp nhận:* test số nhắc cho 1 hạn; test nhật ký 16:30/17:15/07:45; .ics được kiểm tra cấu trúc bằng test (BEGIN/END cân, dòng ≤ 75 octet).
 - [ ] **T11 Tóm tắt** (`core/tomTat`): bản tin sáng, báo cáo tiến độ đoàn, báo cáo tuần, tóm tắt một cuộc (mẫu câu theo SPEC §12.7), định dạng số/ngày tiếng Việt, ẩn danh.
   *Chấp nhận:* test snapshot từng loại với dữ liệu cố định.
