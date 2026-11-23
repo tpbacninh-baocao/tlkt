@@ -147,3 +147,20 @@ export const VAN_BAN = {
 export function nhanTuoiLoai(loai: string): string {
   return TEN_LOAI_CUOC[loai] ?? loai;
 }
+
+/** Gợi ý khi chọn loại cuộc (SPEC §6) – chỉ là nhắc nhở, đối chiếu Điều 16.1 QĐ 1161 khi soạn tờ trình. */
+export const GOI_Y_LOAI: Record<string, { ghiChu: string; noiDung: string }> = {
+  KH: { ghiChu: 'Theo kế hoạch năm. Cảnh báo nếu quá “thời gian dự kiến” trong mẫu 06/QTKT-TC.', noiDung: 'Các sắc thuế/khoản thu theo Phiếu phân tích rủi ro' },
+  CD: { ghiChu: 'Chuyên đề (đầu năm/phát sinh). Chuyên đề phát sinh: báo cáo cấp trên ≤ 15 ngày từ ngày phê duyệt.', noiDung: 'Nội dung theo quyết định phê duyệt chuyên đề' },
+  TH: { ghiChu: 'Kiểm tra trước hoàn thuế – ưu tiên cao. Nhập hạn giải quyết hồ sơ hoàn vào ô “Hạn ngoài”.', noiDung: 'Hồ sơ đề nghị hoàn thuế' },
+  SH: { ghiChu: 'Kiểm tra sau hoàn thuế – trong 05 năm từ ngày có quyết định hoàn.', noiDung: 'Số thuế đã được hoàn' },
+  GT: { ghiChu: 'Giải thể, chấm dứt hoạt động, chấm dứt hiệu lực MST – đột xuất.', noiDung: 'Nghĩa vụ thuế đến thời điểm giải thể/chấm dứt hoạt động' },
+  CDD: { ghiChu: 'Chuyển địa điểm kinh doanh – đột xuất.', noiDung: 'Nghĩa vụ thuế trước khi chuyển địa điểm' },
+  TCS: { ghiChu: 'Chia, tách, sáp nhập, hợp nhất, chuyển đổi loại hình, cổ phần hóa, phá sản – đột xuất.', noiDung: 'Nghĩa vụ thuế đến thời điểm chia/tách/sáp nhập…' },
+  VP: { ghiChu: 'Có dấu hiệu vi phạm pháp luật thuế – đột xuất.', noiDung: 'Nội dung có dấu hiệu vi phạm' },
+  'CĐ': { ghiChu: 'Theo chỉ đạo/kiến nghị của cơ quan, người có thẩm quyền – đột xuất. Ghi văn bản giao ở ô bên dưới.', noiDung: 'Nội dung theo văn bản chỉ đạo' },
+  KN: { ghiChu: 'Giải quyết khiếu nại, tố cáo – đột xuất.', noiDung: 'Nội dung khiếu nại, tố cáo cần xác minh' },
+  MG: { ghiChu: 'Hồ sơ miễn, giảm thuế rủi ro cao – đột xuất.', noiDung: 'Hồ sơ đề nghị miễn, giảm thuế' },
+  CQT: { ghiChu: 'Chuyển từ kiểm tra tại trụ sở cơ quan thuế – đột xuất.', noiDung: 'Nội dung chuyển từ kiểm tra tại trụ sở CQT' },
+  KL: { ghiChu: 'Kiểm tra lại – thời hiệu 02 năm từ ngày ký KL/QĐ xử phạt bị kiểm tra lại (Đ18).', noiDung: 'Nội dung của cuộc kiểm tra bị kiểm tra lại' },
+};

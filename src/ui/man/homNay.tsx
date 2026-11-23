@@ -52,7 +52,7 @@ export function ManHomNay() {
   const theGoiY = chuaCoCuoc ? (
     <section class="the" aria-label="Bắt đầu">
       <TrangThaiRong tieuDe="Chưa có cuộc kiểm tra nào" moTa="Thêm cuộc đầu tiên, nhập kế hoạch từ Excel hoặc dùng dữ liệu mẫu để xem thử.">
-        <button type="button" class="nut nut-chinh" onClick={moFormCuoc}>＋ Thêm cuộc</button>
+        <button type="button" class="nut nut-chinh" onClick={() => moFormCuoc()}>＋ Thêm cuộc</button>
         <button type="button" class="nut" onClick={moNhapKeHoach}>Nhập kế hoạch từ Excel</button>
         <button
           type="button"

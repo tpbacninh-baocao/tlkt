@@ -200,7 +200,7 @@ input[type='checkbox'], input[type='radio'] { width: 22px; height: 22px; accent-
 @media (min-width: 768px) {
   .lop-phu { align-items: center; }
   .bang-truot { width: min(640px, 92vw); border-radius: 20px; max-height: 88vh; }
-  .bang-truot.rong { width: min(900px, 94vw); }
+  .bang-truot.bang-rong { width: min(900px, 94vw); }
 }
 .hop-xac-nhan { width: min(440px, 92vw); background: var(--nen); border-radius: 20px; padding: var(--k6); box-shadow: 0 10px 40px rgba(0,0,0,.35); margin: auto; }
 .lop-phu.giua { align-items: center; }
@@ -290,3 +290,7 @@ table.bang td.so, table.bang th.so { text-align: right; }
 .dong-cuoc .dong1 { display: grid; grid-template-columns: auto 1fr auto; gap: var(--k2); align-items: center; }
 .dong-cuoc .dong1 .ten-cuoc { grid-column: 1 / -1; grid-row: 2; font-size: var(--co-than-dt); }
 .dong-cuoc .dong1 .nhan:last-child { justify-self: end; grid-column: 3; grid-row: 1; }
+
+.buoc-form { display: flex; gap: var(--k2); margin-bottom: var(--k2); }
+.buoc-form i { flex: 1; height: 6px; border-radius: 3px; background: var(--vien); }
+.buoc-form i.da { background: var(--chinh); }

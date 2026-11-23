@@ -201,7 +201,7 @@ export function ManCuoc() {
           ))}
         </div>
         <span style={{ flex: 1 }} />
-        <button type="button" class="nut nut-chinh" onClick={moFormCuoc}>＋ Thêm cuộc</button>
+        <button type="button" class="nut nut-chinh" onClick={() => moFormCuoc()}>＋ Thêm cuộc</button>
         <button type="button" class="nut" onClick={moNhapKeHoach}>Nhập Excel</button>
       </div>
 
@@ -209,7 +209,7 @@ export function ManCuoc() {
 
       {rows.length === 0 ? (
         <TrangThaiRong tieuDe="Chưa có cuộc kiểm tra nào" moTa="Thêm cuộc đầu tiên hoặc nhập kế hoạch từ Excel.">
-          <button type="button" class="nut nut-chinh" onClick={moFormCuoc}>＋ Thêm cuộc</button>
+          <button type="button" class="nut nut-chinh" onClick={() => moFormCuoc()}>＋ Thêm cuộc</button>
           <button type="button" class="nut" onClick={moNhapKeHoach}>Nhập kế hoạch từ Excel</button>
         </TrangThaiRong>
       ) : ketQua.length === 0 ? (

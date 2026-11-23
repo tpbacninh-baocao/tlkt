@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T21
-- Nhiệm vụ xong gần nhất: T20
-- `npm run check`: sạch (411 đạt / 411 tổng; đã chạy thử trong Chromium (tìm, lọc, đổi chế độ xem, kéo thả) không lỗi console)
+- Nhiệm vụ đang làm: T22
+- Nhiệm vụ xong gần nhất: T21
+- `npm run check`: sạch (415 đạt / 415 tổng; đã thử trong Chromium: MST sai khóa nút Tiếp, lưu xong chuyển tới trang cuộc)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -99,6 +99,11 @@
 - Đã làm: core/tomTat/danhSachCuoc (tìm không dấu/MST, lọc, sắp xếp, SLA cả cuộc, quy tắc kéo-thả, dữ liệu Gantt) + ui/man/dsCuoc, kanban, gantt: thanh tìm/lọc/sắp xếp, 3 chế độ xem (nhớ lựa chọn), Kanban 9 cột kéo thả chỉ mở form xác nhận (bãi bỏ → tab Sự kiện), Gantt SVG (đoạn giai đoạn, nét đứt cho dự kiến, gạch chéo tạm dừng, ◆ hạn pháp lý, vạch Hôm nay, tự cuộn tới hôm nay).
 - Test: 411 đạt / 411 tổng; đã chạy thử trong Chromium (tìm, lọc, đổi chế độ xem, kéo thả) không lỗi console
 - Giả định đã chọn: SLA của cả cuộc = mức nặng nhất trong các bước pháp lý đang mở (việc nhập liệu quá hạn không tính). Kéo thả chỉ cho sang giai đoạn liền kề; lùi hoặc nhảy cóc bị từ chối kèm lý do.
+
+### 2026-11-23 – T21 Thêm/Sửa cuộc 3 bước
+- Đã làm: ui/man/themCuoc: form 3 bước (NNT → phân loại → đoàn & nội dung) + xem trước dòng thời gian dự kiến; kiểm tra MST 10/13 số (chuẩn hóa 10-3), cảnh báo trùng MST cùng năm, mã cuộc KT-năm-số tự sinh, gợi ý theo loại cuộc, thời hiệu kiểm tra lại, danh sách thành viên/giám sát động; dùng cho cả sửa cuộc. core/vuViec/nhapCuoc (+test). Sửa lỗi: onClick truyền sự kiện thành id cuộc; trùng tên lớp CSS .rong.
+- Test: 415 đạt / 415 tổng; đã thử trong Chromium: MST sai khóa nút Tiếp, lưu xong chuyển tới trang cuộc
+- Giả định đã chọn: KHÔNG kiểm tra chữ số kiểm tra của MST (thuật toán tôi nhớ không khớp MST thật nên bỏ để tránh cảnh báo sai); chỉ kiểm tra độ dài 10/13 số. Gợi ý theo loại cuộc lấy từ SPEC §6, đối chiếu Điều 16.1 khi soạn tờ trình.
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

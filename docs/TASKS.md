@@ -47,7 +47,7 @@ Tài liệu tham chiếu: SPEC = `docs/SPEC.md` · ARCH = `docs/ARCHITECTURE.md`
 - [x] **T18 Onboarding + màn khóa** (UI §4.1, §4.2).
 - [x] **T19 ⭐ Hôm nay** (UI §4.3) + cột “Việc tiếp theo” trên máy tính.
 - [x] **T20 Danh sách cuộc**: Danh sách + lọc/tìm/sắp xếp, Kanban, Dòng thời gian Gantt SVG (UI §4.4).
-- [ ] **T21 Thêm/Sửa cuộc** 3 bước + xem trước mốc dự kiến (UI §4.5); kiểm tra MST, trùng.
+- [x] **T21 Thêm/Sửa cuộc** 3 bước + xem trước mốc dự kiến (UI §4.5); kiểm tra MST, trùng.
 - [ ] **T22 ⭐ Chi tiết cuộc – tab Dòng thời gian + đánh dấu mốc** với mọi ràng buộc T06 (UI §4.6).
 - [ ] **T23 ⭐ Chi tiết cuộc – tab Sự kiện**: 11 loại form, hiển thị “hạn sẽ đổi từ… thành…” trước khi lưu, sửa/xóa sự kiện.
 - [ ] **T24 Chi tiết cuộc – tab Nhập hệ thống + màn Nhập liệu còn thiếu** (UI §4.6, §4.7), nút Sao chép.

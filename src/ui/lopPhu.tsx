@@ -126,7 +126,7 @@ function BangMot({ id, dau }: { id: string; dau: boolean }) {
   if (!b) return null;
   return (
     <div class="lop-phu" onMouseDown={(e) => e.target === e.currentTarget && dongBang(id)} style={{ zIndex: 50 + (dau ? 1 : 0) }}>
-      <div class={`bang-truot ${b.rong ? 'rong' : ''}`} role="dialog" aria-modal="true" aria-labelledby={`bang-${id}`} ref={ref}>
+      <div class={`bang-truot ${b.rong ? 'bang-rong' : ''}`} role="dialog" aria-modal="true" aria-labelledby={`bang-${id}`} ref={ref}>
         <div class="dau">
           <h2 id={`bang-${id}`}>{b.tieuDe}</h2>
           <button type="button" class="nut-bieu-tuong dong-bang" aria-label="Đóng" onClick={() => dongBang(id)}>

@@ -7,3 +7,4 @@ export * from './viecTiepTheo';
 
 export * from './dongHo';
 export * from './capNhat';
+export * from './nhapCuoc';
