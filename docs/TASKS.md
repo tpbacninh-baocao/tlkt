@@ -19,7 +19,7 @@ Tài liệu tham chiếu: SPEC = `docs/SPEC.md` · ARCH = `docs/ARCHITECTURE.md`
   *Chấp nhận:* R01–R04 đạt; test patch + khôi phục mặc định.
 - [x] **T05 ⭐ Tính mốc một cuộc** (`core/vuViec/tinhMoc.ts`): từ `CuocKiemTra` + bộ quy tắc + `homNay` → danh sách `MocTinh` đầy đủ: mốc thực tế/dự kiến (ARCH §4.6), thuật toán E (ARCH §4.5), chọn chế độ X, bước điều kiện (B2, S7, S4), bước tùy chọn T3, áp dụng sự kiện HOAN/TAM_DUNG/GIA_HAN/GIAI_TRINH/PHUC_TAP/TOI_PHAM/BAI_BO.
   *Chấp nhận:* toàn bộ ca nhóm A, G, R trong `tests/kich-ban-han.json` đạt qua `tests/acceptance.test.ts` (đọc trực tiếp JSON).
-- [ ] **T06 Giai đoạn, ràng buộc, việc tiếp theo, SLA, ưu tiên** (`core/vuViec`): ARCH §6; hàm kiểm tra hợp lệ khi đánh dấu mốc (thứ tự, ngày ≥ mốc trước, bắt buộc lý do trễ); kiểm tra hợp lệ sự kiện (gia hạn 1 lần, giới hạn số ngày, chỉ trong khoảng C–K, cảnh báo muộn so với T3; hoãn chỉ trước C).
+- [x] **T06 Giai đoạn, ràng buộc, việc tiếp theo, SLA, ưu tiên** (`core/vuViec`): ARCH §6; hàm kiểm tra hợp lệ khi đánh dấu mốc (thứ tự, ngày ≥ mốc trước, bắt buộc lý do trễ); kiểm tra hợp lệ sự kiện (gia hạn 1 lần, giới hạn số ngày, chỉ trong khoảng C–K, cảnh báo muộn so với T3; hoãn chỉ trước C).
   *Chấp nhận:* test đủ 9 giai đoạn, mỗi ràng buộc 1 test, SLA 4 trạng thái + xong đúng/trễ.
 - [ ] **T07 Đồng hồ** yêu cầu tài liệu (06 giờ LV) và vướng mắc (3 × 02 NLV), hạn kế hoạch (công khai 30 ngày, chuyên đề phát sinh, thời hiệu kiểm tra lại).
   *Chấp nhận:* W01–W04; test vướng mắc; test thời hiệu.

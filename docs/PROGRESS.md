@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T06
-- Nhiệm vụ xong gần nhất: T05
-- `npm run check`: sạch (99 đạt / 107 tổng (8 ca nhóm N đang skip, bật ở T09); toàn bộ ca A, G, H, R, W đạt (31/31))
+- Nhiệm vụ đang làm: T07
+- Nhiệm vụ xong gần nhất: T06
+- `npm run check`: sạch (145 đạt / 153 tổng (8 skip nhóm N))
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -34,6 +34,11 @@
 - Đã làm: core/vuViec/tinhMoc: mốc thực tế/dự kiến lan truyền, thuật toán E, chế độ X, bước điều kiện B2/S7/S4, tùy chọn T3, sự kiện HOAN/TAM_DUNG/GIA_HAN/GIAI_TRINH/PHUC_TAP/TOI_PHAM/BAI_BO, trạng thái SLA; tests/acceptance.test.ts đọc trực tiếp kich-ban-han.json.
 - Test: 99 đạt / 107 tổng (8 ca nhóm N đang skip, bật ở T09); toàn bộ ca A, G, H, R, W đạt (31/31)
 - Giả định đã chọn: Bước dự kiến (tính từ mốc chưa có) không bao giờ bị gắn QUA_HAN để tránh báo đỏ dây chuyền. Ngày công bố dự kiến: hoãn > ngày người dùng nhập > hạn Q5. B3a/B3b hết hạn → KHONG_AP_DUNG (không phải quá hạn).
+
+### 2026-11-23 – T06 Giai đoạn, ràng buộc, việc tiếp theo, SLA, ưu tiên
+- Đã làm: core/vuViec: tinhGiaiDoan (9 giai đoạn), kiemTraDanhDauBuoc/BoDanhDau (thứ tự mốc, ngày ≥ mốc trước, lý do trễ), kiemTraSuKien + lyDoKhongChoPhep + xemTruocSuKien (hạn đổi từ … thành …), viecTiepTheo, viecSongSong, ngày tại DN, mucSLA, điểm ưu tiên.
+- Test: 145 đạt / 153 tổng (8 skip nhóm N)
+- Giả định đã chọn: Việc tiếp theo bỏ qua bước nội bộ/không có hạn pháp lý của giai đoạn đã qua (tránh nhắc P1–P4 khi đã có QĐ), và gồm cả S4 theo dõi nộp tiền. Đề nghị gia hạn sau ngày E bị chặn (lỗi), muộn hơn hạn T3 chỉ cảnh báo.
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.
