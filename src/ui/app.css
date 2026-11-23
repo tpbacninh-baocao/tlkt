@@ -266,3 +266,27 @@ table.bang td.so, table.bang th.so { text-align: right; }
   .the-viec { grid-template-columns: auto 1fr; }
   .the-viec .hanh-dong { grid-column: 2; justify-content: flex-end; }
 }
+
+/* ---------- Kanban ---------- */
+.kanban { display: flex; gap: var(--k3); overflow-x: auto; padding-bottom: var(--k3); scroll-snap-type: x proximity; margin: 0 calc(var(--k4) * -1); padding-left: var(--k4); padding-right: var(--k4); }
+@media (min-width: 768px) { .kanban { margin: 0; padding-left: 0; padding-right: 0; } }
+.cot-kanban { flex: 0 0 260px; scroll-snap-align: start; background: var(--be-mat-2); border-radius: var(--bo-the); padding: var(--k2); min-height: 160px; }
+.cot-kanban.dang-tha { outline: 3px dashed var(--chinh); outline-offset: -3px; }
+.cot-kanban h3 { font-size: var(--co-than); padding: var(--k2); border-top: 4px solid; border-radius: 4px; margin-bottom: var(--k2); display: flex; justify-content: space-between; }
+.cot-kanban .so-dem { color: var(--chu-phu); font-weight: 500; }
+.the-kanban { display: block; background: var(--be-mat); border: 1px solid var(--vien); border-radius: var(--bo-nut); padding: var(--k3); margin-bottom: var(--k2); color: inherit; text-decoration: none; cursor: grab; }
+.the-kanban:hover { border-color: var(--chinh); }
+.the-kanban .dong1 { display: flex; gap: var(--k2); align-items: center; flex-wrap: wrap; }
+
+/* ---------- Gantt ---------- */
+.gantt { display: flex; border: 1px solid var(--vien); border-radius: var(--bo-the); background: var(--be-mat); overflow: hidden; }
+.gantt-nhan { flex: 0 0 120px; border-right: 1px solid var(--vien); background: var(--be-mat); z-index: 1; }
+.gantt-nhan a { display: flex; flex-direction: column; justify-content: center; padding: 0 var(--k2); color: inherit; text-decoration: none; border-bottom: 1px solid var(--vien); overflow: hidden; font-size: var(--co-phu); }
+.gantt-nhan a .phu { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gantt-cuon { overflow-x: auto; flex: 1; }
+.hang-gantt:hover rect:first-child, .hang-gantt:focus rect:first-child { fill: var(--chinh-nhat); }
+
+/* Thẻ cuộc: loại + giai đoạn ở dòng trên, tên bên dưới (không bị bóp trên điện thoại) */
+.dong-cuoc .dong1 { display: grid; grid-template-columns: auto 1fr auto; gap: var(--k2); align-items: center; }
+.dong-cuoc .dong1 .ten-cuoc { grid-column: 1 / -1; grid-row: 2; font-size: var(--co-than-dt); }
+.dong-cuoc .dong1 .nhan:last-child { justify-self: end; grid-column: 3; grid-row: 1; }

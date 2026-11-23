@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T20
-- Nhiệm vụ xong gần nhất: T19
-- `npm run check`: sạch (399 đạt / 399 tổng; đã chạy luồng thật trong Chromium (nạp dữ liệu mẫu → ✓ Xong → Lưu → Hoàn tác → tích nhật ký) không lỗi console)
+- Nhiệm vụ đang làm: T21
+- Nhiệm vụ xong gần nhất: T20
+- `npm run check`: sạch (411 đạt / 411 tổng; đã chạy thử trong Chromium (tìm, lọc, đổi chế độ xem, kéo thả) không lỗi console)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -94,6 +94,11 @@
 - Đã làm: ui/man/homNay: lời chào theo giờ, tóm tắt, KPI (quá hạn/hôm nay/3 NLV/nhập liệu thiếu), nhóm QUÁ HẠN/HÔM NAY/3 NGÀY LV TỚI bằng ThẻViệc (✓ Xong mở form đánh dấu bước, tích nhập liệu, hoàn thành việc có Hoàn tác; menu Mở cuộc/Thêm Google Lịch/Ghi lý do trễ), Tại DN hôm nay (tích nhật ký iTNK, yêu cầu tài liệu), nhập liệu thiếu, lịch trong ngày, cảnh báo lịch nghỉ/sao lưu, dải xanh khi không có việc gấp, thẻ gợi ý khi chưa có cuộc; cột phải Việc tiếp theo trên máy tính. Logic cập nhật cuộc thuần (core/vuViec/capNhat) + form Xong (ngày, số VB, lý do trễ bắt buộc, cảnh báo S5 thiếu checklist).
 - Test: 399 đạt / 399 tổng; đã chạy luồng thật trong Chromium (nạp dữ liệu mẫu → ✓ Xong → Lưu → Hoàn tác → tích nhật ký) không lỗi console
 - Giả định đã chọn: Nhắc lịch nghỉ Tết năm nay chỉ trong 6 tháng đầu năm; năm sau luôn nhắc.
+
+### 2026-11-23 – T20 Danh sách cuộc: Danh sách, Kanban, Gantt
+- Đã làm: core/tomTat/danhSachCuoc (tìm không dấu/MST, lọc, sắp xếp, SLA cả cuộc, quy tắc kéo-thả, dữ liệu Gantt) + ui/man/dsCuoc, kanban, gantt: thanh tìm/lọc/sắp xếp, 3 chế độ xem (nhớ lựa chọn), Kanban 9 cột kéo thả chỉ mở form xác nhận (bãi bỏ → tab Sự kiện), Gantt SVG (đoạn giai đoạn, nét đứt cho dự kiến, gạch chéo tạm dừng, ◆ hạn pháp lý, vạch Hôm nay, tự cuộn tới hôm nay).
+- Test: 411 đạt / 411 tổng; đã chạy thử trong Chromium (tìm, lọc, đổi chế độ xem, kéo thả) không lỗi console
+- Giả định đã chọn: SLA của cả cuộc = mức nặng nhất trong các bước pháp lý đang mở (việc nhập liệu quá hạn không tính). Kéo thả chỉ cho sang giai đoạn liền kề; lùi hoặc nhảy cóc bị từ chối kèm lý do.
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.
