@@ -21,6 +21,7 @@ import { changDangChay, dongHoVuongMac, dongHoYeuCau, hanYeuCauTaiLieu } from '.
 import { tinhMoc } from '../vuViec/tinhMoc';
 import { laNgayTaiDN } from '../vuViec/viecTiepTheo';
 import { nhanCuoc } from './anDanh';
+import { canNhacSaoLuu } from './saoLuu';
 
 export type MucDoNhac = 'THONG_TIN' | 'CANH_BAO' | 'KHAN' | 'BAO_THUC' | 'QUA_HAN';
 
@@ -43,6 +44,8 @@ export interface DuLieuNhac {
   viec: CongViec[];
   keHoach: KeHoach[];
   va?: VaQuyTac;
+  /** Ngày sao lưu gần nhất; null = chưa từng; bỏ trống = không nhắc sao lưu */
+  saoLuuCuoi?: NgayISO | null;
 }
 
 type KieuHan = 'PHAP_LY' | 'NOI_BO' | 'TUY_CHON';
@@ -309,6 +312,9 @@ export function sinhLichNhac(d: DuLieuNhac, tuNgay: NgayISO, denNgay: NgayISO): 
     }
     if (thuTrongTuan(ngay) === 1 && lv) {
       ra.push({ khoa: `nhip:KHTUAN|${ngay}`, luc: ghepNgayGio(ngay, GIO('07:30')), mucDo: 'THONG_TIN', tieuDe: 'Kế hoạch tuần', noiDung: 'Lên kế hoạch cho tuần mới.', lienKet: '#ke-hoach-ngay' });
+    }
+    if (d.saoLuuCuoi !== undefined && lv && canNhacSaoLuu(ngay, d.saoLuuCuoi)) {
+      ra.push({ khoa: `nhip:SAOLUU|${ngay}`, luc: ghepNgayGio(ngay, GIO('15:45')), mucDo: 'CANH_BAO', tieuDe: 'Sao lưu dữ liệu', noiDung: d.saoLuuCuoi ? `Lần sao lưu gần nhất: ${dinhDangNgay(d.saoLuuCuoi)}. Tải tệp sao lưu để không mất dữ liệu.` : 'Bạn chưa sao lưu lần nào. Tải tệp sao lưu để không mất dữ liệu.', lienKet: '#cai-dat' });
     }
     // Kế hoạch năm: từ 01/10, thứ Hai đầu tháng – cuộc kế hoạch chưa có QĐ
     const [nam, thang, ngayTrongThang] = ngay.split('-').map(Number);

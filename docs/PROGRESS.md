@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T15
-- Nhiệm vụ xong gần nhất: T14
-- `npm run check`: sạch (305 đạt / 305 tổng)
+- Nhiệm vụ đang làm: T16
+- Nhiệm vụ xong gần nhất: T15
+- `npm run check`: sạch (320 đạt / 320 tổng)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -74,6 +74,11 @@
 - Đã làm: data/kho: 9 kho, CRUD, xóa mềm/khôi phục/xóa hẳn sau 30 ngày, audit log (cắt 2.000 dòng, chỉ ghi trường thay đổi), migrate, nhắc đã phát, chuẩn hóa dữ liệu cũ, storage.persist. data/mat: PBKDF2-SHA256 210.000 vòng → AES-GCM 256, mở khóa/khóa lại, đổi/tắt mật mã (một giao dịch), chặn sai 5 lần/30 giây, khóa tự động. Sửa lỗi phát hiện khi test: khóa dòng nhật ký bị trùng id thực thể.
 - Test: 305 đạt / 305 tổng
 - Giả định đã chọn: Dòng nhật ký hệ thống cũng được mã hóa khi bật mật mã. Quên mật mã = mất dữ liệu (đúng thiết kế). Nhật ký sửa chỉ lưu các trường đổi (không chép cả cuộc).
+
+### 2026-11-23 – T15 Sao lưu và khôi phục
+- Đã làm: data/saoLuu: tệp .tlkt.json (TLKT-sao-luu-YYYYMMDD), mã hóa nếu đã bật mật mã (mật mã lúc tạo tệp), nhập Thay thế / Gộp theo suaLuc, báo cáo thêm/cập nhật/giữ nguyên/bỏ qua, kiểm tra tệp hỏng/sai định dạng/phiên bản mới, nhắc sao lưu thứ Sáu 15:45 nếu quá 7 ngày (core/nhacViec/saoLuu + sinhLichNhac).
+- Test: 320 đạt / 320 tổng
+- Giả định đã chọn: Tệp sao lưu mã hóa dùng mật mã tại thời điểm tạo tệp (không phải mật mã hiện tại nếu đã đổi sau đó). Nhắc sao lưu chỉ sinh khi truyền saoLuuCuoi (null = chưa từng sao lưu).
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.
