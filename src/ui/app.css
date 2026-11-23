@@ -294,3 +294,23 @@ table.bang td.so, table.bang th.so { text-align: right; }
 .buoc-form { display: flex; gap: var(--k2); margin-bottom: var(--k2); }
 .buoc-form i { flex: 1; height: 6px; border-radius: 3px; background: var(--vien); }
 .buoc-form i.da { background: var(--chinh); }
+
+/* ---------- Chi tiết cuộc ---------- */
+.ds-buoc { list-style: none; margin: 0; padding: 0; }
+.buoc-dong { display: grid; grid-template-columns: auto 1fr auto; gap: var(--k3); padding: var(--k3) 0; border-top: 1px solid var(--vien); align-items: start; }
+.buoc-dong:first-child { border-top: 0; }
+.buoc-dong.dut { border: 1px dashed var(--vien); border-radius: var(--bo-nut); padding: var(--k3); margin: var(--k2) 0; }
+.buoc-dong.mo-dan > div:nth-child(2) { opacity: 0.75; font-style: italic; }
+.buoc-dong .bt-sla { font-size: 20px; width: 28px; text-align: center; }
+.buoc-dong .phu-dong { color: var(--chu-phu); font-size: var(--co-phu); display: flex; flex-wrap: wrap; gap: 2px var(--k2); align-items: center; margin-top: 2px; }
+.can-cu summary { cursor: pointer; font-size: var(--co-phu); color: var(--chinh); min-height: 28px; }
+@media (max-width: 599px) { .buoc-dong { grid-template-columns: auto 1fr; } .buoc-dong > .hanh-dong { grid-column: 2; flex-direction: row !important; flex-wrap: wrap; } }
+.mo-dan { opacity: 0.75; font-style: italic; }
+.moc-doc { list-style: none; margin: 0; padding: 0; }
+.moc-doc li { padding: var(--k2) 0; border-bottom: 1px solid var(--vien); }
+.moc-doc a { color: inherit; text-decoration: none; }
+.dau-cuoc { position: sticky; top: 56px; z-index: 10; background: var(--nen); padding: var(--k2) 0 var(--k1); border-bottom: 1px solid var(--vien); margin-bottom: var(--k3); }
+.dau-cuoc .dong-tren { display: flex; align-items: center; gap: var(--k2); flex-wrap: wrap; }
+.dau-cuoc h2 { font-size: var(--co-the); }
+.banner-tiep { display: flex; flex-wrap: wrap; gap: var(--k2); align-items: center; padding: var(--k2) var(--k3); background: var(--chinh-nhat); border-radius: var(--bo-nut); margin-top: var(--k2); }
+.banner-tiep .noi-dung-tiep { flex: 1 1 220px; min-width: 0; }

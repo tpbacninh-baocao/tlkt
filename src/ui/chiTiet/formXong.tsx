@@ -19,11 +19,12 @@ function FormXong({ cuocId, ma, idBang }: { cuocId: string; ma: string; idBang: 
   const cuoc = layCuoc(cuocId);
   const pt = phanTichMap.value.get(cuocId);
   const m = pt?.kq.danhSach.find((x) => x.ma === ma);
-  const [ngay, setNgay] = useState<NgayISO | ''>(homNay.value);
-  const [soVB, setSoVB] = useState('');
-  const [ghiChu, setGhiChu] = useState('');
+  const cu = cuoc?.buoc[ma]?.xong ? cuoc.buoc[ma] : undefined; // đang sửa mốc đã đánh dấu
+  const [ngay, setNgay] = useState<NgayISO | ''>(cu?.ngay ?? homNay.value);
+  const [soVB, setSoVB] = useState(cu?.soVB ?? (ma === 'X' ? cuoc?.ketQua.soQDXL ?? '' : ''));
+  const [ghiChu, setGhiChu] = useState(cu?.ghiChu ?? '');
   const [lyDo, setLyDo] = useState(cuoc?.buoc[ma]?.lyDoTre ?? '');
-  const [loai, setLoai] = useState<'QD_XU_PHAT' | 'KET_LUAN'>(pt && pt.kq.cheDoX === 'X4' ? 'KET_LUAN' : 'QD_XU_PHAT');
+  const [loai, setLoai] = useState<'QD_XU_PHAT' | 'KET_LUAN'>(cuoc?.ketQua.loaiVanBanXL ?? (pt && pt.kq.cheDoX === 'X4' ? 'KET_LUAN' : 'QD_XU_PHAT'));
   const [dang, setDang] = useState(false);
   if (!cuoc || !pt || !m) return <p>Không tìm thấy bước này.</p>;
 
@@ -48,7 +49,7 @@ function FormXong({ cuocId, ma, idBang }: { cuocId: string; ma: string; idBang: 
         return;
       }
       dongBang(idBang);
-      toast(`Đã đánh dấu xong: ${tenNgan(m.ten)}`, 'thanhCong', () => boDanhDau(cuocId, ma).then(() => undefined));
+      toast(cu ? `Đã sửa: ${tenNgan(m.ten)}` : `Đã đánh dấu xong: ${tenNgan(m.ten)}`, 'thanhCong', cu ? undefined : () => boDanhDau(cuocId, ma).then(() => undefined));
     } finally {
       setDang(false);
     }
@@ -121,5 +122,5 @@ export function moFormXongBuoc(cuocId: string, ma: string): void {
   const pt = phanTichMap.value.get(cuocId);
   const m = pt?.kq.danhSach.find((x) => x.ma === ma);
   const id = `xong-${cuocId}-${ma}`;
-  moBang({ id, tieuDe: `Xong: ${m ? tenNgan(m.ten) : ma}`, noiDung: () => <FormXong cuocId={cuocId} ma={ma} idBang={id} /> });
+  moBang({ id, tieuDe: `${pt?.cuoc.buoc[ma]?.xong ? 'Sửa' : 'Xong'}: ${m ? tenNgan(m.ten) : ma}`, noiDung: () => <FormXong cuocId={cuocId} ma={ma} idBang={id} /> });
 }

@@ -87,3 +87,38 @@ export function datNgayKhongLamTaiDN(cuoc: CuocKiemTra, ngay: NgayISO, khong: bo
   if (khong) ds.push(ngay);
   return { ...cuoc, ngayKhongLamTaiDN: ds.sort() };
 }
+
+/** Nhân bản một cuộc: giữ thông tin NNT/phân loại/đoàn, xóa toàn bộ tiến trình, sự kiện, kết quả, checklist, nhật ký. */
+export function nhanBanCuocTho(c: CuocKiemTra, id: string, ma: string, bayGio: string): CuocKiemTra {
+  return {
+    id,
+    ma,
+    mst: c.mst,
+    tenNNT: c.tenNNT,
+    diaChi: c.diaChi,
+    doiTuong: c.doiTuong,
+    coQuanQuanLyKhac: c.coQuanQuanLyKhac,
+    loai: c.loai,
+    keHoachId: c.keHoachId,
+    thangDuKien: c.thangDuKien,
+    coGDLK: c.coGDLK,
+    kiemTraDienTu: c.kiemTraDienTu,
+    kiemTraLai: false,
+    truongDoan: c.truongDoan,
+    thanhVien: c.thanhVien.map((t) => ({ ...t })),
+    giamSat: [...c.giamSat],
+    noiDung: c.noiDung,
+    thoiKy: c.thoiKy,
+    buoc: {},
+    suKien: [],
+    ketQua: { coXuLy: false, truyThu: 0, phat: 0, chamNop: 0, giamKhauTru: 0, giamLo: 0, thuHoiHoan: 0 },
+    nopTien: [],
+    checklist: {},
+    nhatKy: {},
+    ngayKhongLamTaiDN: [],
+    yeuCauTaiLieu: [],
+    vuongMac: [],
+    taoLuc: bayGio,
+    suaLuc: bayGio,
+  };
+}

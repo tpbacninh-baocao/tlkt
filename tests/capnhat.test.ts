@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { boTickKhoiCuoc, boXongKhoiCuoc, datNgayKhongLamTaiDN, datNhatKyVaoCuoc, ganXongVaoCuoc, ghiLyDoTreVaoCuoc, taoCuocRong, tickVaoCuoc } from '../src/core/vuViec';
+import { boTickKhoiCuoc, boXongKhoiCuoc, datNgayKhongLamTaiDN, datNhatKyVaoCuoc, ganXongVaoCuoc, ghiLyDoTreVaoCuoc, nhanBanCuocTho, taoCuocRong, tickVaoCuoc } from '../src/core/vuViec';
 
 const goc = () => taoCuocRong({ id: 'c', ma: 'KT-1', taoLuc: 'x' });
 
@@ -59,5 +59,25 @@ describe('Tích checklist / nhật ký', () => {
     c = datNgayKhongLamTaiDN(c, '2026-10-13', true);
     expect(c.ngayKhongLamTaiDN).toEqual(['2026-10-13', '2026-10-14']);
     expect(datNgayKhongLamTaiDN(c, '2026-10-13', false).ngayKhongLamTaiDN).toEqual(['2026-10-14']);
+  });
+});
+
+describe('Nhân bản cuộc', () => {
+  it('giữ NNT/đoàn, xóa tiến trình và dữ liệu phát sinh', () => {
+    const c = ganXongVaoCuoc(taoCuocRong({ id: 'c', ma: 'KT-1', taoLuc: 'x', mst: '0100109106', tenNNT: 'A', truongDoan: 'T', loai: 'TH', coGDLK: true, thanhVien: [{ hoTen: 'B', phanViec: 'GTGT' }], giamSat: ['G'], hanNgoai: '2026-12-01', vanBanGiao: 'CV1', soQD: '1/QĐ' }), 'P5', { ngay: '2026-10-05', soVB: '1/QĐ' });
+    c.suKien = [{ id: 's', taoLuc: 'x', loai: 'BAI_BO' }];
+    c.nopTien = [{ id: 'n', ngay: '2026-11-01', soTien: 1, daNhapTTR: true }];
+    c.checklist = { TTR_QD: '2026-10-06' };
+    const b = nhanBanCuocTho(c, 'moi', 'KT-2', '2026-11-23T08:00');
+    expect(b).toMatchObject({ id: 'moi', ma: 'KT-2', mst: '0100109106', tenNNT: 'A', truongDoan: 'T', loai: 'TH', coGDLK: true, giamSat: ['G'] });
+    expect(b.thanhVien).toEqual([{ hoTen: 'B', phanViec: 'GTGT' }]);
+    expect(b.thanhVien[0]).not.toBe(c.thanhVien[0]);
+    expect(b.buoc).toEqual({});
+    expect([b.suKien, b.nopTien]).toEqual([[], []]);
+    expect(b.checklist).toEqual({});
+    expect(b.soQD).toBeUndefined();
+    expect(b.hanNgoai).toBeUndefined();
+    expect(b.vanBanGiao).toBeUndefined();
+    expect(b.taoLuc).toBe('2026-11-23T08:00');
   });
 });

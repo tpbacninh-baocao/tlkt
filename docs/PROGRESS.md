@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T22
-- Nhiệm vụ xong gần nhất: T21
-- `npm run check`: sạch (415 đạt / 415 tổng; đã thử trong Chromium: MST sai khóa nút Tiếp, lưu xong chuyển tới trang cuộc)
+- Nhiệm vụ đang làm: T23
+- Nhiệm vụ xong gần nhất: T22
+- `npm run check`: sạch (416 đạt / 416 tổng; đã thử trong Chromium: bước khóa khi thiếu tiền đề, ngày trước D0 báo lỗi + khóa Lưu, quá hạn bắt buộc lý do trễ, sửa, bỏ đánh dấu có xác nhận)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -104,6 +104,11 @@
 - Đã làm: ui/man/themCuoc: form 3 bước (NNT → phân loại → đoàn & nội dung) + xem trước dòng thời gian dự kiến; kiểm tra MST 10/13 số (chuẩn hóa 10-3), cảnh báo trùng MST cùng năm, mã cuộc KT-năm-số tự sinh, gợi ý theo loại cuộc, thời hiệu kiểm tra lại, danh sách thành viên/giám sát động; dùng cho cả sửa cuộc. core/vuViec/nhapCuoc (+test). Sửa lỗi: onClick truyền sự kiện thành id cuộc; trùng tên lớp CSS .rong.
 - Test: 415 đạt / 415 tổng; đã thử trong Chromium: MST sai khóa nút Tiếp, lưu xong chuyển tới trang cuộc
 - Giả định đã chọn: KHÔNG kiểm tra chữ số kiểm tra của MST (thuật toán tôi nhớ không khớp MST thật nên bỏ để tránh cảnh báo sai); chỉ kiểm tra độ dài 10/13 số. Gợi ý theo loại cuộc lấy từ SPEC §6, đối chiếu Điều 16.1 khi soạn tờ trình.
+
+### 2026-11-23 – T22 Chi tiết cuộc – Dòng thời gian + đánh dấu mốc (⭐)
+- Đã làm: ui/man/chiTietCuoc (đầu trang dính: NNT, trưởng đoàn, việc tiếp theo + ✓ Đánh dấu xong + Google Lịch, menu Sửa/Nhân bản/Xuất .ics/In/Xóa; 8 tab), ui/chiTiet/dongThoiGian (bước theo 6 giai đoạn, trạng thái SLA, căn cứ, biểu mẫu, bước tùy chọn/có điều kiện viền đứt, bước dự kiến nghiêng mờ; Xong…/Sửa/Bỏ đánh dấu; khóa nút kèm lý do khi thiếu bước trước), cột phải dòng thời gian mốc (máy tính), form Xong hỗ trợ sửa, nhanBanCuocTho, xuat.ts (tải .ics).
+- Test: 416 đạt / 416 tổng; đã thử trong Chromium: bước khóa khi thiếu tiền đề, ngày trước D0 báo lỗi + khóa Lưu, quá hạn bắt buộc lý do trễ, sửa, bỏ đánh dấu có xác nhận
+- Giả định đã chọn: Tab Sự kiện, Nhập hệ thống, Nhật ký, Tài liệu, Kết quả, Lưu trữ, Lịch sử hiện là chỗ giữ chỗ – hoàn thiện ở T23–T25.
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

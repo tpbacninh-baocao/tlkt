@@ -3,6 +3,7 @@ import { route } from '../store';
 import { ManTam } from './manTam';
 import { ManHomNay } from './homNay';
 import { ManCuoc } from './dsCuoc';
+import { ManChiTietCuoc } from './chiTietCuoc';
 
 export function ManHienTai() {
   const r = route.value;
@@ -11,6 +12,8 @@ export function ManHienTai() {
       return <ManHomNay />;
     case 'cuoc':
       return <ManCuoc />;
+    case 'cuoc-chi-tiet':
+      return <ManChiTietCuoc id={r.id} tab={r.tab} />;
     default:
       return <ManTam ten={r.man} />;
   }
