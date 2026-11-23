@@ -128,3 +128,55 @@ describe('Sự kiện trong cuộc', () => {
     }
   });
 });
+
+import { daTichHoSo, datKetQuaVaoCuoc, datLanNopVaoCuoc, datVuongMacVaoCuoc, danhDauNhanTaiLieu, THANH_PHAN_HO_SO, tichHoSoVaoCuoc, tinhHinhNop, themYeuCauVaoCuoc, xoaLanNopKhoiCuoc, xoaVuongMacKhoiCuoc, xoaYeuCauKhoiCuoc } from '../src/core/vuViec';
+
+describe('Yêu cầu tài liệu, vướng mắc', () => {
+  it('thêm, đánh dấu đã nhận / bỏ, xóa', () => {
+    let c = themYeuCauVaoCuoc(taoCuocRong({ id: 'c', ma: 'KT-1', taoLuc: 'x' }), { id: 'y1', noiDung: 'Sổ', guiLuc: '2026-10-12T15:00' });
+    c = danhDauNhanTaiLieu(c, 'y1', '2026-10-13T09:00');
+    expect(c.yeuCauTaiLieu[0].nhanLuc).toBe('2026-10-13T09:00');
+    c = danhDauNhanTaiLieu(c, 'y1', undefined);
+    expect(c.yeuCauTaiLieu[0].nhanLuc).toBeUndefined();
+    expect(xoaYeuCauKhoiCuoc(c, 'y1').yeuCauTaiLieu).toEqual([]);
+  });
+  it('vướng mắc: thêm, sửa tại chỗ, xóa', () => {
+    let c = datVuongMacVaoCuoc(taoCuocRong({ id: 'c', ma: 'KT-1', taoLuc: 'x' }), { id: 'v', noiDung: 'a', ngayBaoCao: '2026-10-12', daXong: false });
+    c = datVuongMacVaoCuoc(c, { id: 'v', noiDung: 'a', ngayBaoCao: '2026-10-12', ngayLanhDaoBaoCao: '2026-10-13', daXong: false });
+    expect(c.vuongMac).toHaveLength(1);
+    expect(c.vuongMac[0].ngayLanhDaoBaoCao).toBe('2026-10-13');
+    expect(xoaVuongMacKhoiCuoc(c, 'v').vuongMac).toEqual([]);
+  });
+});
+
+describe('Kết quả & nộp tiền', () => {
+  it('tình hình nộp: phải nộp = truy thu + phạt + chậm nộp; phần trăm; còn lại không âm', () => {
+    let c = datKetQuaVaoCuoc(taoCuocRong({ id: 'c', ma: 'KT-1', taoLuc: 'x' }), { coXuLy: true, truyThu: 10_000_000, phat: 2_000_000, chamNop: 500_000, giamKhauTru: 0, giamLo: 0, thuHoiHoan: 0 });
+    c = datLanNopVaoCuoc(c, { id: 'n2', ngay: '2026-12-01', soTien: 2_500_000, daNhapTTR: false });
+    c = datLanNopVaoCuoc(c, { id: 'n1', ngay: '2026-11-20', soTien: 5_000_000, daNhapTTR: true });
+    expect(c.nopTien.map((l) => l.id)).toEqual(['n1', 'n2']);
+    expect(tinhHinhNop(c)).toEqual({ phaiNop: 12_500_000, daNop: 7_500_000, conLai: 5_000_000, phanTram: 60 });
+    c = datLanNopVaoCuoc(c, { id: 'n3', ngay: '2026-12-05', soTien: 99_000_000, daNhapTTR: false });
+    expect(tinhHinhNop(c)).toMatchObject({ conLai: 0, phanTram: 100 });
+    expect(tinhHinhNop(taoCuocRong({ id: 'x', ma: 'x', taoLuc: 'x' }))).toEqual({ phaiNop: 0, daNop: 0, conLai: 0, phanTram: 0 });
+  });
+  it('xóa lần nộp cũng xóa dấu tích TTR của lần đó', () => {
+    let c = datLanNopVaoCuoc(taoCuocRong({ id: 'c', ma: 'KT-1', taoLuc: 'x' }), { id: 'n1', ngay: '2026-11-20', soTien: 1, daNhapTTR: true });
+    c = { ...c, checklist: { 'TTR_NOP#n1': '2026-11-21', TTR_QD: '2026-10-06' } };
+    const m = xoaLanNopKhoiCuoc(c, 'n1');
+    expect(m.nopTien).toEqual([]);
+    expect(m.checklist).toEqual({ TTR_QD: '2026-10-06' });
+  });
+});
+
+describe('Hồ sơ lưu trữ', () => {
+  it('tích/bỏ tích thành phần hồ sơ, không lẫn với checklist hệ thống', () => {
+    expect(THANH_PHAN_HO_SO.length).toBe(7);
+    let c = tichHoSoVaoCuoc(taoCuocRong({ id: 'c', ma: 'KT-1', taoLuc: 'x' }), 'HS_BB', '2026-11-20');
+    expect(daTichHoSo(c, 'HS_BB')).toBe(true);
+    expect(daTichHoSo(c, 'HS_NK')).toBe(false);
+    expect(Object.keys(c.checklist)).toEqual(['LT:HS_BB']);
+    c = tichHoSoVaoCuoc(c, 'HS_BB', null);
+    expect(c.checklist).toEqual({});
+  });
+});

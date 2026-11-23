@@ -79,3 +79,9 @@ export async function xoaSuKien(cuocId: string, id: string): Promise<SuKien | un
   if (c && sk) await luuCuoc(xoaSuKienKhoiCuoc(c, id));
   return sk;
 }
+
+/** Áp một thay đổi thuần lên cuộc rồi lưu. */
+export async function capNhatCuoc(cuocId: string, fn: (c: CuocKiemTra) => CuocKiemTra): Promise<CuocKiemTra | undefined> {
+  const c = layCuoc(cuocId);
+  return c ? luuCuoc(fn(c)) : undefined;
+}

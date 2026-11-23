@@ -332,3 +332,20 @@ table.bang td.so, table.bang th.so { text-align: right; }
 .hang-nl .noi-dung-nl { display: flex; flex-direction: column; gap: 2px; cursor: pointer; min-width: 0; overflow-wrap: anywhere; }
 .hang-nl .phu-dong { color: var(--chu-phu); font-size: var(--co-phu); display: flex; flex-wrap: wrap; gap: 2px var(--k2); align-items: center; }
 @media (max-width: 599px) { .hang-nl { grid-template-columns: auto 1fr; } .hang-nl > :last-child { grid-column: 2; justify-self: start; } }
+
+.ds-nk, .ds-yc { list-style: none; margin: 0; padding: 0; }
+.hang-nk { padding: var(--k3) 0; border-top: 1px solid var(--vien); }
+.hang-nk:first-child { border-top: 0; }
+.hang-nk.hom-nay { background: var(--chinh-nhat); border-radius: var(--bo-nut); padding: var(--k3); }
+.hang-nk .ngay-nk { display: flex; flex-wrap: wrap; gap: var(--k2); align-items: center; margin-bottom: var(--k2); }
+.hang-nk textarea { margin: var(--k1) 0 var(--k2); }
+.dong-yc { display: flex; gap: var(--k3); justify-content: space-between; align-items: flex-start; padding: var(--k3) 0; border-top: 1px solid var(--vien); }
+.dong-yc.qua-han { border-left: 4px solid var(--sla-do); padding-left: var(--k3); }
+.chang-vm { list-style: none; margin: var(--k3) 0; padding: 0; display: grid; gap: var(--k3); }
+.chang-vm > li { display: grid; grid-template-columns: 1fr; gap: var(--k2); padding: var(--k3); background: var(--be-mat-2); border-radius: var(--bo-nut); }
+@media (min-width: 768px) { .chang-vm > li { grid-template-columns: 1fr 1fr; } }
+
+.lich-su { list-style: none; margin: 0; padding: 0; }
+.lich-su > li { padding: var(--k2) 0; border-top: 1px solid var(--vien); }
+.lich-su > li:first-child { border-top: 0; }
+.lich-su ul { margin: 2px 0 0; padding-left: var(--k4); }

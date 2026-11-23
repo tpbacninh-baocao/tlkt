@@ -1,5 +1,5 @@
 // Cập nhật thuần (không I/O) một cuộc: đánh dấu xong/bỏ đánh dấu bước, tích checklist, nhật ký iTNK, lý do trễ.
-import type { CuocKiemTra, NgayISO, SuKien } from '../kieu';
+import type { CuocKiemTra, KetQuaCuoc, LanNop, NgayISO, SuKien, VuongMac, YeuCauTaiLieu } from '../kieu';
 import type { ViecChecklist } from '../checklist';
 
 export interface DuLieuXongBuoc {
@@ -163,4 +163,73 @@ export function ganSuKienVaoCuoc(cuoc: CuocKiemTra, sk: SuKien): CuocKiemTra {
 
 export function xoaSuKienKhoiCuoc(cuoc: CuocKiemTra, id: string): CuocKiemTra {
   return { ...cuoc, suKien: cuoc.suKien.filter((s) => s.id !== id) };
+}
+
+
+// ---------- Yêu cầu tài liệu & vướng mắc ----------
+export function themYeuCauVaoCuoc(c: CuocKiemTra, y: YeuCauTaiLieu): CuocKiemTra {
+  return { ...c, yeuCauTaiLieu: [...c.yeuCauTaiLieu.filter((x) => x.id !== y.id), y] };
+}
+export function danhDauNhanTaiLieu(c: CuocKiemTra, id: string, nhanLuc: string | undefined): CuocKiemTra {
+  return { ...c, yeuCauTaiLieu: c.yeuCauTaiLieu.map((y) => (y.id === id ? { ...y, nhanLuc } : y)) };
+}
+export function xoaYeuCauKhoiCuoc(c: CuocKiemTra, id: string): CuocKiemTra {
+  return { ...c, yeuCauTaiLieu: c.yeuCauTaiLieu.filter((y) => y.id !== id) };
+}
+export function datVuongMacVaoCuoc(c: CuocKiemTra, v: VuongMac): CuocKiemTra {
+  const i = c.vuongMac.findIndex((x) => x.id === v.id);
+  const ds = i >= 0 ? c.vuongMac.map((x, j) => (j === i ? v : x)) : [...c.vuongMac, v];
+  return { ...c, vuongMac: ds };
+}
+export function xoaVuongMacKhoiCuoc(c: CuocKiemTra, id: string): CuocKiemTra {
+  return { ...c, vuongMac: c.vuongMac.filter((v) => v.id !== id) };
+}
+
+// ---------- Kết quả & nộp tiền ----------
+export function datKetQuaVaoCuoc(c: CuocKiemTra, kq: KetQuaCuoc): CuocKiemTra {
+  return { ...c, ketQua: { ...c.ketQua, ...kq } };
+}
+export function datLanNopVaoCuoc(c: CuocKiemTra, l: LanNop): CuocKiemTra {
+  const i = c.nopTien.findIndex((x) => x.id === l.id);
+  const ds = i >= 0 ? c.nopTien.map((x, j) => (j === i ? l : x)) : [...c.nopTien, l];
+  return { ...c, nopTien: ds.sort((a, b) => (a.ngay < b.ngay ? -1 : a.ngay > b.ngay ? 1 : 0)) };
+}
+export function xoaLanNopKhoiCuoc(c: CuocKiemTra, id: string): CuocKiemTra {
+  const checklist = { ...c.checklist };
+  delete checklist[`TTR_NOP#${id}`];
+  return { ...c, nopTien: c.nopTien.filter((l) => l.id !== id), checklist };
+}
+
+export interface TinhHinhNop {
+  phaiNop: number;
+  daNop: number;
+  conLai: number;
+  /** 0–100 */
+  phanTram: number;
+}
+export function tinhHinhNop(c: Pick<CuocKiemTra, 'ketQua' | 'nopTien'>): TinhHinhNop {
+  const phaiNop = c.ketQua.truyThu + c.ketQua.phat + c.ketQua.chamNop;
+  const daNop = c.nopTien.reduce((t, l) => t + l.soTien, 0);
+  return { phaiNop, daNop, conLai: Math.max(0, phaiNop - daNop), phanTram: phaiNop > 0 ? Math.min(100, Math.round((daNop / phaiNop) * 100)) : 0 };
+}
+
+// ---------- Hồ sơ lưu trữ (Đ35.2) ----------
+export const THANH_PHAN_HO_SO: { ma: string; ten: string }[] = [
+  { ma: 'HS_RUI_RO', ten: 'Hồ sơ phân tích, đánh giá rủi ro (Phiếu 08/QTKT-TC)' },
+  { ma: 'HS_QD', ten: 'QĐ kiểm tra, QĐ gia hạn/điều chỉnh, QĐ giám sát' },
+  { ma: 'HS_BB', ten: 'Các biên bản (công bố, kiểm tra, công khai dự thảo, xác nhận số liệu, phụ lục)' },
+  { ma: 'HS_BC', ten: 'Báo cáo kết quả kiểm tra, báo cáo kết quả giám sát' },
+  { ma: 'HS_NK', ten: 'Nhật ký kiểm tra điện tử' },
+  { ma: 'HS_KL', ten: 'Kết luận kiểm tra / QĐ xử phạt vi phạm hành chính' },
+  { ma: 'HS_KHAC', ten: 'Tài liệu, chứng từ khác liên quan' },
+];
+const KHOA_LUU_TRU = (ma: string) => `LT:${ma}`;
+export function daTichHoSo(c: Pick<CuocKiemTra, 'checklist'>, ma: string): boolean {
+  return !!c.checklist[KHOA_LUU_TRU(ma)];
+}
+export function tichHoSoVaoCuoc(c: CuocKiemTra, ma: string, ngay: NgayISO | null): CuocKiemTra {
+  const checklist = { ...c.checklist };
+  if (ngay) checklist[KHOA_LUU_TRU(ma)] = ngay;
+  else delete checklist[KHOA_LUU_TRU(ma)];
+  return { ...c, checklist };
 }
