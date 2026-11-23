@@ -23,7 +23,7 @@ Tài liệu tham chiếu: SPEC = `docs/SPEC.md` · ARCH = `docs/ARCHITECTURE.md`
   *Chấp nhận:* test đủ 9 giai đoạn, mỗi ràng buộc 1 test, SLA 4 trạng thái + xong đúng/trễ.
 - [x] **T07 Đồng hồ** yêu cầu tài liệu (06 giờ LV) và vướng mắc (3 × 02 NLV), hạn kế hoạch (công khai 30 ngày, chuyên đề phát sinh, thời hiệu kiểm tra lại).
   *Chấp nhận:* W01–W04; test vướng mắc; test thời hiệu.
-- [ ] **T08 Checklist hệ thống** (`core/checklist`): sinh việc từ `rules/checklist-he-thong.json` theo mốc/sự kiện/điều kiện/lần nộp tiền; hạn = ngày phát sinh + `hanNhapLieuNLV`; nội dung “Sao chép thông tin” theo `saoChep` (ARCH §5); tên chức năng ghi đè được; việc nhật ký hằng ngày.
+- [x] **T08 Checklist hệ thống** (`core/checklist`): sinh việc từ `rules/checklist-he-thong.json` theo mốc/sự kiện/điều kiện/lần nộp tiền; hạn = ngày phát sinh + `hanNhapLieuNLV`; nội dung “Sao chép thông tin” theo `saoChep` (ARCH §5); tên chức năng ghi đè được; việc nhật ký hằng ngày.
   *Chấp nhận:* test một cuộc đi từ D0 đến X sinh đúng số việc từng mốc; có GIA_HAN/TAM_DUNG/BAI_BO sinh thêm đúng việc; 2 lần nộp tiền → 2 việc TTR_NOP.
 - [ ] **T09 Việc ngoài cuộc** (`core/viec`): lặp lại (ARCH §7), tạo lần kế tiếp, mẫu từ `rules/mau-viec-thuong-xuyen.json`, **nhận diện hạn tiếng Việt**.
   *Chấp nhận:* N01–N08 đạt; test mỗi kiểu `lap`.
