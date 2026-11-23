@@ -51,6 +51,7 @@ export interface KeHoach {
   ngayBaoCaoKetThuc?: NgayISO;
   chiTieuSoCuoc?: number;
   ghiChu?: string;
+  laDuLieuMau?: boolean;
   taoLuc?: NgayGio;
   suaLuc?: NgayGio;
   xoaLuc?: NgayGio;

@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T13
-- Nhiệm vụ xong gần nhất: T12
-- `npm run check`: sạch (272 đạt / 272 tổng)
+- Nhiệm vụ đang làm: T15
+- Nhiệm vụ xong gần nhất: T14
+- `npm run check`: sạch (305 đạt / 305 tổng)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -69,6 +69,11 @@
 - Đã làm: core/keHoach/thongKe: chỉ tiêu, số cuộc theo từng bước (QĐ/công bố/kết thúc tại DN/QĐ xử lý/bãi bỏ), theo giai đoạn, tổng tiền + còn phải nộp, tích lũy theo tháng (thực tế vs lý tưởng), tồn chuyển năm sau, cảnh báo (quá tháng dự kiến, cuối năm Đ15.5.e, công khai 30 ngày, báo cáo chuyên đề, vượt chỉ tiêu), bộ lọc năm/kế hoạch/trưởng đoàn.
 - Test: 272 đạt / 272 tổng
 - Giả định đã chọn: Cuộc không gắn kế hoạch tính theo năm ban hành QĐ (hoặc năm tạo). Cuộc bãi bỏ không tính vào số đã ban hành/đã có QĐ xử lý. Không có chỉ tiêu nhập → chỉ tiêu = số cuộc thực tế.
+
+### 2026-11-23 – T13–T14 Kho IndexedDB và mã hóa bằng mật mã (⭐ T14)
+- Đã làm: data/kho: 9 kho, CRUD, xóa mềm/khôi phục/xóa hẳn sau 30 ngày, audit log (cắt 2.000 dòng, chỉ ghi trường thay đổi), migrate, nhắc đã phát, chuẩn hóa dữ liệu cũ, storage.persist. data/mat: PBKDF2-SHA256 210.000 vòng → AES-GCM 256, mở khóa/khóa lại, đổi/tắt mật mã (một giao dịch), chặn sai 5 lần/30 giây, khóa tự động. Sửa lỗi phát hiện khi test: khóa dòng nhật ký bị trùng id thực thể.
+- Test: 305 đạt / 305 tổng
+- Giả định đã chọn: Dòng nhật ký hệ thống cũng được mã hóa khi bật mật mã. Quên mật mã = mất dữ liệu (đúng thiết kế). Nhật ký sửa chỉ lưu các trường đổi (không chép cả cuộc).
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

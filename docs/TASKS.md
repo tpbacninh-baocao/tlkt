@@ -35,9 +35,9 @@ Tài liệu tham chiếu: SPEC = `docs/SPEC.md` · ARCH = `docs/ARCHITECTURE.md`
   *Chấp nhận:* test với dữ liệu mẫu.
 
 ## Phase 2 – Dữ liệu (`src/data`)
-- [ ] **T13 Kho IndexedDB** theo ARCH §9: các store, CRUD, xóa mềm/khôi phục/xóa hẳn sau 30 ngày, audit log, migrate, `storage.persist()`.
+- [x] **T13 Kho IndexedDB** theo ARCH §9: các store, CRUD, xóa mềm/khôi phục/xóa hẳn sau 30 ngày, audit log, migrate, `storage.persist()`.
   *Chấp nhận:* test với `fake-indexeddb`.
-- [ ] **T14 ⭐ Mã hóa bằng mật mã** (PBKDF2 → AES-GCM), mở khóa, khóa tự động, đổi/tắt mật mã.
+- [x] **T14 ⭐ Mã hóa bằng mật mã** (PBKDF2 → AES-GCM), mở khóa, khóa tự động, đổi/tắt mật mã.
   *Chấp nhận:* test mã hóa → giải mã đúng; sai mật mã bị từ chối; đổi mật mã giữ nguyên dữ liệu.
 - [ ] **T15 Sao lưu/khôi phục** `.tlkt.json` (Thay thế / Gộp theo `suaLuc`), nhắc sao lưu hằng tuần.
 - [ ] **T16 Dữ liệu mẫu**: 6 cuộc ở các giai đoạn khác nhau **tính tương đối theo ngày hôm nay** (1 KH đang kiểm tra tại DN, 1 TH chờ công bố, 1 GT đang biên bản, 1 có GDLK chờ QĐ xử lý có giải trình, 1 bãi bỏ, 1 chuyển tiếp QTKT-970 sau QĐ đang theo dõi nộp tiền) + 1 kế hoạch năm + 10 việc khác (có lặp lại, có quá hạn) + vài khối thời gian; MST giả `0100000xxx`. Có nút xóa riêng dữ liệu mẫu.
