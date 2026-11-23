@@ -3,12 +3,16 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T01
-- Nhiệm vụ xong gần nhất: —
-- `npm run check`: —
+- Nhiệm vụ đang làm: T03
+- Nhiệm vụ xong gần nhất: T02
+- `npm run check`: sạch (1 test)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
+### 2026-11-23 – T01–T02 Khởi tạo (Phase 0)
+- Đã làm: Vite 7 + TS strict + Preact + signals; Vitest; cấu trúc thư mục; `public/icon.svg`; workflow khớp script (`npm ci`, `npm run check`, upload `dist`).
+- Test: 1 đạt / 1 tổng
+- Giả định: dùng `xlsx@0.18.5` từ npm (CDN SheetJS bị chặn trong môi trường này).
 <!-- Mẫu mỗi mục:
 ### YYYY-MM-DD – Txx Tên nhiệm vụ
 - Đã làm: …

@@ -1,0 +1,30 @@
+{
+  "name": "tlkt",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Trợ lý Đoàn kiểm tra – ứng dụng PWA hỗ trợ cán bộ kiểm tra thuế",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "check": "tsc --noEmit && vitest run && vite build"
+  },
+  "dependencies": {
+    "@preact/signals": "^2.11.4",
+    "idb": "^8.0.4",
+    "preact": "^10.29.8",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.6",
+    "@types/node": "^22.20.5",
+    "fake-indexeddb": "^6.2.8",
+    "typescript": "~5.9",
+    "vite": "^7.3.8",
+    "vite-plugin-pwa": "^1.3.0",
+    "vitest": "^3.2.7"
+  }
+}

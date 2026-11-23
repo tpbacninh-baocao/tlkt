@@ -7,9 +7,9 @@ Tài liệu tham chiếu: SPEC = `docs/SPEC.md` · ARCH = `docs/ARCHITECTURE.md`
 ---
 
 ## Phase 0 – Khởi tạo
-- [ ] **T01 Khởi tạo dự án.** Vite + TypeScript strict + Preact + `@preact/signals`; Vitest; cấu trúc thư mục ARCH §3; script `dev`, `build`, `test`, `check` (tsc + vitest + build), `preview`. `vite.config.ts` có `base: './'`. Trang tạm “TLKT”.
+- [x] **T01 Khởi tạo dự án.** Vite + TypeScript strict + Preact + `@preact/signals`; Vitest; cấu trúc thư mục ARCH §3; script `dev`, `build`, `test`, `check` (tsc + vitest + build), `preview`. `vite.config.ts` có `base: './'`. Trang tạm “TLKT”.
   *Chấp nhận:* `npm run check` sạch; `npm run build` ra `dist/index.html`.
-- [ ] **T02 Kiểm tra triển khai sớm.** Rà `.github/workflows/deploy.yml` khớp script; thêm `public/icon.svg` (biểu tượng khiên + dấu tích, màu `--chinh`).
+- [x] **T02 Kiểm tra triển khai sớm.** Rà `.github/workflows/deploy.yml` khớp script; thêm `public/icon.svg` (biểu tượng khiên + dấu tích, màu `--chinh`).
   *Chấp nhận:* workflow chạy `npm ci`, `npm run check`, upload `dist`.
 
 ## Phase 1 – Lõi nghiệp vụ (`src/core`, không giao diện)
