@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T27
-- Nhiệm vụ xong gần nhất: T26
-- `npm run check`: sạch (441 đạt / 441 tổng; đã thử trong Chromium (tháng/tuần/ngày, nhận gợi ý, kéo tạo khối))
+- Nhiệm vụ đang làm: T28
+- Nhiệm vụ xong gần nhất: T27
+- `npm run check`: sạch (440 đạt / 440 tổng; đã thử trong Chromium: thu nhanh ‘trước 15/12’ → chip hạn 15/12/2026, hoàn thành + hoàn tác việc lặp, form lặp hằng tuần, tab Mẫu 7 mục)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -127,8 +127,13 @@
 
 ### 2026-11-23 – T26 Lịch tháng/tuần/ngày + khối thời gian
 - Đã làm: core/tomTat/lichNgay (luoiThang, gomMucTheoNgay, goiYKhoiThoiGian: Tại DN theo khung giờ làm việc + Nhập TTR/iTNK 30 phút cuối ngày, xepLanKhoi) + ui/man/lich: Tháng (chấm màu theo mức khẩn, ngày nghỉ nền xám + tên lễ, ngày làm bù, chọn ngày xem danh sách hạn), Tuần/Ngày (cột giờ 07–18, vạch giờ hiện tại, kéo trên cột để tạo khối trên máy tính, nút ＋ Khối, khối chồng giờ chia làn, gợi ý viền đứt bấm để nhận), xuất .ics 30 ngày/tất cả.
-- Test: 441 đạt / 441 tổng; đã thử trong Chromium (tháng/tuần/ngày, nhận gợi ý, kéo tạo khối)
+- Test: 439 đạt / 439 tổng; đã thử trong Chromium (tháng/tuần/ngày, nhận gợi ý, kéo tạo khối)
 - Giả định đã chọn: Gợi ý ‘Nhập TTR/iTNK’: 30 phút cuối khung giờ làm việc của ngày có việc nhập liệu đến hạn (thay cho ‘30 phút sau mỗi mốc’ vì mốc chỉ có ngày, không có giờ).
+
+### 2026-11-23 – T27 Màn Việc
+- Đã làm: ui/man/viec: 5 tab (Hộp thu, Đang làm theo Quá hạn/Hôm nay/Tuần này/Sau, Lặp lại, Mẫu bật/tắt, Đã xong), ô thu nhanh nhận diện hạn + nhập giọng nói vi-VN (ẩn nếu trình duyệt không hỗ trợ), form chi tiết (nguồn, nhóm đột xuất, số VB, người giao, hạn, giờ, kiểu lặp có xem trước các lần tới, liên kết cuộc, việc con), hoàn thành việc lặp tự tạo lần sau + Hoàn tác, ghim, xóa mềm. Sửa lỗi: dữ liệu mẫu không tạo trùng việc lặp đã có từ mẫu.
+- Test: 440 đạt / 440 tổng; đã thử trong Chromium: thu nhanh ‘trước 15/12’ → chip hạn 15/12/2026, hoàn thành + hoàn tác việc lặp, form lặp hằng tuần, tab Mẫu 7 mục
+- Giả định đã chọn: Việc ‘Lặp lại’ chỉ có một bản ghi đang mở mỗi chuỗi; bật mẫu mới sẽ tạo việc ngay.
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

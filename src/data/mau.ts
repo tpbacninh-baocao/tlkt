@@ -189,12 +189,15 @@ export async function themDuLieuMau(
   caiDat?: Pick<CaiDat, 'canBo' | 'tenChucNangHeThong'>,
 ): Promise<{ soCuoc: number; soViec: number }> {
   const m = taoDuLieuMau(homNay, lich, bayGio, caiDat);
+  // việc lặp lại từ mẫu: nếu đã có bản đang mở (do app tự tạo) thì không thêm bản trùng
+  const dangMo = new Set((await kho.tatCa<{ mauMa?: string; xong?: string; xoaLuc?: string }>('viec')).filter((v) => v.mauMa && !v.xong && !v.xoaLuc).map((v) => v.mauMa as string));
+  const viecMoi = m.viec.filter((v) => !(v.mauMa && dangMo.has(v.mauMa)));
   for (const k of m.keHoach) await kho.ghiTho('keHoach', k as unknown as BanGhiTho);
   for (const c of m.cuoc) await kho.ghiTho('cuoc', c as unknown as BanGhiTho);
-  for (const x of m.viec) await kho.ghiTho('viec', x as unknown as BanGhiTho);
+  for (const x of viecMoi) await kho.ghiTho('viec', x as unknown as BanGhiTho);
   for (const b of m.khoiThoiGian) await kho.ghiTho('khoiThoiGian', b as unknown as BanGhiTho);
-  await kho.ghiNhatKy({ luc: bayGio, hanhDong: 'THEM', doiTuong: 'duLieuMau', sau: { cuoc: m.cuoc.length, viec: m.viec.length } });
-  return { soCuoc: m.cuoc.length, soViec: m.viec.length };
+  await kho.ghiNhatKy({ luc: bayGio, hanhDong: 'THEM', doiTuong: 'duLieuMau', sau: { cuoc: m.cuoc.length, viec: viecMoi.length } });
+  return { soCuoc: m.cuoc.length, soViec: viecMoi.length };
 }
 
 const KHO_CO_CO_MAU = ['keHoach', 'cuoc', 'viec', 'khoiThoiGian'] as const;

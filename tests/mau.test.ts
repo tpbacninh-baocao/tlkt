@@ -150,6 +150,19 @@ describe('Lưu / xóa riêng dữ liệu mẫu trong kho', () => {
     expect(du.viec.map((v) => v.id)).toEqual(['that-1']);
     expect(await coDuLieuMau(k)).toBe(false);
   });
+  it('không tạo trùng việc lặp lại đã có từ mẫu (app tự tạo ở onboarding)', async () => {
+    const k = await moKho({ ten: 'mau-kho-3', dongHo: () => '2026-11-23T09:00' });
+    await k.luuViec({ id: 'tu-mau', tieuDe: 'Rà soát dữ liệu…', nguon: 'THUONG_XUYEN', mauMa: 'RS_13', lap: 'THANG:13', han: '2026-12-11', viecCon: [], taoLuc: 'x', suaLuc: 'x' });
+    const r = await themDuLieuMau(k, '2026-11-23', lich, '2026-11-23T09:00');
+    expect(r.soViec).toBe(9); // bỏ mau-v6 (RS_13) vì đã có bản đang mở
+    const dsViec = (await k.docTatCa()).viec;
+    expect(dsViec.filter((v) => v.mauMa === 'RS_13')).toHaveLength(1);
+    expect(dsViec).toHaveLength(10);
+    // đã xong thì không chặn
+    const k2 = await moKho({ ten: 'mau-kho-4', dongHo: () => '2026-11-23T09:00' });
+    await k2.luuViec({ id: 'da-xong', tieuDe: 'x', nguon: 'THUONG_XUYEN', mauMa: 'RS_13', lap: 'THANG:13', viecCon: [], taoLuc: 'x', suaLuc: 'x', xong: '2026-11-13T08:00' });
+    expect((await themDuLieuMau(k2, '2026-11-23', lich, '2026-11-23T09:00')).soViec).toBe(10);
+  });
   it('trưởng đoàn mặc định là cán bộ trong cài đặt', () => {
     const cd = caiDatMacDinh();
     cd.canBo.hoTen = 'Hoàng Văn Test';
