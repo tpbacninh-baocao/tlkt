@@ -1,0 +1,80 @@
+{
+  "$schema_note": "Kịch bản kiểm thử chấp nhận BẮT BUỘC. Viết thành test tự động (tests/acceptance.test.ts) đọc trực tiếp tệp này. KHÔNG được sửa 'ketQua' để test qua – nếu lệch, sửa code. Ngày dạng YYYY-MM-DD; giờ HH:MM. Giờ làm việc mặc định 07:30–11:30, 13:00–17:00, thứ Hai–thứ Sáu. Cách đếm mặc định (không bật chế độ thận trọng).",
+  "ngayNghiMacDinh": [],
+  "nhom": [
+    {
+      "ten": "QTKT-1161 – Tổ chức, không GDLK",
+      "boQuyTac": "QTKT-1161",
+      "ca": [
+        { "id": "A01", "moTa": "Hạn gửi QĐ cho NNT", "dauVao": { "D0": "2026-10-05" }, "buoc": "Q1", "ketQua": "2026-10-08" },
+        { "id": "A02", "moTa": "Hạn đôn đốc kế hoạch giám sát", "dauVao": { "D0": "2026-10-05" }, "buoc": "Q2", "ketQua": "2026-10-12" },
+        { "id": "A03", "moTa": "Hạn công bố", "dauVao": { "D0": "2026-10-05" }, "buoc": "Q5", "ketQua": "2026-10-19" },
+        { "id": "A04", "moTa": "E rơi Chủ nhật 01/11 → lùi sang thứ Hai", "dauVao": { "D0": "2026-10-05", "C": "2026-10-12" }, "buoc": "T1", "ketQua": "2026-11-02" },
+        { "id": "A05", "moTa": "Hạn chót đề nghị gia hạn = E − 3 NLV", "dauVao": { "D0": "2026-10-05", "C": "2026-10-12" }, "buoc": "T3", "ketQua": "2026-10-28" },
+        { "id": "A06", "moTa": "Gia hạn 20 ngày: 01/11 + 20 = 21/11 (thứ Bảy) → 23/11", "dauVao": { "D0": "2026-10-05", "C": "2026-10-12", "suKien": [{ "loai": "GIA_HAN", "ngayDeNghi": "2026-10-26", "ngayQD": "2026-10-27", "soNgay": 20 }] }, "buoc": "T1", "ketQua": "2026-11-23" },
+        { "id": "A07", "moTa": "Tạm dừng 19/10–23/10 (5 ngày) → E = 06/11", "dauVao": { "D0": "2026-10-05", "C": "2026-10-12", "suKien": [{ "loai": "TAM_DUNG", "tuNgay": "2026-10-19", "denNgay": "2026-10-23" }] }, "buoc": "T1", "ketQua": "2026-11-06" },
+        { "id": "A08", "moTa": "Hạn ký biên bản = K + 5 NLV", "dauVao": { "D0": "2026-10-05", "C": "2026-10-12", "K": "2026-10-30" }, "buoc": "B1", "ketQua": "2026-11-06" },
+        { "id": "A09", "moTa": "Hạn báo cáo kết quả = B + 3 NLV", "dauVao": { "D0": "2026-10-05", "C": "2026-10-12", "K": "2026-10-30", "B": "2026-11-03" }, "buoc": "B4", "ketQua": "2026-11-06" },
+        { "id": "A10", "moTa": "Theo dõi giải trình trực tiếp", "dauVao": { "B": "2026-11-03" }, "buoc": "B3a", "ketQua": "2026-11-05" },
+        { "id": "A11", "moTa": "Theo dõi giải trình văn bản", "dauVao": { "B": "2026-11-03" }, "buoc": "B3b", "ketQua": "2026-11-10" },
+        { "id": "A12", "moTa": "X1: có xử lý, không giải trình", "dauVao": { "B": "2026-11-03", "ketQua": { "coXuLy": true } }, "buoc": "X", "cheDoX": "X1", "ketQua": "2026-11-12" },
+        { "id": "A13", "moTa": "X4: không xử lý → Kết luận", "dauVao": { "B": "2026-11-03", "ketQua": { "coXuLy": false } }, "buoc": "X", "cheDoX": "X4", "ketQua": "2026-11-12" },
+        { "id": "A14", "moTa": "X2: có giải trình → 1 tháng", "dauVao": { "B": "2026-11-03", "ketQua": { "coXuLy": true }, "suKien": [{ "loai": "GIAI_TRINH", "ngay": "2026-11-05" }] }, "buoc": "X", "cheDoX": "X2", "ketQua": "2026-12-03" },
+        { "id": "A15", "moTa": "X3: phức tạp → 2 tháng, 03/01/2027 là Chủ nhật → 04/01/2027", "dauVao": { "B": "2026-11-03", "ketQua": { "coXuLy": true }, "suKien": [{ "loai": "PHUC_TAP", "ngay": "2026-11-04", "lyDo": "Nhiều tình tiết cần xác minh" }] }, "buoc": "X", "cheDoX": "X3", "ketQua": "2027-01-04" },
+        { "id": "A16", "moTa": "Hạn giao QĐ xử phạt", "dauVao": { "X": "2026-11-10" }, "buoc": "S1", "ketQua": "2026-11-13" },
+        { "id": "A17", "moTa": "Hạn bàn giao lưu trữ = X + 12 tháng", "dauVao": { "X": "2026-11-10" }, "buoc": "S6", "ketQua": "2027-11-10" },
+        { "id": "A18", "moTa": "Báo cáo giám sát = R + 5 NLV", "dauVao": { "R": "2026-11-05" }, "buoc": "B5", "ketQua": "2026-11-12" },
+        { "id": "A19", "moTa": "Dấu hiệu tội phạm: ngày phát hiện + 5 NLV", "dauVao": { "suKien": [{ "loai": "TOI_PHAM", "ngayPhatHien": "2026-10-20" }] }, "buoc": "S7", "ketQua": "2026-10-27" }
+      ]
+    },
+    {
+      "ten": "QTKT-1161 – có giao dịch liên kết",
+      "boQuyTac": "QTKT-1161",
+      "ca": [
+        { "id": "G01", "moTa": "E = C + 40 ngày: 21/11 (thứ Bảy) → 23/11", "dauVao": { "D0": "2026-10-05", "C": "2026-10-12", "coGDLK": true }, "buoc": "T1", "ketQua": "2026-11-23" }
+      ]
+    },
+    {
+      "ten": "Có ngày nghỉ",
+      "boQuyTac": "QTKT-1161",
+      "ngayNghi": ["2027-01-01"],
+      "ca": [
+        { "id": "H01", "moTa": "X1 vắt qua Tết Dương lịch: B = 30/12/2026 → đếm 31/12, 04/01…08/01, 11/01", "dauVao": { "B": "2026-12-30", "ketQua": { "coXuLy": true } }, "buoc": "X", "cheDoX": "X1", "ketQua": "2027-01-11" }
+      ]
+    },
+    {
+      "ten": "Chọn bộ quy tắc theo ngày QĐ (chuyển tiếp)",
+      "ca": [
+        { "id": "R01", "moTa": "QĐ trước 01/7/2026 → QTKT-970", "dauVao": { "D0": "2026-06-15" }, "boQuyTacMongDoi": "QTKT-970" },
+        { "id": "R02", "moTa": "QĐ 01/7/2026 → QTKT-1161", "dauVao": { "D0": "2026-07-01" }, "boQuyTacMongDoi": "QTKT-1161" },
+        { "id": "R03", "moTa": "QĐ 14/8/2026 → QTKT-1161", "dauVao": { "D0": "2026-08-14" }, "boQuyTacMongDoi": "QTKT-1161" },
+        { "id": "R04", "moTa": "970: hạn công bố D0 + 10 NLV", "dauVao": { "D0": "2026-06-15" }, "buoc": "Q5", "ketQua": "2026-06-29" },
+        { "id": "R05", "moTa": "970: E = C + 10 NLV", "dauVao": { "D0": "2026-06-15", "C": "2026-06-22" }, "buoc": "T1", "ketQua": "2026-07-06" },
+        { "id": "R06", "moTa": "970: gia hạn 10 NLV", "dauVao": { "D0": "2026-06-15", "C": "2026-06-22", "suKien": [{ "loai": "GIA_HAN", "ngayDeNghi": "2026-06-29", "ngayQD": "2026-06-30", "soNgay": 10 }] }, "buoc": "T1", "ketQua": "2026-07-20" }
+      ]
+    },
+    {
+      "ten": "Đồng hồ giờ làm việc (yêu cầu tài liệu 06 giờ làm việc)",
+      "ca": [
+        { "id": "W01", "moTa": "Gửi 15:00 thứ Hai → 11:30 thứ Ba", "dauVao": { "luc": "2026-10-12T15:00" }, "gioLamViec": 6, "ketQua": "2026-10-13T11:30" },
+        { "id": "W02", "moTa": "Gửi 10:30 → 08:30 hôm sau (qua nghỉ trưa)", "dauVao": { "luc": "2026-10-12T10:30" }, "gioLamViec": 6, "ketQua": "2026-10-13T08:30" },
+        { "id": "W03", "moTa": "Gửi 16:00 thứ Sáu → 14:00 thứ Hai", "dauVao": { "luc": "2026-10-16T16:00" }, "gioLamViec": 6, "ketQua": "2026-10-19T14:00" },
+        { "id": "W04", "moTa": "Gửi 12:00 (giờ nghỉ trưa) → tính từ 13:00 → 07:30+2h = 09:30 hôm sau", "dauVao": { "luc": "2026-10-12T12:00" }, "gioLamViec": 6, "ketQua": "2026-10-13T09:30" }
+      ]
+    },
+    {
+      "ten": "Nhận diện hạn từ câu tiếng Việt (ngày gốc: thứ Hai 23/11/2026)",
+      "ngayGoc": "2026-11-23",
+      "ca": [
+        { "id": "N01", "cau": "nộp báo cáo ngày mai", "ketQua": "2026-11-24" },
+        { "id": "N02", "cau": "gửi tờ trình sau 3 ngày làm việc", "ketQua": "2026-11-26" },
+        { "id": "N03", "cau": "họp thứ sáu", "ketQua": "2026-11-27" },
+        { "id": "N04", "cau": "báo cáo lãnh đạo thứ sáu tuần sau", "ketQua": "2026-12-04" },
+        { "id": "N05", "cau": "trả lời văn bản trước 15/12", "ketQua": "2026-12-15" },
+        { "id": "N06", "cau": "tổng hợp số liệu cuối tháng", "ketQua": "2026-11-30" },
+        { "id": "N07", "cau": "rà soát hồ sơ 05/01/2027", "ketQua": "2027-01-05" },
+        { "id": "N08", "cau": "ghi chú không có hạn", "ketQua": null }
+      ]
+    }
+  ]
+}

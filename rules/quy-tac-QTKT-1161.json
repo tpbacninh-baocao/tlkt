@@ -1,0 +1,89 @@
+{
+  "$schema_note": "Bộ quy tắc thời hạn – NGUỒN SỰ THẬT DUY NHẤT về số ngày. Code KHÔNG được viết cứng số ngày. Giải thích trường: xem docs/ARCHITECTURE.md mục 4.",
+  "ma": "QTKT-1161",
+  "ten": "Quy trình kiểm tra thuế ban hành kèm QĐ 1161/QĐ-CT ngày 14/8/2026",
+  "apDung": { "ngayQDTu": "2026-07-01", "ngayQDDen": null },
+  "ghiChuApDung": "QĐ ban hành 01/7/2026–13/8/2026: áp dụng Luật QLT 108/2025; các bước chưa làm từ 14/8/2026 theo QĐ 1161 (Điều 2.2.b). Tham số giống nhau nên dùng chung bộ này.",
+  "chuaXacNhan": [
+    "T1: 20 ngày ghi là 'ngày' (không ghi 'ngày làm việc') → mặc định ngày lịch; đơn vị xác nhận lại với cách tính của TTR."
+  ],
+  "thamSo": {
+    "demMacDinhNLV": 1,
+    "hanNhapLieuNLV": 1,
+    "hanNopTienNgay": 10,
+    "nhacTruocLuuTruNgay": 30
+  },
+  "buoc": [
+    { "ma": "P1", "giaiDoan": "CHUAN_BI", "ten": "Nhận phân công trưởng đoàn", "nguoi": "Lãnh đạo phòng/tổ", "loai": "moc", "moc": "P1", "han": null, "canCu": "Phân công trên TTR", "bieuMau": [] },
+    { "ma": "P2", "giaiDoan": "CHUAN_BI", "ten": "Thu thập dữ liệu, phân tích rủi ro, lập Phiếu phân tích, đánh giá rủi ro", "nguoi": "Trưởng đoàn", "loai": "buoc", "han": { "tu": "P1", "so": 10, "donVi": "NLV", "huong": "+", "noiBo": true }, "dem": 0, "canCu": "Đ16.1.l (1.3) QĐ 1161", "bieuMau": ["08/QTKT-TC"] },
+    { "ma": "P3", "giaiDoan": "CHUAN_BI", "ten": "Liên hệ NNT, thống nhất lịch dự kiến", "nguoi": "Trưởng đoàn", "loai": "buoc", "han": { "tu": "P1", "so": 10, "donVi": "NLV", "huong": "+", "noiBo": true }, "dem": 0, "canCu": "Nội bộ", "bieuMau": [] },
+    { "ma": "P4", "giaiDoan": "CHUAN_BI", "ten": "Trình hồ sơ ban hành QĐ kiểm tra (tờ trình, dự thảo QĐ, phiếu rủi ro, dự thảo QĐ giám sát)", "nguoi": "Trưởng đoàn", "loai": "buoc", "han": { "tu": "P1", "so": 15, "donVi": "NLV", "huong": "+", "noiBo": true }, "dem": 0, "canhBaoKeHoach": "Loại KH: cảnh báo nếu quá tháng dự kiến trong mẫu 06/QTKT-TC", "canCu": "Đ16.1.l QĐ 1161; Đ11.2 Quy chế giám sát", "bieuMau": ["06/KTT", "08/QTKT-TC", "01-TTKT"] },
+    { "ma": "P5", "giaiDoan": "CHUAN_BI", "ten": "Lãnh đạo ký QĐ kiểm tra và QĐ giám sát (= D0)", "nguoi": "Thủ trưởng CQT", "loai": "moc", "moc": "D0", "han": { "tu": "P1", "so": 20, "donVi": "NLV", "huong": "+", "noiBo": true }, "dem": 0, "nhapThem": ["soQD"], "canCu": "Đ16.1 QĐ 1161", "bieuMau": ["06/KTT", "01-TTKT"] },
+
+    { "ma": "Q1", "giaiDoan": "CHO_CONG_BO", "ten": "Gửi QĐ kiểm tra cho NNT (và bản sao cho CQT/bộ phận quản lý trực tiếp nếu không trực tiếp quản lý)", "nguoi": "Trưởng đoàn", "loai": "buoc", "han": { "tu": "D0", "so": 3, "donVi": "NLV", "huong": "+" }, "dem": 1, "canCu": "Đ16.2 QĐ 1161", "bieuMau": ["06/KTT"] },
+    { "ma": "Q2", "giaiDoan": "CHO_CONG_BO", "ten": "Đôn đốc người giám sát lập Kế hoạch giám sát; gửi nội dung kiểm tra đã phê duyệt cho người giám sát", "nguoi": "Người giám sát / Trưởng đoàn", "loai": "buoc", "han": { "tu": "D0", "so": 5, "donVi": "NLV", "huong": "+", "vaTruoc": "C" }, "dem": 1, "canCu": "Đ16.1, Đ7.1.a Quy chế giám sát (QĐ 1614/QĐ-TCT)", "bieuMau": ["02-TTKT"] },
+    { "ma": "Q3", "giaiDoan": "CHO_CONG_BO", "ten": "Phân công công việc thành viên đoàn", "nguoi": "Trưởng đoàn", "loai": "buoc", "han": { "truoc": "C" }, "dem": 1, "canCu": "Đ16.3 QĐ 1161", "bieuMau": ["09/QTKT-TC"] },
+    { "ma": "Q4", "giaiDoan": "CHO_CONG_BO", "ten": "Thông báo người giám sát tham dự buổi công bố", "nguoi": "Trưởng đoàn", "loai": "buoc", "han": { "truoc": "C" }, "dem": 1, "canCu": "Đ11.3 Quy chế giám sát", "bieuMau": [] },
+    { "ma": "Q5", "giaiDoan": "CHO_CONG_BO", "ten": "Công bố QĐ kiểm tra (= C): biên bản công bố; công bố QĐ giám sát; gửi thư trao đổi thông tin cho NNT và báo cáo người giám sát", "nguoi": "Trưởng đoàn", "loai": "moc", "moc": "C", "han": { "tu": "D0", "so": 10, "donVi": "NLV", "huong": "+", "suKienThayThe": "HOAN" }, "dem": 1, "canCu": "Đ17.1 QĐ 1161; Đ7.7 Quy chế giám sát", "bieuMau": ["08/KTT", "06-TTKT"] },
+
+    { "ma": "T1", "giaiDoan": "DANG_KIEM_TRA", "ten": "Hạn kết thúc kiểm tra tại trụ sở (= E)", "nguoi": "Đoàn", "loai": "hanTinh", "moc": "E", "han": { "tu": "C", "so": 20, "soNeuGDLK": 40, "donVi": "N", "huong": "+", "congTamDung": true, "giaHan": { "toiDa": 20, "toiDaGDLK": 40, "soLan": 1, "donVi": "N" } }, "canCu": "Đ17.2.b QĐ 1161", "bieuMau": [] },
+    { "ma": "T2", "giaiDoan": "DANG_KIEM_TRA", "ten": "Ghi nhật ký kiểm tra điện tử hằng ngày (trưởng đoàn và thành viên)", "nguoi": "Cả đoàn", "loai": "hangNgay", "canCu": "Đ17.5 QĐ 1161", "bieuMau": [] },
+    { "ma": "T3", "giaiDoan": "DANG_KIEM_TRA", "ten": "Hạn chót đề nghị gia hạn (nếu cần gia hạn)", "nguoi": "Trưởng đoàn", "loai": "tuyChon", "han": { "tu": "E", "so": 3, "donVi": "NLV", "huong": "-" }, "dem": 0, "canCu": "Đ17.2.g QĐ 1161", "bieuMau": ["07/KTT"] },
+    { "ma": "T5", "giaiDoan": "DANG_KIEM_TRA", "ten": "Thành viên lập biên bản xác nhận số liệu phần việc được giao", "nguoi": "Thành viên", "loai": "buoc", "han": { "truoc": "K", "macDinhNeuChuaCoK": "E" }, "dem": 1, "canCu": "Đ17.2.h QĐ 1161", "bieuMau": ["11/QTKT-TC"] },
+    { "ma": "T6", "giaiDoan": "DANG_KIEM_TRA", "ten": "Thống nhất kết quả trong đoàn, hoàn thiện dự thảo biên bản kiểm tra", "nguoi": "Trưởng đoàn", "loai": "buoc", "han": { "truoc": "K", "macDinhNeuChuaCoK": "E" }, "dem": 1, "canCu": "Đ17.3.a QĐ 1161", "bieuMau": ["14/KTT"] },
+    { "ma": "T7", "giaiDoan": "DANG_KIEM_TRA", "ten": "Công khai dự thảo biên bản, bàn giao dự thảo cho NNT (= K, kết thúc tại trụ sở)", "nguoi": "Trưởng đoàn", "loai": "moc", "moc": "K", "han": { "tu": "E", "so": 0, "donVi": "N", "huong": "+" }, "dem": 1, "canCu": "Đ17.3.c QĐ 1161", "bieuMau": ["15/KTT"] },
+
+    { "ma": "B1", "giaiDoan": "BIEN_BAN", "ten": "NNT giải trình, hoàn thiện và ký biên bản kiểm tra (= B); lập 04 bản", "nguoi": "Trưởng đoàn + NNT", "loai": "moc", "moc": "B", "han": { "tu": "K", "so": 5, "donVi": "NLV", "huong": "+" }, "dem": 1, "canCu": "Đ17.3.c, g QĐ 1161", "bieuMau": ["14/KTT"] },
+    { "ma": "B2", "giaiDoan": "BIEN_BAN", "ten": "NNT không ký biên bản: lập biên bản vi phạm hành chính (có chữ ký chính quyền cấp xã hoặc ≥1 người chứng kiến)", "nguoi": "Trưởng đoàn", "loai": "dieuKien", "dieuKien": "B1_QUA_HAN_CHUA_KY", "han": { "tu": "HAN_B1", "so": 1, "donVi": "NLV", "huong": "+" }, "dem": 0, "canCu": "Đ17.3.đ QĐ 1161", "bieuMau": [] },
+    { "ma": "B3a", "giaiDoan": "BIEN_BAN", "ten": "Theo dõi: NNT yêu cầu giải trình trực tiếp", "nguoi": "NNT", "loai": "theoDoi", "han": { "tu": "B", "so": 2, "donVi": "NLV", "huong": "+" }, "canCu": "Đ17.3.e QĐ 1161; Điều 61 Luật XLVPHC", "bieuMau": [] },
+    { "ma": "B3b", "giaiDoan": "BIEN_BAN", "ten": "Theo dõi: NNT giải trình bằng văn bản / đề nghị gia hạn giải trình", "nguoi": "NNT", "loai": "theoDoi", "han": { "tu": "B", "so": 5, "donVi": "NLV", "huong": "+" }, "canCu": "Đ17.3.e QĐ 1161; Điều 61 Luật XLVPHC", "bieuMau": [] },
+    { "ma": "B4", "giaiDoan": "BIEN_BAN", "ten": "Báo cáo kết quả kiểm tra + dự thảo QĐ xử phạt hoặc dự thảo Kết luận; gửi người giám sát số liệu chi tiết theo nội dung rủi ro", "nguoi": "Trưởng đoàn", "loai": "buoc", "moc": "R", "han": { "tu": "B", "so": 3, "donVi": "NLV", "huong": "+" }, "dem": 1, "canCu": "Đ17.4.a QĐ 1161; Đ7.6 Quy chế giám sát", "bieuMau": ["12/QTKT-TC", "MQĐ02", "17/KTT"] },
+    { "ma": "B5", "giaiDoan": "CHO_QD_XU_LY", "ten": "Người giám sát gửi Báo cáo kết quả giám sát (phải có trước khi ban hành X)", "nguoi": "Người giám sát", "loai": "buoc", "han": { "tu": "R", "so": 5, "donVi": "NLV", "huong": "+", "vaTruoc": "X" }, "dem": 1, "canCu": "Đ17.1 Quy chế giám sát", "bieuMau": ["05-TTKT"] },
+    { "ma": "X", "giaiDoan": "CHO_QD_XU_LY", "ten": "Ban hành QĐ xử phạt (MQĐ02) hoặc Kết luận kiểm tra (17/KTT) (= X)", "nguoi": "Thủ trưởng CQT", "loai": "moc", "moc": "X", "han": { "theoCheDo": "CHE_DO_X" }, "dem": 1, "nhapThem": ["soQDXL", "loaiVanBanXL"], "canCu": "Đ17.4.c, d QĐ 1161", "bieuMau": ["MQĐ02", "17/KTT"] },
+
+    { "ma": "S1", "giaiDoan": "SAU_QD", "ten": "Giao QĐ xử phạt/Kết luận cho NNT và gửi đủ các bản theo quy định", "nguoi": "Trưởng đoàn", "loai": "buoc", "han": { "tu": "X", "so": 3, "donVi": "NLV", "huong": "+" }, "dem": 1, "canCu": "Đ17.4.e, g QĐ 1161", "bieuMau": [] },
+    { "ma": "S3", "giaiDoan": "SAU_QD", "ten": "Cung cấp thông tin điều chỉnh nghĩa vụ thuế cho bộ phận quản lý", "nguoi": "Trưởng đoàn", "loai": "buoc", "han": { "tu": "X", "so": 3, "donVi": "NLV", "huong": "+", "noiBo": true }, "dem": 0, "canCu": "Nhiệm vụ Phòng/Tổ Kiểm tra (dự thảo sửa đổi QĐ 3736/3737)", "bieuMau": [] },
+    { "ma": "S4", "giaiDoan": "SAU_QD", "ten": "Theo dõi, đôn đốc NNT nộp tiền truy thu, phạt, chậm nộp", "nguoi": "Trưởng đoàn + bộ phận quản lý", "loai": "theoDoiNopTien", "dieuKien": "CO_SO_PHAI_NOP", "han": { "tu": "NGAY_GIAO_QD", "so": 10, "donVi": "N", "huong": "+", "thamSo": "hanNopTienNgay" }, "dem": 0, "canCu": "Đ17.7 QĐ 1161", "bieuMau": [] },
+    { "ma": "S5", "giaiDoan": "SAU_QD", "ten": "Nhập đủ dữ liệu TTR/TMS và Hoàn thành cuộc trên iTNK", "nguoi": "Trưởng đoàn", "loai": "buoc", "han": { "tu": "X", "so": 2, "donVi": "NLV", "huong": "+", "noiBo": true }, "dem": 0, "hoanThanhKhi": "CHECKLIST_DU", "canCu": "Đ33 QĐ 1161", "bieuMau": [] },
+    { "ma": "S6", "giaiDoan": "SAU_QD", "ten": "Lập hồ sơ, bàn giao lưu trữ (biên bản bàn giao)", "nguoi": "Trưởng đoàn", "loai": "buoc", "han": { "tu": "X", "so": 12, "donVi": "THANG", "huong": "+" }, "dem": 0, "nhacTruocNgay": 30, "canCu": "Đ35.2.e QĐ 1161", "bieuMau": ["06/QTKT-MC"] },
+    { "ma": "S7", "giaiDoan": "BAT_KY", "ten": "Báo cáo đề xuất chuyển hồ sơ sang cơ quan điều tra (dấu hiệu tội phạm)", "nguoi": "Trưởng đoàn", "loai": "dieuKien", "dieuKien": "CO_SU_KIEN_TOI_PHAM", "han": { "tu": "NGAY_PHAT_HIEN", "so": 5, "donVi": "NLV", "huong": "+" }, "dem": 1, "canCu": "Đ17.4.h QĐ 1161", "bieuMau": [] }
+  ],
+  "cheDoX": {
+    "X1": { "ten": "Có truy thu/xử phạt, NNT không giải trình", "han": { "tu": "B", "so": 7, "donVi": "NLV", "huong": "+" }, "canCu": "Đ17.4.c.1" },
+    "X2": { "ten": "NNT giải trình trong hạn hoặc phải xác minh tình tiết", "han": { "tu": "B", "so": 1, "donVi": "THANG", "huong": "+" }, "canCu": "Đ17.4.c.2" },
+    "X3": { "ten": "Tình tiết đặc biệt nghiêm trọng, nhiều tình tiết phức tạp", "han": { "tu": "B", "so": 2, "donVi": "THANG", "huong": "+" }, "canCu": "Đ17.4.c.3", "batBuocLyDo": true },
+    "X4": { "ten": "Không truy thu, không xử phạt → Kết luận kiểm tra", "han": { "tu": "B", "so": 7, "donVi": "NLV", "huong": "+" }, "canCu": "Đ17.4.d" },
+    "chonCheDo": "X3 nếu có sự kiện PHUC_TAP; ngược lại X2 nếu có sự kiện GIAI_TRINH; ngược lại X1 nếu ketQua.coXuLy = true; ngược lại X4"
+  },
+  "suKien": {
+    "HOAN": { "ten": "Hoãn thời gian tiến hành kiểm tra (trước khi công bố)", "chiTruoc": "C", "truong": ["ngay", "denNgay", "lyDo", "soVB"], "tacDong": "Hạn Q5 = denNgay (ngày dự kiến công bố lại)", "bieuMau": ["10/KTT"], "canCu": "Đ16.4.b QĐ 1161" },
+    "TAM_DUNG": { "ten": "Tạm dừng kiểm tra", "chiTrongKhoang": ["C", "K"], "truong": ["tuNgay", "denNgay", "lyDo", "soVB"], "tacDong": "E cộng thêm (denNgay − tuNgay + 1) ngày lịch; ngày tạm dừng không tính là ngày làm việc tại DN", "bieuMau": ["10/QTKT-TC"], "canCu": "Đ16.4.c, Đ17.2.b QĐ 1161" },
+    "GIA_HAN": { "ten": "Gia hạn kiểm tra", "chiTrongKhoang": ["C", "K"], "truong": ["ngayDeNghi", "ngayQD", "soNgay", "soQD"], "tacDong": "E mới = E gốc (chưa lùi ngày nghỉ, đã cộng tạm dừng) + soNgay, rồi lùi ngày nghỉ", "rangBuoc": ["Chỉ 1 lần", "soNgay ≤ 20 (GDLK ≤ 40)", "Cảnh báo nếu ngayDeNghi muộn hơn hạn T3"], "bieuMau": ["07/KTT"], "canCu": "Đ17.2.b, g QĐ 1161" },
+    "DIEU_CHINH": { "ten": "Điều chỉnh QĐ kiểm tra (trưởng đoàn, thành viên, nội dung, thời kỳ)", "truong": ["ngayQD", "soQD", "noiDung"], "tacDong": "Cập nhật thông tin đoàn/nội dung, lưu lịch sử; không đổi hạn", "bieuMau": ["11/KTT", "12/KTT", "13/KTT"], "canCu": "Đ16.4.d QĐ 1161" },
+    "BAI_BO": { "ten": "Bãi bỏ QĐ kiểm tra", "truong": ["ngayQD", "soQD", "lyDo"], "tacDong": "Cuộc chuyển trạng thái BAI_BO, dừng mọi nhắc trừ checklist nhập liệu bãi bỏ", "bieuMau": ["09/KTT"], "canCu": "Đ16.4.a QĐ 1161" },
+    "GIAI_TRINH": { "ten": "NNT giải trình sau biên bản", "truong": ["ngay", "hinhThuc", "ghiChu"], "tacDong": "Chế độ X chuyển sang X2", "canCu": "Đ17.4.c.2 QĐ 1161" },
+    "PHUC_TAP": { "ten": "Vụ việc đặc biệt nghiêm trọng / phức tạp", "truong": ["ngay", "lyDo"], "batBuoc": ["lyDo"], "tacDong": "Chế độ X chuyển sang X3", "canCu": "Đ17.4.c.3 QĐ 1161" },
+    "TOI_PHAM": { "ten": "Phát hiện dấu hiệu tội phạm", "truong": ["ngayPhatHien", "noiDung"], "tacDong": "Sinh bước S7", "canCu": "Đ17.4.h QĐ 1161" },
+    "KHONG_NHAN_QD": { "ten": "NNT không nhận QĐ / không ký biên bản công bố / trốn tránh", "truong": ["ngay", "ghiChu"], "tacDong": "Hiện hướng dẫn: lập biên bản VPHC, xử phạt (Điều 15 NĐ 125/2020 sửa đổi), cưỡng chế, ấn định (Đ16.5)", "canCu": "Đ16.5, Đ17.1 QĐ 1161" },
+    "PHU_LUC_BB": { "ten": "Lập phụ lục biên bản (khi có trả lời nội dung vướng mắc chờ xin ý kiến)", "truong": ["ngay", "noiDung"], "tacDong": "Sinh việc nhập TTR phụ lục biên bản; nội dung vướng mắc xử lý tiếp", "bieuMau": ["16/KTT"], "canCu": "Đ17.3.d QĐ 1161" },
+    "TAM_GIU_TL": { "ten": "Tạm giữ tài liệu liên quan hành vi trốn thuế", "truong": ["ngay", "noiDung", "ngayTraDuKien"], "tacDong": "Nhắc trả tài liệu vào ngayTraDuKien", "canCu": "Đ17.2.d QĐ 1161; Điều 23 Luật QLT" }
+  },
+  "dongHo": {
+    "YEU_CAU_TAI_LIEU": { "ten": "NNT cung cấp tài liệu theo yêu cầu", "so": 6, "donVi": "GIO_LV", "nhacTruocPhut": 60, "quaHan": "Gợi ý lập biên bản VPHC (Điều 15 NĐ 125/2020 sửa đổi)", "canCu": "Đ17.2.d QĐ 1161" },
+    "VUONG_MAC_LANH_DAO": { "ten": "Lãnh đạo bộ phận chỉ đạo/xin ý kiến người ra QĐ", "tu": "ngayBaoCao", "so": 2, "donVi": "NLV", "canCu": "Đ17.2.đ QĐ 1161" },
+    "VUONG_MAC_LAY_Y_KIEN": { "ten": "Gửi văn bản lấy ý kiến bộ phận khác/cấp trên", "tu": "ngayLanhDaoBaoCao", "so": 2, "donVi": "NLV", "canCu": "Đ17.2.đ QĐ 1161" },
+    "VUONG_MAC_TONG_HOP": { "ten": "Đoàn tổng hợp báo cáo sau khi nhận ý kiến", "tu": "ngayNhanYKien", "so": 2, "donVi": "NLV", "canCu": "Đ17.2.đ QĐ 1161" }
+  },
+  "keHoach": {
+    "CONG_KHAI_KE_HOACH": { "ten": "Công khai kế hoạch/chuyên đề (website hoặc thông báo 07/QTKT-TC)", "tu": "ngayPheDuyet", "so": 30, "donVi": "N", "canCu": "Đ14 QĐ 1161" },
+    "BAO_CAO_CHUYEN_DE_PHAT_SINH": { "ten": "Báo cáo cấp trên chuyên đề phát sinh đã phê duyệt", "tu": "ngayPheDuyet", "so": 15, "donVi": "N", "canCu": "Đ11.a QĐ 1161" },
+    "BAO_CAO_KET_THUC_CHUYEN_DE": { "ten": "Báo cáo cấp trên kết thúc chuyên đề phát sinh", "tu": "ngayTongKet", "so": 15, "donVi": "NLV", "canCu": "Đ11.b QĐ 1161" },
+    "THOI_HIEU_KIEM_TRA_LAI": { "ten": "Thời hiệu kiểm tra lại", "tu": "ngayKLBiKiemTraLai", "so": 24, "donVi": "THANG", "canCu": "Đ18.c QĐ 1161" }
+  },
+  "baoCaoDinhKy": [
+    { "ma": "CHOT_15", "ten": "Rà soát, chốt số liệu kiểm tra trên hệ thống (ngày 15)", "lich": "ngày 15 hằng tháng; nhắc ngày 13", "canCu": "Đ34 QĐ 1161" },
+    { "ma": "CHOT_CUOI_THANG", "ten": "Rà soát, chốt số liệu cuối tháng", "lich": "ngày cuối tháng; nhắc trước 2 ngày", "canCu": "Đ34 QĐ 1161" },
+    { "ma": "BC_THANG", "ten": "Nhập báo cáo tháng (03, 04, 05/QTKT-MC) trước ngày 01 tháng sau", "lich": "nhắc ngày 28", "canCu": "Đ34.3.a QĐ 1161" },
+    { "ma": "BC_NAM", "ten": "Nhập báo cáo năm trước ngày 05/01 năm sau", "lich": "nhắc 02/01", "canCu": "Đ34.3.b QĐ 1161" }
+  ]
+}

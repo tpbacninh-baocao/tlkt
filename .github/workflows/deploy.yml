@@ -1,0 +1,52 @@
+name: Kiểm thử và triển khai lên GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      coDuAn: ${{ steps.kiemtra.outputs.coDuAn }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Kiểm tra dự án đã được khởi tạo chưa
+        id: kiemtra
+        run: |
+          if [ -f package.json ]; then echo "coDuAn=1" >> "$GITHUB_OUTPUT"; else echo "Chưa có package.json – bỏ qua triển khai"; fi
+      - uses: actions/setup-node@v4
+        if: steps.kiemtra.outputs.coDuAn == '1'
+        with:
+          node-version: 22
+      - name: Cài thư viện
+        if: steps.kiemtra.outputs.coDuAn == '1'
+        run: npm ci || npm install
+      - name: Kiểm thử + build
+        if: steps.kiemtra.outputs.coDuAn == '1'
+        run: npm run check
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.kiemtra.outputs.coDuAn == '1'
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.coDuAn == '1'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

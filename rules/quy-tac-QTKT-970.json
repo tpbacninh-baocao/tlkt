@@ -1,0 +1,14 @@
+{
+  "$schema_note": "Bộ quy tắc chuyển tiếp: kế thừa QTKT-1161, chỉ ghi đè các tham số khác. Toàn bộ bộ này hiển thị nhãn 'Chuyển tiếp – chưa xác nhận' trong app.",
+  "ma": "QTKT-970",
+  "ten": "Chuyển tiếp: Luật QLT 38/2019/QH14 + Quy trình kiểm tra ban hành kèm QĐ 970/QĐ-TCT ngày 14/7/2023",
+  "keThua": "QTKT-1161",
+  "apDung": { "ngayQDTu": null, "ngayQDDen": "2026-06-30" },
+  "ghiChuApDung": "Cuộc có QĐ kiểm tra ban hành trước 01/7/2026, đến 14/8/2026 chưa có KL/QĐ xử lý (Điều 2.2.a QĐ 1161).",
+  "chuaXacNhan": [
+    "Toàn bộ tham số bộ này cần đơn vị đối chiếu lại với QĐ 970/QĐ-TCT trước khi dùng cho cuộc thật."
+  ],
+  "ghiDe": {
+    "T1": { "han": { "tu": "C", "so": 10, "donVi": "NLV", "huong": "+", "congTamDung": true, "giaHan": { "toiDa": 10, "soLan": 1, "donVi": "NLV" } }, "canCu": "Luật QLT 38/2019 (thời hạn kiểm tra tại trụ sở 10 ngày làm việc, gia hạn 1 lần ≤ 10 ngày làm việc)" }
+  }
+}
