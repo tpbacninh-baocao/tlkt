@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T12
-- Nhiệm vụ xong gần nhất: T11
-- `npm run check`: sạch (260 đạt / 260 tổng (5 snapshot đã rà soát bằng mắt))
+- Nhiệm vụ đang làm: T13
+- Nhiệm vụ xong gần nhất: T12
+- `npm run check`: sạch (272 đạt / 272 tổng)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -64,6 +64,11 @@
 - Đã làm: core/tomTat: phanTichCuoc, tongHopHomNay (KPI Quá hạn/Hôm nay/3 NLV/Nhập liệu thiếu/Tại DN, dùng cho màn Hôm nay), tomTatMotCuoc (mẫu câu SPEC §12.7), banTinSang, baoCaoTienDoDoan, baoCaoTuan, tenNgan, ẩn danh (hienDayDu ghi đè).
 - Test: 260 đạt / 260 tổng (5 snapshot đã rà soát bằng mắt)
 - Giả định đã chọn: Tên bước trong danh sách được rút gọn (bỏ ngoặc phụ, cắt tại dấu hai chấm); tên đầy đủ vẫn hiện ở chi tiết cuộc. Ngày thứ n/tổng: ngày lịch từ C (ngày công bố là ngày 1); bộ 970 đếm theo ngày làm việc.
+
+### 2026-11-23 – T12 Kế hoạch năm
+- Đã làm: core/keHoach/thongKe: chỉ tiêu, số cuộc theo từng bước (QĐ/công bố/kết thúc tại DN/QĐ xử lý/bãi bỏ), theo giai đoạn, tổng tiền + còn phải nộp, tích lũy theo tháng (thực tế vs lý tưởng), tồn chuyển năm sau, cảnh báo (quá tháng dự kiến, cuối năm Đ15.5.e, công khai 30 ngày, báo cáo chuyên đề, vượt chỉ tiêu), bộ lọc năm/kế hoạch/trưởng đoàn.
+- Test: 272 đạt / 272 tổng
+- Giả định đã chọn: Cuộc không gắn kế hoạch tính theo năm ban hành QĐ (hoặc năm tạo). Cuộc bãi bỏ không tính vào số đã ban hành/đã có QĐ xử lý. Không có chỉ tiêu nhập → chỉ tiêu = số cuộc thực tế.
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.
