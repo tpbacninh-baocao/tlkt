@@ -349,3 +349,35 @@ table.bang td.so, table.bang th.so { text-align: right; }
 .lich-su > li { padding: var(--k2) 0; border-top: 1px solid var(--vien); }
 .lich-su > li:first-child { border-top: 0; }
 .lich-su ul { margin: 2px 0 0; padding-left: var(--k4); }
+
+/* ---------- Lịch ---------- */
+.luoi-thang { border: 1px solid var(--vien); border-radius: var(--bo-the); overflow: hidden; background: var(--be-mat); }
+.hang-thang { display: grid; grid-template-columns: repeat(7, 1fr); }
+.hang-thang.tieu div { text-align: center; padding: var(--k2) 0; font-size: var(--co-phu); font-weight: 600; color: var(--chu-phu); background: var(--be-mat-2); }
+.o-lich { position: relative; min-height: 64px; padding: 4px; border: 0; border-top: 1px solid var(--vien); border-left: 1px solid var(--vien); background: transparent; text-align: left; cursor: pointer; color: var(--chu); display: flex; flex-direction: column; gap: 2px; overflow: hidden; }
+.o-lich:first-child { border-left: 0; }
+.o-lich.ngoai { opacity: 0.45; }
+.o-lich.nghi { background: var(--be-mat-2); }
+.o-lich.hom-nay .so-ngay { background: var(--chinh); color: var(--tren-chinh); border-radius: 50%; }
+.o-lich.chon { outline: 2px solid var(--chinh); outline-offset: -2px; }
+.o-lich .so-ngay { width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; font-weight: 600; font-size: var(--co-than); }
+.o-lich .ten-le { font-size: 10px; color: var(--chu-phu); line-height: 1.1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cham-hang { display: flex; gap: 4px; margin-top: auto; }
+.cham-lich { font-size: 14px; line-height: 1; display: inline-flex; align-items: center; gap: 2px; }
+.cham-lich small { font-size: 10px; }
+@media (min-width: 768px) { .o-lich { min-height: 84px; } }
+
+.luoi-gio { min-width: calc(60px + var(--so-cot) * 120px); border: 1px solid var(--vien); border-radius: var(--bo-the); background: var(--be-mat); }
+.hang-dau-gio, .than-gio { display: grid; grid-template-columns: 56px repeat(var(--so-cot), 1fr); }
+.dau-cot { padding: var(--k2); border-left: 1px solid var(--vien); border-bottom: 1px solid var(--vien); text-align: center; }
+.dau-cot.hom-nay { background: var(--chinh-nhat); }
+.dau-cot.nghi { background: var(--be-mat-2); }
+.cot-gio { position: relative; }
+.nhan-gio { font-size: 11px; color: var(--chu-phu); text-align: right; padding-right: 6px; box-sizing: border-box; }
+.cot-ngay { position: relative; border-left: 1px solid var(--vien); touch-action: pan-y; user-select: none; }
+.cot-ngay.nghi { background: var(--be-mat-2); }
+.vach-gio { position: absolute; left: 0; right: 0; border-top: 1px solid var(--vien); opacity: 0.6; pointer-events: none; }
+.vach-bay-gio { position: absolute; left: 0; right: 0; border-top: 2px solid var(--sla-do); z-index: 2; pointer-events: none; }
+.khoi { position: absolute; left: 2px; right: 2px; z-index: 1; padding: 2px 6px; font-size: var(--co-phu); text-align: left; border: 0; border-radius: 8px; background: var(--chinh); color: var(--tren-chinh); cursor: pointer; overflow: hidden; }
+.khoi.goi-y { background: var(--chinh-nhat); color: var(--chu); border: 1px dashed var(--chinh); }
+.khoi.dang-keo { background: var(--chinh); opacity: 0.4; pointer-events: none; }

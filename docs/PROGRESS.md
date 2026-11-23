@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T26
-- Nhiệm vụ xong gần nhất: T25
-- `npm run check`: sạch (430 đạt / 430 tổng; đã thử trong Chromium đủ 5 tab (tích nhật ký 2/4→3/4, thêm yêu cầu + vướng mắc, lưu kết quả, thêm lần nộp 33%, tích hồ sơ, lịch sử))
+- Nhiệm vụ đang làm: T27
+- Nhiệm vụ xong gần nhất: T26
+- `npm run check`: sạch (441 đạt / 441 tổng; đã thử trong Chromium (tháng/tuần/ngày, nhận gợi ý, kéo tạo khối))
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -122,8 +122,13 @@
 
 ### 2026-11-23 – T25 Chi tiết cuộc – Nhật ký, Tài liệu & vướng mắc, Kết quả & nộp tiền, Lưu trữ, Lịch sử
 - Đã làm: ui/chiTiet: tabNhatKy (lưới theo tuần, tích iTNK, ghi chú nhanh + nói + sao chép, đánh dấu không xuống DN), tabTaiLieu (yêu cầu 06 giờ LV có đồng hồ/quá hạn gợi ý lập biên bản VPHC; vướng mắc 3 chặng × 02 NLV, nút lập phụ lục 16/KTT), tabKetQua (số liệu 6 khoản định dạng 1.234.567, có xử lý → chế độ X, loại văn bản/số QĐ/hành vi, các lần nộp + đã nhập TTR, thanh Đã nộp n% – còn …), tabLuuTruVaLichSu (hạn bàn giao S6, 7 thành phần hồ sơ Đ35.2, lịch sử sửa riêng của cuộc từ audit log). core/capNhat: yêu cầu, vướng mắc, kết quả, lần nộp, tinhHinhNop, hồ sơ lưu trữ.
-- Test: 430 đạt / 430 tổng; đã thử trong Chromium đủ 5 tab (tích nhật ký 2/4→3/4, thêm yêu cầu + vướng mắc, lưu kết quả, thêm lần nộp 33%, tích hồ sơ, lịch sử)
+- Test: 427 đạt / 427 tổng; đã thử trong Chromium đủ 5 tab (tích nhật ký 2/4→3/4, thêm yêu cầu + vướng mắc, lưu kết quả, thêm lần nộp 33%, tích hồ sơ, lịch sử)
 - Giả định đã chọn: Thành phần hồ sơ lưu trữ lưu trong cuoc.checklist với khóa tiền tố LT: (không lẫn với checklist hệ thống).
+
+### 2026-11-23 – T26 Lịch tháng/tuần/ngày + khối thời gian
+- Đã làm: core/tomTat/lichNgay (luoiThang, gomMucTheoNgay, goiYKhoiThoiGian: Tại DN theo khung giờ làm việc + Nhập TTR/iTNK 30 phút cuối ngày, xepLanKhoi) + ui/man/lich: Tháng (chấm màu theo mức khẩn, ngày nghỉ nền xám + tên lễ, ngày làm bù, chọn ngày xem danh sách hạn), Tuần/Ngày (cột giờ 07–18, vạch giờ hiện tại, kéo trên cột để tạo khối trên máy tính, nút ＋ Khối, khối chồng giờ chia làn, gợi ý viền đứt bấm để nhận), xuất .ics 30 ngày/tất cả.
+- Test: 441 đạt / 441 tổng; đã thử trong Chromium (tháng/tuần/ngày, nhận gợi ý, kéo tạo khối)
+- Giả định đã chọn: Gợi ý ‘Nhập TTR/iTNK’: 30 phút cuối khung giờ làm việc của ngày có việc nhập liệu đến hạn (thay cho ‘30 phút sau mỗi mốc’ vì mốc chỉ có ngày, không có giờ).
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.
