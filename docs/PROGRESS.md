@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T07
-- Nhiệm vụ xong gần nhất: T06
-- `npm run check`: sạch (145 đạt / 153 tổng (8 skip nhóm N))
+- Nhiệm vụ đang làm: T08
+- Nhiệm vụ xong gần nhất: T07
+- `npm run check`: sạch (162 đạt / 170 tổng (8 skip nhóm N))
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -39,6 +39,11 @@
 - Đã làm: core/vuViec: tinhGiaiDoan (9 giai đoạn), kiemTraDanhDauBuoc/BoDanhDau (thứ tự mốc, ngày ≥ mốc trước, lý do trễ), kiemTraSuKien + lyDoKhongChoPhep + xemTruocSuKien (hạn đổi từ … thành …), viecTiepTheo, viecSongSong, ngày tại DN, mucSLA, điểm ưu tiên.
 - Test: 145 đạt / 153 tổng (8 skip nhóm N)
 - Giả định đã chọn: Việc tiếp theo bỏ qua bước nội bộ/không có hạn pháp lý của giai đoạn đã qua (tránh nhắc P1–P4 khi đã có QĐ), và gồm cả S4 theo dõi nộp tiền. Đề nghị gia hạn sau ngày E bị chặn (lỗi), muộn hơn hạn T3 chỉ cảnh báo.
+
+### 2026-11-23 – T07 Đồng hồ yêu cầu tài liệu, vướng mắc, hạn kế hoạch
+- Đã làm: core/vuViec/dongHo (06 giờ LV; vướng mắc 3 chặng × 02 NLV) và core/keHoach/han (công khai 30 ngày, chuyên đề phát sinh 15 ngày, báo cáo kết thúc 15 NLV, thời hiệu kiểm tra lại 24 tháng).
+- Test: 162 đạt / 170 tổng (8 skip nhóm N)
+- Giả định đã chọn: Thời hiệu kiểm tra lại lấy đúng ngày kỷ niệm 24 tháng (không lùi sang ngày làm việc) để hạn không muộn hơn. 3 chặng vướng mắc: chặng n hoàn thành khi có ngày bắt đầu của chặng n+1 (chặng 3: ngày tổng hợp).
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

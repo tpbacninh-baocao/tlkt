@@ -21,7 +21,7 @@ Tài liệu tham chiếu: SPEC = `docs/SPEC.md` · ARCH = `docs/ARCHITECTURE.md`
   *Chấp nhận:* toàn bộ ca nhóm A, G, R trong `tests/kich-ban-han.json` đạt qua `tests/acceptance.test.ts` (đọc trực tiếp JSON).
 - [x] **T06 Giai đoạn, ràng buộc, việc tiếp theo, SLA, ưu tiên** (`core/vuViec`): ARCH §6; hàm kiểm tra hợp lệ khi đánh dấu mốc (thứ tự, ngày ≥ mốc trước, bắt buộc lý do trễ); kiểm tra hợp lệ sự kiện (gia hạn 1 lần, giới hạn số ngày, chỉ trong khoảng C–K, cảnh báo muộn so với T3; hoãn chỉ trước C).
   *Chấp nhận:* test đủ 9 giai đoạn, mỗi ràng buộc 1 test, SLA 4 trạng thái + xong đúng/trễ.
-- [ ] **T07 Đồng hồ** yêu cầu tài liệu (06 giờ LV) và vướng mắc (3 × 02 NLV), hạn kế hoạch (công khai 30 ngày, chuyên đề phát sinh, thời hiệu kiểm tra lại).
+- [x] **T07 Đồng hồ** yêu cầu tài liệu (06 giờ LV) và vướng mắc (3 × 02 NLV), hạn kế hoạch (công khai 30 ngày, chuyên đề phát sinh, thời hiệu kiểm tra lại).
   *Chấp nhận:* W01–W04; test vướng mắc; test thời hiệu.
 - [ ] **T08 Checklist hệ thống** (`core/checklist`): sinh việc từ `rules/checklist-he-thong.json` theo mốc/sự kiện/điều kiện/lần nộp tiền; hạn = ngày phát sinh + `hanNhapLieuNLV`; nội dung “Sao chép thông tin” theo `saoChep` (ARCH §5); tên chức năng ghi đè được; việc nhật ký hằng ngày.
   *Chấp nhận:* test một cuộc đi từ D0 đến X sinh đúng số việc từng mốc; có GIA_HAN/TAM_DUNG/BAI_BO sinh thêm đúng việc; 2 lần nộp tiền → 2 việc TTR_NOP.

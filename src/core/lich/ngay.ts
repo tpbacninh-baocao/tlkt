@@ -160,3 +160,13 @@ export function homNayTuDate(d: Date = new Date()): NgayISO {
 export function bayGioTuDate(d: Date = new Date()): NgayGio {
   return `${homNayTuDate(d)}T${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
 }
+
+/** 135 → "2 giờ 15 phút"; 45 → "45 phút"; 120 → "2 giờ" */
+export function dinhDangThoiLuong(phut: number): string {
+  const p = Math.abs(Math.round(phut));
+  const h = Math.floor(p / 60);
+  const m = p % 60;
+  if (h && m) return `${h} giờ ${m} phút`;
+  if (h) return `${h} giờ`;
+  return `${m} phút`;
+}
