@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T05
-- Nhiệm vụ xong gần nhất: T04
-- `npm run check`: sạch (50 đạt / 50 tổng (R01–R06 đạt))
+- Nhiệm vụ đang làm: T06
+- Nhiệm vụ xong gần nhất: T05
+- `npm run check`: sạch (99 đạt / 107 tổng (8 ca nhóm N đang skip, bật ở T09); toàn bộ ca A, G, H, R, W đạt (31/31))
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -29,6 +29,11 @@
 ### 2026-11-23 – T04 Bộ quy tắc
 - Đã làm: core/quyTac: nạp JSON, gộp keThua+ghiDe (han thay nguyên khối), bản vá người dùng + khôi phục mặc định, chọn bộ theo D0, tinhHan theo bảng ARCH §4.4, thuật toán E, chọn chế độ X, hạn mục tiêu = pháp lý − đệm.
 - Test: 50 đạt / 50 tổng (R01–R06 đạt)
+
+### 2026-11-23 – T05 Tính mốc một cuộc (⭐)
+- Đã làm: core/vuViec/tinhMoc: mốc thực tế/dự kiến lan truyền, thuật toán E, chế độ X, bước điều kiện B2/S7/S4, tùy chọn T3, sự kiện HOAN/TAM_DUNG/GIA_HAN/GIAI_TRINH/PHUC_TAP/TOI_PHAM/BAI_BO, trạng thái SLA; tests/acceptance.test.ts đọc trực tiếp kich-ban-han.json.
+- Test: 99 đạt / 107 tổng (8 ca nhóm N đang skip, bật ở T09); toàn bộ ca A, G, H, R, W đạt (31/31)
+- Giả định đã chọn: Bước dự kiến (tính từ mốc chưa có) không bao giờ bị gắn QUA_HAN để tránh báo đỏ dây chuyền. Ngày công bố dự kiến: hoãn > ngày người dùng nhập > hạn Q5. B3a/B3b hết hạn → KHONG_AP_DUNG (không phải quá hạn).
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

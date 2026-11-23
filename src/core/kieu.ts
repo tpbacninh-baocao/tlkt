@@ -263,6 +263,8 @@ export interface MocTinh {
   dieuKien?: boolean;
   /** Ghi chú giải thích cách tính (ví dụ chế độ X). */
   ghiChu?: string;
+  /** Mã mốc còn thiếu nên chưa tính được hạn */
+  thieuMoc?: string;
   /** Số NLV còn lại tới hạn pháp lý (âm = quá hạn). */
   nlvConLai?: number;
   quaHanChuaGiaiTrinh?: boolean;
