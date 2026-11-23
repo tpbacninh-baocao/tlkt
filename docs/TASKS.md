@@ -54,7 +54,7 @@ Tài liệu tham chiếu: SPEC = `docs/SPEC.md` · ARCH = `docs/ARCHITECTURE.md`
 - [x] **T25 Chi tiết cuộc – tab Nhật ký, Tài liệu & vướng mắc, Kết quả & nộp tiền, Hồ sơ lưu trữ, Lịch sử sửa.**
 - [x] **T26 Lịch** tháng/tuần/ngày + khối thời gian + gợi ý “Tại DN” (UI §4.8).
 - [x] **T27 Việc**: Hộp thu, Đang làm, Lặp lại, Mẫu, Đã xong; thu nhanh có nhận diện hạn; nhập giọng nói Web Speech API (`vi-VN`) nếu trình duyệt có, ẩn nút nếu không (UI §4.9).
-- [ ] **T28 Kế hoạch ngày** (UI §4.10).
+- [x] **T28 Kế hoạch ngày** (UI §4.10).
 - [ ] **T29 Kế hoạch năm** + quản lý kế hoạch + biểu đồ SVG (UI §4.11).
 - [ ] **T30 Báo cáo & tóm tắt** + trang in (UI §4.12).
 - [ ] **T31 Cài đặt** đủ các nhóm UI §4.13, gồm bảng sửa quy tắc có trích dẫn và Khôi phục mặc định.

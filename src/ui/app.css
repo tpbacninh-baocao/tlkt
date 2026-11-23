@@ -381,3 +381,23 @@ table.bang td.so, table.bang th.so { text-align: right; }
 .khoi { position: absolute; left: 2px; right: 2px; z-index: 1; padding: 2px 6px; font-size: var(--co-phu); text-align: left; border: 0; border-radius: 8px; background: var(--chinh); color: var(--tren-chinh); cursor: pointer; overflow: hidden; }
 .khoi.goi-y { background: var(--chinh-nhat); color: var(--chu); border: 1px dashed var(--chinh); }
 .khoi.dang-keo { background: var(--chinh); opacity: 0.4; pointer-events: none; }
+
+/* ---------- Kế hoạch ngày (phiếu giấy) ---------- */
+.dau-phieu { text-align: center; margin-bottom: var(--k3); }
+.dau-phieu h2 { letter-spacing: 0.08em; margin-bottom: var(--k2); }
+.dau-phieu .hang-nut { justify-content: center; }
+.tuan-chip { display: flex; justify-content: center; gap: var(--k1); margin-top: var(--k2); }
+.chip-ngay { display: flex; flex-direction: column; align-items: center; min-width: 44px; min-height: 52px; padding: 4px; border: 1px solid var(--vien); border-radius: var(--bo-nut); background: var(--be-mat); cursor: pointer; color: var(--chu); font-weight: 600; }
+.chip-ngay small { font-weight: 400; color: var(--chu-phu); }
+.chip-ngay.nghi { background: var(--be-mat-2); }
+.chip-ngay.chon { background: var(--chinh); color: var(--tren-chinh); border-color: var(--chinh); }
+.chip-ngay.chon small { color: var(--tren-chinh); }
+.luoi-phieu { display: grid; gap: var(--k3); grid-template-columns: 1fr; }
+@media (min-width: 900px) { .luoi-phieu { grid-template-columns: 1fr 1fr; } .o-phieu.rong2 { grid-row: span 2; } }
+.o-phieu { background: var(--be-mat); border: 2px solid var(--vien); border-radius: var(--bo-the); padding: var(--k3) var(--k4); }
+.o-phieu h3 { font-size: var(--co-phu); letter-spacing: 0.1em; color: var(--chu-phu); margin-bottom: var(--k2); }
+.muc-tieu { display: flex; align-items: center; gap: var(--k2); margin-bottom: var(--k1); }
+.ds-nhac-ngay { list-style: none; margin: 0 0 var(--k2); padding: 0; }
+.ds-nhac-ngay li { padding: 2px 0; font-size: var(--co-than); }
+.nut-cam { width: 48px; height: 48px; font-size: 28px; border: 2px solid transparent; border-radius: 50%; background: transparent; cursor: pointer; }
+.nut-cam.chon { border-color: var(--chinh); background: var(--chinh-nhat); }

@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T28
-- Nhiệm vụ xong gần nhất: T27
-- `npm run check`: sạch (440 đạt / 440 tổng; đã thử trong Chromium: thu nhanh ‘trước 15/12’ → chip hạn 15/12/2026, hoàn thành + hoàn tác việc lặp, form lặp hằng tuần, tab Mẫu 7 mục)
+- Nhiệm vụ đang làm: T29
+- Nhiệm vụ xong gần nhất: T28
+- `npm run check`: sạch (440 đạt / 440 tổng; đã thử trong Chromium: tự lưu rồi tải lại còn nguyên, chuyển 3 việc sang ngày mai và hoàn tác)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -134,6 +134,11 @@
 - Đã làm: ui/man/viec: 5 tab (Hộp thu, Đang làm theo Quá hạn/Hôm nay/Tuần này/Sau, Lặp lại, Mẫu bật/tắt, Đã xong), ô thu nhanh nhận diện hạn + nhập giọng nói vi-VN (ẩn nếu trình duyệt không hỗ trợ), form chi tiết (nguồn, nhóm đột xuất, số VB, người giao, hạn, giờ, kiểu lặp có xem trước các lần tới, liên kết cuộc, việc con), hoàn thành việc lặp tự tạo lần sau + Hoàn tác, ghim, xóa mềm. Sửa lỗi: dữ liệu mẫu không tạo trùng việc lặp đã có từ mẫu.
 - Test: 440 đạt / 440 tổng; đã thử trong Chromium: thu nhanh ‘trước 15/12’ → chip hạn 15/12/2026, hoàn thành + hoàn tác việc lặp, form lặp hằng tuần, tab Mẫu 7 mục
 - Giả định đã chọn: Việc ‘Lặp lại’ chỉ có một bản ghi đang mở mỗi chuỗi; bật mẫu mới sẽ tạo việc ngay.
+
+### 2026-11-23 – T28 Kế hoạch ngày
+- Đã làm: ui/man/keHoachNgay: phiếu ‘KẾ HOẠCH MỖI NGÀY’ – chọn ngày/tuần, Việc cần làm (tự đổ từ hạn ≤ ngày + kéo từ Hộp thu), Mục tiêu ≤ 3, Nhắc nhở (tự đổ từ lịch nhắc + ghi thêm), Lịch trong ngày, Ghi chú, Cho ngày mai (+ nút chuyển việc ngoài cuộc chưa xong sang ngày làm việc kế tiếp, có Hoàn tác), Cảm nhận 5 mức; tự lưu sau 600 ms.
+- Test: 440 đạt / 440 tổng; đã thử trong Chromium: tự lưu rồi tải lại còn nguyên, chuyển 3 việc sang ngày mai và hoàn tác
+- Giả định đã chọn: Nút ‘Chuyển sang ngày mai’ chỉ chuyển việc ngoài cuộc (hạn pháp lý của cuộc không đổi được).
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.
