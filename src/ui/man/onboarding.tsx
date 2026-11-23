@@ -25,7 +25,7 @@ export function Onboarding() {
   const [dang, setDang] = useState(false);
   const nam = Number(homNay.value.slice(0, 4));
   // đọc caiDat.value để cập nhật khi người dùng vừa nhập lịch nghỉ
-  const chuaXacNhan = namChuaXacNhanNgayNghi(caiDat.value, nam);
+  const chuaXacNhan = namChuaXacNhanNgayNghi(caiDat.value, nam, Number(homNay.value.slice(5, 7)));
 
   const luuBuoc1 = () => suaCaiDat((c) => ({ ...c, canBo: { hoTen: hoTen.trim(), chucVu: chucVu.trim(), donVi: donVi.trim() } }));
   const luuBuoc2 = () => suaCaiDat((c) => ({ ...c, gioLamViec: [[gio.s1, gio.s2], [gio.c1, gio.c2]] }));

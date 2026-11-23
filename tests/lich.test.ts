@@ -13,6 +13,7 @@ import {
   docDanhSachNgay,
   docNgayVN,
   laNgayLamViec,
+  namChuaXacNhanNgayNghi,
   lui,
   lichTronTru,
   phutLamViecGiua,
@@ -185,5 +186,14 @@ describe('docDanhSachNgay – dán danh sách ngày nghỉ', () => {
   });
   it('rỗng → không có gì', () => {
     expect(docDanhSachNgay('  \n ')).toEqual({ ngay: [], loi: [] });
+  });
+});
+
+describe('Nhắc nhập lịch nghỉ', () => {
+  it('đầu năm nhắc cả năm nay và năm sau; nửa cuối năm chỉ nhắc năm sau; năm đã xác nhận thì bỏ', () => {
+    expect(namChuaXacNhanNgayNghi({ namDaXacNhanNgayNghi: [] }, 2026, 1)).toEqual([2026, 2027]);
+    expect(namChuaXacNhanNgayNghi({ namDaXacNhanNgayNghi: [] }, 2026, 11)).toEqual([2027]);
+    expect(namChuaXacNhanNgayNghi({ namDaXacNhanNgayNghi: [2027] }, 2026, 11)).toEqual([]);
+    expect(namChuaXacNhanNgayNghi({ namDaXacNhanNgayNghi: [2026] }, 2026, 3)).toEqual([2027]);
   });
 });

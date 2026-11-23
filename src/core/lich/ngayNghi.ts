@@ -17,7 +17,11 @@ export function lichTuCaiDat(cd: Pick<CaiDat, 'ngayNghiThem' | 'ngayLamBu' | 'gi
   });
 }
 
-/** Năm cần nhắc nhập lịch nghỉ Tết: năm nay và năm sau chưa được xác nhận. */
-export function namChuaXacNhanNgayNghi(cd: Pick<CaiDat, 'namDaXacNhanNgayNghi'>, namHienTai: number): number[] {
-  return [namHienTai, namHienTai + 1].filter((n) => !cd.namDaXacNhanNgayNghi.includes(n));
+/**
+ * Năm cần nhắc nhập lịch nghỉ: năm sau luôn cần; năm nay chỉ nhắc trong nửa đầu năm
+ * (Tết và Giỗ Tổ đã qua thì không còn ảnh hưởng hạn sắp tới).
+ */
+export function namChuaXacNhanNgayNghi(cd: Pick<CaiDat, 'namDaXacNhanNgayNghi'>, namHienTai: number, thangHienTai = 1): number[] {
+  const cacNam = thangHienTai <= 6 ? [namHienTai, namHienTai + 1] : [namHienTai + 1];
+  return cacNam.filter((n) => !cd.namDaXacNhanNgayNghi.includes(n));
 }

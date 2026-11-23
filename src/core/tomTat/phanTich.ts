@@ -102,10 +102,10 @@ export function soNhapLieuThieu(p: PhanTichCuoc): number {
   return viecConThieu(p.checklist.filter((v) => !v.hangNgay)).length;
 }
 
-/** Tên bước rút gọn để hiển thị trong danh sách: bỏ “(= X)”, cắt tại dấu hai chấm, bỏ ngoặc phụ nếu còn dài. */
+/** Tên bước rút gọn để hiển thị trong danh sách: bỏ “(= X)”, cắt tại dấu hai chấm/chấm phẩy, bỏ ngoặc phụ nếu còn dài. */
 export function tenNgan(ten: string): string {
   let t = ten.replace(/\s*\(= [A-Z0-9]+\)/g, '');
-  const i = t.indexOf(':');
+  const i = t.search(/[:;]/);
   if (i > 0) t = t.slice(0, i);
   if (t.length > 60) t = t.replace(/\s*\([^)]*\)/g, '');
   if (t.length > 90) t = t.slice(0, 89).trimEnd() + '…';

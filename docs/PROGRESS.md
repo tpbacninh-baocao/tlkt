@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T19
-- Nhiệm vụ xong gần nhất: T18
-- `npm run check`: sạch (393 đạt / 393 tổng (đã chạy thử trong Chromium: không lỗi console))
+- Nhiệm vụ đang làm: T20
+- Nhiệm vụ xong gần nhất: T19
+- `npm run check`: sạch (399 đạt / 399 tổng; đã chạy luồng thật trong Chromium (nạp dữ liệu mẫu → ✓ Xong → Lưu → Hoàn tác → tích nhật ký) không lỗi console)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -87,8 +87,13 @@
 
 ### 2026-11-23 – T17–T18 Khung app, onboarding, màn khóa
 - Đã làm: ui: tokens Sáng/Tối (chữ SLA đạt AA), font Be Vietnam Pro + dự phòng, router hash (UI §2), thanh dưới/cột trái/cột phải, nút nổi Thu nhanh (nhận diện hạn tiếng Việt + nhập giọng nói vi-VN nếu có), toast có Hoàn tác, hộp xác nhận tự xây, bảng trượt có bẫy tiêu điểm/Esc, trạng thái rỗng, các nhãn; kho trạng thái signals; khóa tự động; onboarding 4 bước (hồ sơ, giờ làm việc + nhập lịch nghỉ, mật mã + ẩn danh, bắt đầu); màn khóa (sai 5 lần chờ 30 giây, quên mật mã → xóa dữ liệu phải gõ XOA).
-- Test: 393 đạt / 393 tổng (đã chạy thử trong Chromium: không lỗi console)
+- Test: 391 đạt / 391 tổng (đã chạy thử trong Chromium: không lỗi console)
 - Giả định đã chọn: Onboarding bước 3: ẩn danh thông báo đề xuất BẬT mặc định (chỉ áp dụng nếu người dùng đi qua bước 3). Màu chữ trạng thái SLA dùng bản đậm hơn màu biểu tượng để đạt tương phản AA.
+
+### 2026-11-23 – T19 Màn Hôm nay (⭐)
+- Đã làm: ui/man/homNay: lời chào theo giờ, tóm tắt, KPI (quá hạn/hôm nay/3 NLV/nhập liệu thiếu), nhóm QUÁ HẠN/HÔM NAY/3 NGÀY LV TỚI bằng ThẻViệc (✓ Xong mở form đánh dấu bước, tích nhập liệu, hoàn thành việc có Hoàn tác; menu Mở cuộc/Thêm Google Lịch/Ghi lý do trễ), Tại DN hôm nay (tích nhật ký iTNK, yêu cầu tài liệu), nhập liệu thiếu, lịch trong ngày, cảnh báo lịch nghỉ/sao lưu, dải xanh khi không có việc gấp, thẻ gợi ý khi chưa có cuộc; cột phải Việc tiếp theo trên máy tính. Logic cập nhật cuộc thuần (core/vuViec/capNhat) + form Xong (ngày, số VB, lý do trễ bắt buộc, cảnh báo S5 thiếu checklist).
+- Test: 399 đạt / 399 tổng; đã chạy luồng thật trong Chromium (nạp dữ liệu mẫu → ✓ Xong → Lưu → Hoàn tác → tích nhật ký) không lỗi console
+- Giả định đã chọn: Nhắc lịch nghỉ Tết năm nay chỉ trong 6 tháng đầu năm; năm sau luôn nhắc.
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

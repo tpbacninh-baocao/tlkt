@@ -6,3 +6,4 @@ export * from './suKien';
 export * from './viecTiepTheo';
 
 export * from './dongHo';
+export * from './capNhat';

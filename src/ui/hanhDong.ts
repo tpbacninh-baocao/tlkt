@@ -2,7 +2,8 @@
 import type { CaiDat, CongViec, CuocKiemTra, KeHoach, KeHoachNgay, KhoiThoiGian } from '../core/kieu';
 import { chuanHoaCuoc, chuanHoaKeHoach, chuanHoaViec } from '../data/chuanHoa';
 import type { KhoXoaMem } from '../data/kho';
-import { dongBoViecMau } from '../core/viec';
+import { boHoanThanh, dongBoViecMau, hoanThanhViec } from '../core/viec';
+import { dinhDangNgay } from '../core/lich';
 import { bayGio, caiDat, dsCuoc, dsKeHoach, dsKeHoachNgay, dsKhoiThoiGian, dsViec, homNay, kho_, lich, toast } from './store';
 
 function thayTheTheoId<T extends { id: string }>(ds: T[], moi: T): T[] {
@@ -103,4 +104,22 @@ export async function dongBoViecMauUI(): Promise<number> {
   const moi = dongBoViecMau(caiDat.value.mauViecDaBat, dsViec.value, homNay.value, lich.value, () => crypto.randomUUID(), bayGio.value);
   for (const v of moi) await luuViec(v);
   return moi.length;
+}
+
+/** Hoàn thành một việc ngoài cuộc (+ tạo lần kế tiếp nếu lặp lại) kèm toast Hoàn tác. */
+export async function hoanThanhViecUI(id: string): Promise<void> {
+  const v = dsViec.value.find((x) => x.id === id);
+  if (!v) return;
+  const { daXong, tiep } = hoanThanhViec(v, bayGio.value, lich.value, () => crypto.randomUUID());
+  await luuViec(daXong);
+  if (tiep) await luuViec(tiep);
+  toast(tiep ? `Đã xong. Lần sau: ${dinhDangNgay(tiep.han!)}` : 'Đã xong việc', 'thanhCong', async () => {
+    await luuViec(boHoanThanh(daXong, bayGio.value));
+    if (tiep) await xoaVinhVien('viec', tiep.id);
+  });
+}
+
+export async function boHoanThanhViecUI(id: string): Promise<void> {
+  const v = dsViec.value.find((x) => x.id === id);
+  if (v) await luuViec(boHoanThanh(v, bayGio.value));
 }

@@ -15,6 +15,8 @@ export interface MucViec {
   maCuoc?: string;
   nhanCuoc?: string;
   han?: NgayISO;
+  /** Hạn mục tiêu (dùng cho nhắc/Google Lịch); mặc định = han */
+  hanMucTieu?: NgayISO;
   noiBo?: boolean;
   trangThai: TrangThaiMoc;
   muc: MucSLA;
@@ -22,6 +24,8 @@ export interface MucViec {
   diem: number;
   canCu?: string;
   maBuoc?: string;
+  /** Khóa việc nhập liệu (cuoc.checklist) */
+  checklistKhoa?: string;
   heThong?: string;
   viecId?: string;
   lienKet: string;
@@ -64,6 +68,7 @@ function mucTuMoc(p: PhanTichCuoc, m: MocTinh, d: DuLieuTomTat): MucViec {
     maCuoc: c.ma,
     nhanCuoc: nhanCuoc(c, an),
     han: m.noiBo ? m.hanMucTieu : m.hanPhapLy,
+    hanMucTieu: m.hanMucTieu,
     noiBo: m.noiBo,
     trangThai: m.trangThai,
     muc: mucSLA(m),
@@ -105,6 +110,7 @@ export function cacMucViecDangMo(d: DuLieuTomTat, phanTich?: PhanTichCuoc[]): Mu
         nlvConLai: nlv,
         diem: tinhDiem({ nlvConLai: nlv, heSo: 1.5, quaHan: v.trangThai === 'QUA_HAN', ghim: p.cuoc.ghim }),
         heThong: v.heThong,
+        checklistKhoa: v.khoa,
         lienKet: '#nhap-lieu',
       });
     }

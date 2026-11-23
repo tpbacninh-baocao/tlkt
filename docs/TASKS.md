@@ -45,7 +45,7 @@ Tài liệu tham chiếu: SPEC = `docs/SPEC.md` · ARCH = `docs/ARCHITECTURE.md`
 ## Phase 3 – Giao diện (`src/ui`) – làm đúng `docs/UI.md`
 - [x] **T17 Khung app**: tokens Sáng/Tối, font, router hash (UI §2), thanh dưới/cột trái/cột phải, toast, hộp xác nhận, bảng trượt, trạng thái rỗng, các nhãn (UI §3).
 - [x] **T18 Onboarding + màn khóa** (UI §4.1, §4.2).
-- [ ] **T19 ⭐ Hôm nay** (UI §4.3) + cột “Việc tiếp theo” trên máy tính.
+- [x] **T19 ⭐ Hôm nay** (UI §4.3) + cột “Việc tiếp theo” trên máy tính.
 - [ ] **T20 Danh sách cuộc**: Danh sách + lọc/tìm/sắp xếp, Kanban, Dòng thời gian Gantt SVG (UI §4.4).
 - [ ] **T21 Thêm/Sửa cuộc** 3 bước + xem trước mốc dự kiến (UI §4.5); kiểm tra MST, trùng.
 - [ ] **T22 ⭐ Chi tiết cuộc – tab Dòng thời gian + đánh dấu mốc** với mọi ràng buộc T06 (UI §4.6).

@@ -260,3 +260,9 @@ table.bang td.so, table.bang th.so { text-align: right; }
 .onboarding .chon-lon { display: flex; align-items: flex-start; gap: var(--k3); width: 100%; text-align: left; padding: var(--k4); margin-bottom: var(--k2); background: var(--be-mat); border: 1px solid var(--vien); border-radius: var(--bo-the); cursor: pointer; }
 .onboarding .chon-lon:hover { border-color: var(--chinh); }
 .onboarding .chon-lon .bt { font-size: 28px; }
+
+/* Thẻ việc trên điện thoại: nút hành động xuống dòng dưới để tên không bị bóp */
+@media (max-width: 599px) {
+  .the-viec { grid-template-columns: auto 1fr; }
+  .the-viec .hanh-dong { grid-column: 2; justify-content: flex-end; }
+}
