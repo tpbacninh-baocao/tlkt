@@ -1,0 +1,135 @@
+/* Design tokens – docs/UI.md §1. Sáng "Planner" / Tối "Dashboard". */
+:root,
+:root[data-theme='sang'] {
+  --nen: #faf7f2;
+  --be-mat: #ffffff;
+  --be-mat-2: #f3efe8;
+  --vien: #e7e1d6;
+  --chu: #1c1b1a;
+  --chu-phu: #6b665e;
+  --chinh: #5b5bd6;
+  --chinh-nhat: #ececfb;
+  --tren-chinh: #ffffff;
+  --bong: 0 2px 10px rgba(28, 27, 26, 0.06);
+  --lop-phu: rgba(28, 27, 26, 0.45);
+  --kinh: none;
+
+  /* Màu trạng thái: nền/biểu tượng và chữ (chữ đậm hơn để đạt AA) */
+  --sla-xanh: #16a34a;
+  --sla-xanh-chu: #15803d;
+  --sla-vang: #ca8a04;
+  --sla-vang-chu: #8a5a00;
+  --sla-cam: #ea580c;
+  --sla-cam-chu: #b83f08;
+  --sla-do: #dc2626;
+  --sla-do-chu: #b91c1c;
+  --sla-do-dam: #7f1d1d;
+  --sla-do-dam-nen: #fde8e8;
+  --sla-xong: #16a34a;
+  --sla-tre: #9ca3af;
+  --sla-tre-chu: #5b6270;
+  --sla-xam-chu: #5b6270;
+  --nen-canh-bao: #fff7e0;
+  --chu-canh-bao: #7a4b00;
+}
+
+:root[data-theme='toi'] {
+  --nen: #0b1220;
+  --be-mat: rgba(17, 28, 48, 0.85);
+  --be-mat-2: #132038;
+  --vien: #1e3a5f;
+  --chu: #e6eef8;
+  --chu-phu: #8aa0bd;
+  --chinh: #22d3ee;
+  --chinh-nhat: rgba(34, 211, 238, 0.12);
+  --tren-chinh: #04212a;
+  --bong: 0 0 0 1px #1e3a5f, 0 8px 24px rgba(0, 0, 0, 0.35);
+  --lop-phu: rgba(0, 0, 0, 0.6);
+  --kinh: blur(6px);
+
+  --sla-xanh: #22c55e;
+  --sla-xanh-chu: #4ade80;
+  --sla-vang: #eab308;
+  --sla-vang-chu: #facc15;
+  --sla-cam: #fb923c;
+  --sla-cam-chu: #fdba74;
+  --sla-do: #f87171;
+  --sla-do-chu: #fca5a5;
+  --sla-do-dam: #fecaca;
+  --sla-do-dam-nen: #4c1d1d;
+  --sla-xong: #22c55e;
+  --sla-tre: #94a3b8;
+  --sla-tre-chu: #a8b6cb;
+  --sla-xam-chu: #a8b6cb;
+  --nen-canh-bao: #3a2d0c;
+  --chu-canh-bao: #fcd34d;
+}
+
+/* “Theo hệ thống”: app gán data-theme theo prefers-color-scheme; dự phòng khi chưa chạy JS */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --nen: #0b1220;
+    --be-mat: rgba(17, 28, 48, 0.85);
+    --be-mat-2: #132038;
+    --vien: #1e3a5f;
+    --chu: #e6eef8;
+    --chu-phu: #8aa0bd;
+    --chinh: #22d3ee;
+    --chinh-nhat: rgba(34, 211, 238, 0.12);
+    --tren-chinh: #04212a;
+  }
+}
+
+/* Màu giai đoạn (Kanban, Gantt) và hệ thống – giống nhau ở 2 giao diện */
+:root {
+  --gd-chuan-bi: #94a3b8;
+  --gd-cho-cong-bo: #a78bfa;
+  --gd-dang-kiem-tra: #3b82f6;
+  --gd-bien-ban: #f59e0b;
+  --gd-cho-qd: #ec4899;
+  --gd-sau-qd: #14b8a6;
+  --gd-theo-doi: #84cc16;
+  --gd-hoan-thanh: #22c55e;
+  --gd-bai-bo: #6b7280;
+  --ht-ttr: #2563eb;
+  --ht-itnk: #7c3aed;
+  --ht-tms: #0891b2;
+
+  --co-phu: 12px;
+  --co-than: 14px;
+  --co-than-dt: 16px;
+  --co-the: 18px;
+  --co-man: 22px;
+  --co-kpi: 32px;
+  --bo-the: 16px;
+  --bo-nut: 12px;
+  --bo-nhan: 999px;
+  --k1: 4px;
+  --k2: 8px;
+  --k3: 12px;
+  --k4: 16px;
+  --k6: 24px;
+  --k8: 32px;
+  --thoi-gian: 160ms;
+  --font: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+:root[data-co-chu='lon'] {
+  --co-phu: 14px;
+  --co-than: 16px;
+  --co-than-dt: 18px;
+  --co-the: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --thoi-gian: 0ms;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T17
-- Nhiệm vụ xong gần nhất: T16
-- `npm run check`: sạch (386 đạt / 386 tổng (kiểm thử trên 7 ngày hôm nay khác nhau))
+- Nhiệm vụ đang làm: T19
+- Nhiệm vụ xong gần nhất: T18
+- `npm run check`: sạch (393 đạt / 393 tổng (đã chạy thử trong Chromium: không lỗi console))
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -84,6 +84,11 @@
 - Đã làm: data/mau: 6 cuộc ở 6 giai đoạn (đang KT tại DN, chờ công bố, biên bản, GDLK chờ QĐ có giải trình, bãi bỏ, chuyển tiếp 970 theo dõi nộp tiền) tính theo ngày hôm nay, 1 kế hoạch năm, 10 việc (lặp lại, quá hạn, hôm nay, hộp thu, đã xong, ghim), 3 khối thời gian; themDuLieuMau (không nhân đôi), xoaDuLieuMau (chỉ xóa bản ghi có cờ mẫu), coDuLieuMau. Thêm core laBuocNoiBoDaQua: bỏ bước nội bộ của giai đoạn đã qua khỏi Hôm nay/nhắc/bản tin/.ics.
 - Test: 386 đạt / 386 tổng (kiểm thử trên 7 ngày hôm nay khác nhau)
 - Giả định đã chọn: Cuộc mẫu chuyển tiếp QTKT-970 dùng ngày cố định (bộ 970 chỉ áp cho QĐ trước 01/7/2026). Bước nội bộ (P2–P4, …) của giai đoạn đã qua không còn hiện ‘quá hạn’ ở Hôm nay/nhắc việc nhưng vẫn thấy trong dòng thời gian cuộc.
+
+### 2026-11-23 – T17–T18 Khung app, onboarding, màn khóa
+- Đã làm: ui: tokens Sáng/Tối (chữ SLA đạt AA), font Be Vietnam Pro + dự phòng, router hash (UI §2), thanh dưới/cột trái/cột phải, nút nổi Thu nhanh (nhận diện hạn tiếng Việt + nhập giọng nói vi-VN nếu có), toast có Hoàn tác, hộp xác nhận tự xây, bảng trượt có bẫy tiêu điểm/Esc, trạng thái rỗng, các nhãn; kho trạng thái signals; khóa tự động; onboarding 4 bước (hồ sơ, giờ làm việc + nhập lịch nghỉ, mật mã + ẩn danh, bắt đầu); màn khóa (sai 5 lần chờ 30 giây, quên mật mã → xóa dữ liệu phải gõ XOA).
+- Test: 393 đạt / 393 tổng (đã chạy thử trong Chromium: không lỗi console)
+- Giả định đã chọn: Onboarding bước 3: ẩn danh thông báo đề xuất BẬT mặc định (chỉ áp dụng nếu người dùng đi qua bước 3). Màu chữ trạng thái SLA dùng bản đậm hơn màu biểu tượng để đạt tương phản AA.
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

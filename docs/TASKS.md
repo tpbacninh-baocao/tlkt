@@ -43,8 +43,8 @@ Tài liệu tham chiếu: SPEC = `docs/SPEC.md` · ARCH = `docs/ARCHITECTURE.md`
 - [x] **T16 Dữ liệu mẫu**: 6 cuộc ở các giai đoạn khác nhau **tính tương đối theo ngày hôm nay** (1 KH đang kiểm tra tại DN, 1 TH chờ công bố, 1 GT đang biên bản, 1 có GDLK chờ QĐ xử lý có giải trình, 1 bãi bỏ, 1 chuyển tiếp QTKT-970 sau QĐ đang theo dõi nộp tiền) + 1 kế hoạch năm + 10 việc khác (có lặp lại, có quá hạn) + vài khối thời gian; MST giả `0100000xxx`. Có nút xóa riêng dữ liệu mẫu.
 
 ## Phase 3 – Giao diện (`src/ui`) – làm đúng `docs/UI.md`
-- [ ] **T17 Khung app**: tokens Sáng/Tối, font, router hash (UI §2), thanh dưới/cột trái/cột phải, toast, hộp xác nhận, bảng trượt, trạng thái rỗng, các nhãn (UI §3).
-- [ ] **T18 Onboarding + màn khóa** (UI §4.1, §4.2).
+- [x] **T17 Khung app**: tokens Sáng/Tối, font, router hash (UI §2), thanh dưới/cột trái/cột phải, toast, hộp xác nhận, bảng trượt, trạng thái rỗng, các nhãn (UI §3).
+- [x] **T18 Onboarding + màn khóa** (UI §4.1, §4.2).
 - [ ] **T19 ⭐ Hôm nay** (UI §4.3) + cột “Việc tiếp theo” trên máy tính.
 - [ ] **T20 Danh sách cuộc**: Danh sách + lọc/tìm/sắp xếp, Kanban, Dòng thời gian Gantt SVG (UI §4.4).
 - [ ] **T21 Thêm/Sửa cuộc** 3 bước + xem trước mốc dự kiến (UI §4.5); kiểm tra MST, trùng.

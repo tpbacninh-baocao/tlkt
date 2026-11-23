@@ -170,3 +170,56 @@ export function dinhDangThoiLuong(phut: number): string {
   if (h) return `${h} giờ`;
   return `${m} phút`;
 }
+
+export interface KetQuaDocNgay {
+  ngay: NgayISO[];
+  /** Các cụm không đọc được */
+  loi: string[];
+}
+
+/**
+ * Đọc danh sách ngày dán vào ô nhập: phân cách bằng xuống dòng, dấu phẩy, chấm phẩy; mỗi mục là
+ * dd/mm/yyyy, yyyy-mm-dd, dd/mm (cần `namMacDinh`) hoặc một khoảng “dd/mm/yyyy – dd/mm/yyyy” (≤ 60 ngày).
+ * Kết quả đã loại trùng, sắp tăng dần.
+ */
+export function docDanhSachNgay(text: string, namMacDinh?: number): KetQuaDocNgay {
+  const tap = new Set<NgayISO>();
+  const loi: string[] = [];
+  const doc1 = (s: string): NgayISO | null => {
+    const t = s.trim();
+    if (!t) return null;
+    if (laNgayISO(t)) return t;
+    const d = docNgayVN(t);
+    if (d) return d;
+    const m = /^(\d{1,2})[/.-](\d{1,2})$/.exec(t);
+    if (m && namMacDinh) {
+      const iso = taoNgay(namMacDinh, Number(m[2]), Number(m[1]));
+      return laNgayISO(iso) ? iso : null;
+    }
+    return null;
+  };
+  const chuan = text
+    .replace(/\s+(?:-|–|—|→|đến|tới)\s+/gi, ' ~ ')
+    .replace(/(\d)\s*(?:–|—|→)\s*(\d)/g, '$1 ~ $2');
+  for (const muc of chuan.split(/[\n;,]+/)) {
+    const m = muc.trim();
+    if (!m) continue;
+    if (m.includes('~')) {
+      const [a, b] = m.split('~').map(doc1);
+      if (!a || !b || b < a || soNgayGiua(a, b) > 60) {
+        loi.push(m);
+        continue;
+      }
+      for (let d = a; d <= b; d = congNgayThuan(d, 1)) tap.add(d);
+      continue;
+    }
+    // một dòng có nhiều ngày cách nhau bởi khoảng trắng
+    const phan = m.split(/\s+/);
+    for (const p of phan) {
+      const d = doc1(p);
+      if (d) tap.add(d);
+      else loi.push(p);
+    }
+  }
+  return { ngay: [...tap].sort(), loi };
+}

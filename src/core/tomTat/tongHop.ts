@@ -45,6 +45,8 @@ export interface TongHopHomNay {
   nhapLieuThieu: { cuocId: string; nhanCuoc: string; viec: ViecChecklist }[];
   taiDN: TaiDN[];
   kpi: { quaHan: number; homNay: number; baNLV: number; nhapLieuThieu: number };
+  /** Toàn bộ việc đang mở (đã sắp theo điểm ưu tiên) – cột “Việc tiếp theo” */
+  tatCa: MucViec[];
   /** Phân tích từng cuộc (bỏ cuộc đã xóa) để dùng lại */
   phanTich: PhanTichCuoc[];
 }
@@ -159,6 +161,7 @@ export function tongHopHomNay(d: DuLieuTomTat): TongHopHomNay {
     nhapLieuThieu,
     taiDN,
     kpi: { quaHan: quaHan.length, homNay: homNay.length, baNLV: baNLVToi.length, nhapLieuThieu: nhapLieuThieu.length },
+    tatCa: dang,
     phanTich,
   };
 }

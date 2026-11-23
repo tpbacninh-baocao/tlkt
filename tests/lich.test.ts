@@ -10,6 +10,7 @@ import {
   dinhDangNgay,
   dinhDangNgayThu,
   dinhDangSo,
+  docDanhSachNgay,
   docNgayVN,
   laNgayLamViec,
   lui,
@@ -158,5 +159,31 @@ describe('Giờ làm việc – nhóm W trong kich-ban-han.json', () => {
     expect(phutLamViecGiua(l, '2026-10-12T10:30', '2026-10-12T13:30')).toBe(60 + 30);
     expect(phutLamViecGiua(l, '2026-10-16T16:00', '2026-10-19T08:30')).toBe(60 + 60);
     expect(phutLamViecGiua(l, '2026-10-12T15:00', '2026-10-13T11:30')).toBe(360);
+  });
+});
+
+describe('docDanhSachNgay – dán danh sách ngày nghỉ', () => {
+  it('nhiều định dạng, loại trùng, sắp tăng dần', () => {
+    const r = docDanhSachNgay('01/01/2027\n2027-02-09; 9/2/2027, 10/02/2027');
+    expect(r.ngay).toEqual(['2027-01-01', '2027-02-09', '2027-02-10']);
+    expect(r.loi).toEqual([]);
+  });
+  it('khoảng ngày (Tết): dấu gạch, “đến”, mũi tên', () => {
+    expect(docDanhSachNgay('06/02/2027 - 10/02/2027').ngay).toEqual(['2027-02-06', '2027-02-07', '2027-02-08', '2027-02-09', '2027-02-10']);
+    expect(docDanhSachNgay('01/01/2027 đến 02/01/2027').ngay).toEqual(['2027-01-01', '2027-01-02']);
+    expect(docDanhSachNgay('01/01/2027→02/01/2027').ngay).toHaveLength(2);
+  });
+  it('dd/mm dùng năm mặc định; sai thì báo lỗi, không bỏ sót phần đúng', () => {
+    const r = docDanhSachNgay('30/04, 01/05, 31/02, abc', 2027);
+    expect(r.ngay).toEqual(['2027-04-30', '2027-05-01']);
+    expect(r.loi).toEqual(['31/02', 'abc']);
+    expect(docDanhSachNgay('30/04').loi).toEqual(['30/04']);
+  });
+  it('khoảng ngược hoặc quá dài → lỗi', () => {
+    expect(docDanhSachNgay('10/02/2027 - 06/02/2027').loi).toHaveLength(1);
+    expect(docDanhSachNgay('01/01/2027 - 31/12/2027').loi).toHaveLength(1);
+  });
+  it('rỗng → không có gì', () => {
+    expect(docDanhSachNgay('  \n ')).toEqual({ ngay: [], loi: [] });
   });
 });
