@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T11
-- Nhiệm vụ xong gần nhất: T10
-- `npm run check`: sạch (248 đạt / 248 tổng)
+- Nhiệm vụ đang làm: T12
+- Nhiệm vụ xong gần nhất: T11
+- `npm run check`: sạch (260 đạt / 260 tổng (5 snapshot đã rà soát bằng mắt))
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -59,6 +59,11 @@
 - Đã làm: core/nhacViec: sinhLichNhac theo bảng ARCH §8.1 (hạn pháp lý/nội bộ/tùy chọn, nhật ký iTNK 16:30/17:15/07:45, yêu cầu tài liệu, vướng mắc, bản tin sáng, rà soát tuần, kế hoạch năm từ 10, theo dõi nộp tiền hằng tuần, nhắc trước lưu trữ 30 ngày), giờ yên lặng, khóa ổn định, ẩn danh; taoICS RFC 5545 (CRLF, gập 75 octet, escape, UID ổn định, VALARM); linkGoogleLich; caiDatMacDinh.
 - Test: 248 đạt / 248 tổng
 - Giả định đã chọn: Nhắc bám theo HẠN MỤC TIÊU (hạn pháp lý − đệm); riêng ngày hạn pháp lý có báo thức 07:30 và quá hạn nhắc 08:00 mỗi NLV tính từ sau hạn pháp lý. Bước dự kiến (mốc chưa có ngày thật) không nhắc. DTSTART dạng giờ địa phương không múi giờ; DTSTAMP quy đổi UTC (VN = UTC+7).
+
+### 2026-11-23 – T11 Tóm tắt và báo cáo
+- Đã làm: core/tomTat: phanTichCuoc, tongHopHomNay (KPI Quá hạn/Hôm nay/3 NLV/Nhập liệu thiếu/Tại DN, dùng cho màn Hôm nay), tomTatMotCuoc (mẫu câu SPEC §12.7), banTinSang, baoCaoTienDoDoan, baoCaoTuan, tenNgan, ẩn danh (hienDayDu ghi đè).
+- Test: 260 đạt / 260 tổng (5 snapshot đã rà soát bằng mắt)
+- Giả định đã chọn: Tên bước trong danh sách được rút gọn (bỏ ngoặc phụ, cắt tại dấu hai chấm); tên đầy đủ vẫn hiện ở chi tiết cuộc. Ngày thứ n/tổng: ngày lịch từ C (ngày công bố là ngày 1); bộ 970 đếm theo ngày làm việc.
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

@@ -29,7 +29,7 @@ Tài liệu tham chiếu: SPEC = `docs/SPEC.md` · ARCH = `docs/ARCHITECTURE.md`
   *Chấp nhận:* N01–N08 đạt; test mỗi kiểu `lap`.
 - [x] **T10 Nhắc việc** (`core/nhacViec`): `sinhLichNhac` theo bảng ARCH §8.1; giờ yên lặng; khóa ổn định; tạo chuỗi `.ics` (RFC 5545: CRLF, gập dòng, escape, UID ổn định, VALARM) và link Google Lịch; ẩn danh.
   *Chấp nhận:* test số nhắc cho 1 hạn; test nhật ký 16:30/17:15/07:45; .ics được kiểm tra cấu trúc bằng test (BEGIN/END cân, dòng ≤ 75 octet).
-- [ ] **T11 Tóm tắt** (`core/tomTat`): bản tin sáng, báo cáo tiến độ đoàn, báo cáo tuần, tóm tắt một cuộc (mẫu câu theo SPEC §12.7), định dạng số/ngày tiếng Việt, ẩn danh.
+- [x] **T11 Tóm tắt** (`core/tomTat`): bản tin sáng, báo cáo tiến độ đoàn, báo cáo tuần, tóm tắt một cuộc (mẫu câu theo SPEC §12.7), định dạng số/ngày tiếng Việt, ẩn danh.
   *Chấp nhận:* test snapshot từng loại với dữ liệu cố định.
 - [ ] **T12 Kế hoạch năm** (`core/keHoach`): chỉ tiêu, đếm theo giai đoạn, tổng tiền, tích lũy theo tháng, đường lý tưởng, các cảnh báo UI §4.11.
   *Chấp nhận:* test với dữ liệu mẫu.
