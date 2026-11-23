@@ -1,6 +1,6 @@
 // Thao tác trên một cuộc từ giao diện: đánh dấu xong bước, tích nhập liệu, nhật ký iTNK… (logic thuần nằm ở core/vuViec/capNhat).
-import type { CuocKiemTra, NgayISO } from '../core/kieu';
-import { tinhMoc, kiemTraDanhDauBuoc, kiemTraBoDanhDau, ganXongVaoCuoc, boXongKhoiCuoc, ghiLyDoTreVaoCuoc, tickVaoCuoc, boTickKhoiCuoc, datNhatKyVaoCuoc, datNgayKhongLamTaiDN, type DuLieuXongBuoc, type KetQuaKiemTra } from '../core/vuViec';
+import type { CuocKiemTra, NgayISO, SuKien } from '../core/kieu';
+import { tinhMoc, kiemTraDanhDauBuoc, kiemTraBoDanhDau, ganXongVaoCuoc, boXongKhoiCuoc, ghiLyDoTreVaoCuoc, tickVaoCuoc, boTickKhoiCuoc, datNhatKyVaoCuoc, datNgayKhongLamTaiDN, ganSuKienVaoCuoc, xoaSuKienKhoiCuoc, type DuLieuXongBuoc, type KetQuaKiemTra } from '../core/vuViec';
 import { chonBoQuyTac } from '../core/quyTac';
 import type { ViecChecklist } from '../core/checklist';
 import { luuCuoc } from './hanhDong';
@@ -65,4 +65,17 @@ export async function datKhongXuongDN(cuocId: string, ngay: NgayISO, khong: bool
 
 export function bayGioHienTai(): string {
   return bayGio.value;
+}
+
+/** Lưu (thêm hoặc thay theo id) một sự kiện vào cuộc. */
+export async function luuSuKien(cuocId: string, sk: SuKien): Promise<void> {
+  const c = layCuoc(cuocId);
+  if (c) await luuCuoc(ganSuKienVaoCuoc(c, sk));
+}
+
+export async function xoaSuKien(cuocId: string, id: string): Promise<SuKien | undefined> {
+  const c = layCuoc(cuocId);
+  const sk = c?.suKien.find((s) => s.id === id);
+  if (c && sk) await luuCuoc(xoaSuKienKhoiCuoc(c, id));
+  return sk;
 }

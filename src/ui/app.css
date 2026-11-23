@@ -314,3 +314,13 @@ table.bang td.so, table.bang th.so { text-align: right; }
 .dau-cuoc h2 { font-size: var(--co-the); }
 .banner-tiep { display: flex; flex-wrap: wrap; gap: var(--k2); align-items: center; padding: var(--k2) var(--k3); background: var(--chinh-nhat); border-radius: var(--bo-nut); margin-top: var(--k2); }
 .banner-tiep .noi-dung-tiep { flex: 1 1 220px; min-width: 0; }
+
+.luoi-su-kien { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--k2); }
+@media (min-width: 768px) { .luoi-su-kien { grid-template-columns: repeat(3, 1fr); } }
+.nut-su-kien { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-height: 76px; padding: var(--k3); background: var(--be-mat); border: 1px solid var(--vien); border-radius: var(--bo-nut); cursor: pointer; text-align: left; color: var(--chu); }
+.nut-su-kien:hover:not([disabled]) { border-color: var(--chinh); background: var(--chinh-nhat); }
+.nut-su-kien[disabled] { opacity: 0.55; cursor: not-allowed; }
+.nut-su-kien .bt { font-size: 22px; }
+.ds-su-kien { list-style: none; margin: 0; padding: 0; }
+.ds-su-kien li { display: flex; gap: var(--k3); justify-content: space-between; padding: var(--k3) 0; border-top: 1px solid var(--vien); align-items: flex-start; }
+.ds-su-kien li:first-child { border-top: 0; }

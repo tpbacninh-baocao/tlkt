@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { boTickKhoiCuoc, boXongKhoiCuoc, datNgayKhongLamTaiDN, datNhatKyVaoCuoc, ganXongVaoCuoc, ghiLyDoTreVaoCuoc, nhanBanCuocTho, taoCuocRong, tickVaoCuoc } from '../src/core/vuViec';
+import type { SuKien } from '../src/core/kieu';
+import { moTaSuKien, xoaSuKienKhoiCuoc, ganSuKienVaoCuoc as ganSK, boTickKhoiCuoc, boXongKhoiCuoc, datNgayKhongLamTaiDN, datNhatKyVaoCuoc, ganXongVaoCuoc, ghiLyDoTreVaoCuoc, nhanBanCuocTho, taoCuocRong, tickVaoCuoc } from '../src/core/vuViec';
 
 const goc = () => taoCuocRong({ id: 'c', ma: 'KT-1', taoLuc: 'x' });
 
@@ -79,5 +80,51 @@ describe('Nhân bản cuộc', () => {
     expect(b.hanNgoai).toBeUndefined();
     expect(b.vanBanGiao).toBeUndefined();
     expect(b.taoLuc).toBe('2026-11-23T08:00');
+  });
+});
+
+
+describe('Sự kiện trong cuộc', () => {
+  const sk = (o: Record<string, unknown>): SuKien => ({ id: 's1', taoLuc: '2026-10-20T08:00', ...o }) as SuKien;
+  it('thêm, thay theo id, xóa; giữ thứ tự theo thời gian tạo', () => {
+    let c = taoCuocRong({ id: 'c', ma: 'KT-1', taoLuc: 'x' });
+    c = ganSK(c, sk({ loai: 'GIAI_TRINH', ngay: '2026-11-05' }));
+    c = ganSK(c, sk({ id: 's0', taoLuc: '2026-10-19T08:00', loai: 'TOI_PHAM', ngayPhatHien: '2026-10-19' }));
+    expect(c.suKien.map((s) => s.id)).toEqual(['s0', 's1']);
+    c = ganSK(c, sk({ loai: 'GIAI_TRINH', ngay: '2026-11-06' }));
+    expect(c.suKien).toHaveLength(2);
+    expect(c.suKien[1].ngay).toBe('2026-11-06');
+    expect(xoaSuKienKhoiCuoc(c, 's0').suKien.map((s) => s.id)).toEqual(['s1']);
+  });
+  it('cùng phút: giữ đúng thứ tự thêm, và sửa không làm nhảy vị trí', () => {
+    let c = taoCuocRong({ id: 'c', ma: 'KT-1', taoLuc: 'x' });
+    for (const id of ['z', 'a', 'm']) c = ganSK(c, sk({ id, loai: 'GIAI_TRINH', ngay: '2026-11-05' }));
+    expect(c.suKien.map((s) => s.id)).toEqual(['z', 'a', 'm']);
+    c = ganSK(c, sk({ id: 'a', loai: 'GIAI_TRINH', ngay: '2026-11-09' }));
+    expect(c.suKien.map((s) => s.id)).toEqual(['z', 'a', 'm']);
+    expect(c.suKien[1].ngay).toBe('2026-11-09');
+  });
+  it('điều chỉnh QĐ cập nhật đoàn/nội dung/thời kỳ và nhớ giá trị cũ, kể cả khi sửa lại', () => {
+    let c = taoCuocRong({ id: 'c', ma: 'KT-1', taoLuc: 'x', truongDoan: 'A', noiDung: 'GTGT', thoiKy: '2025' });
+    c = ganSK(c, sk({ loai: 'DIEU_CHINH', ngayQD: '2026-10-20', truongDoanMoi: 'B', noiDungMoi: 'GTGT, TNDN' }));
+    expect(c).toMatchObject({ truongDoan: 'B', noiDung: 'GTGT, TNDN', thoiKy: '2025' });
+    expect(c.suKien[0].truoc).toEqual({ truongDoan: 'A', noiDung: 'GTGT' });
+    c = ganSK(c, sk({ loai: 'DIEU_CHINH', ngayQD: '2026-10-21', truongDoanMoi: 'C', noiDungMoi: 'GTGT, TNDN' }));
+    expect(c.truongDoan).toBe('C');
+    expect(c.suKien[0].truoc).toEqual({ truongDoan: 'A', noiDung: 'GTGT' }); // vẫn là giá trị ban đầu
+  });
+  it('không điền “mới” thì không đổi gì và không có `truoc`', () => {
+    const c = ganSK(taoCuocRong({ id: 'c', ma: 'KT-1', taoLuc: 'x', truongDoan: 'A' }), sk({ loai: 'DIEU_CHINH', ngayQD: '2026-10-20', truongDoanMoi: '  ' }));
+    expect(c.truongDoan).toBe('A');
+    expect(c.suKien[0].truoc).toBeUndefined();
+  });
+  it('mô tả ngắn từng loại', () => {
+    expect(moTaSuKien(sk({ loai: 'TAM_DUNG', tuNgay: '2026-10-19', denNgay: '2026-10-23', lyDo: 'NNT báo bận' }))).toBe('Tạm dừng 19/10/2026 – 23/10/2026 (5 ngày) · NNT báo bận');
+    expect(moTaSuKien(sk({ loai: 'GIA_HAN', soNgay: 20, ngayDeNghi: '2026-10-26', ngayQD: '2026-10-27', soQD: '77' }))).toBe('Gia hạn 20 ngày · đề nghị 26/10/2026 · QĐ số 77 ngày 27/10/2026');
+    expect(moTaSuKien(sk({ loai: 'HOAN', ngay: '2026-10-10', denNgay: '2026-10-27', soVB: '5', lyDo: 'x' }))).toBe('Hoãn từ 10/10/2026 đến 27/10/2026 · TB số 5 · x');
+    expect(moTaSuKien(sk({ loai: 'TOI_PHAM', ngayPhatHien: '2026-10-20', noiDung: 'Hóa đơn khống' }))).toBe('Dấu hiệu tội phạm phát hiện 20/10/2026 · Hóa đơn khống');
+    for (const l of ['DIEU_CHINH', 'BAI_BO', 'GIAI_TRINH', 'PHUC_TAP', 'KHONG_NHAN_QD', 'TAM_GIU_TL', 'PHU_LUC_BB'] as const) {
+      expect(moTaSuKien(sk({ loai: l, ngay: '2026-10-20', ngayQD: '2026-10-20' })).length).toBeGreaterThan(5);
+    }
   });
 });

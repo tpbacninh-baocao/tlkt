@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T23
-- Nhiệm vụ xong gần nhất: T22
-- `npm run check`: sạch (416 đạt / 416 tổng; đã thử trong Chromium: bước khóa khi thiếu tiền đề, ngày trước D0 báo lỗi + khóa Lưu, quá hạn bắt buộc lý do trễ, sửa, bỏ đánh dấu có xác nhận)
+- Nhiệm vụ đang làm: T24
+- Nhiệm vụ xong gần nhất: T23
+- `npm run check`: sạch (421 đạt / 421 tổng; đã thử trong Chromium: tạm dừng 3 ngày (08/12→11/12), gia hạn 20 ngày (→31/12), 21 ngày bị chặn, gia hạn lần 2 bị khóa)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -109,6 +109,11 @@
 - Đã làm: ui/man/chiTietCuoc (đầu trang dính: NNT, trưởng đoàn, việc tiếp theo + ✓ Đánh dấu xong + Google Lịch, menu Sửa/Nhân bản/Xuất .ics/In/Xóa; 8 tab), ui/chiTiet/dongThoiGian (bước theo 6 giai đoạn, trạng thái SLA, căn cứ, biểu mẫu, bước tùy chọn/có điều kiện viền đứt, bước dự kiến nghiêng mờ; Xong…/Sửa/Bỏ đánh dấu; khóa nút kèm lý do khi thiếu bước trước), cột phải dòng thời gian mốc (máy tính), form Xong hỗ trợ sửa, nhanBanCuocTho, xuat.ts (tải .ics).
 - Test: 416 đạt / 416 tổng; đã thử trong Chromium: bước khóa khi thiếu tiền đề, ngày trước D0 báo lỗi + khóa Lưu, quá hạn bắt buộc lý do trễ, sửa, bỏ đánh dấu có xác nhận
 - Giả định đã chọn: Tab Sự kiện, Nhập hệ thống, Nhật ký, Tài liệu, Kết quả, Lưu trữ, Lịch sử hiện là chỗ giữ chỗ – hoàn thiện ở T23–T25.
+
+### 2026-11-23 – T23 Chi tiết cuộc – Tab Sự kiện (⭐)
+- Đã làm: ui/chiTiet/formSuKien (11 loại form theo rules, hướng dẫn từng loại, kiểm tra hợp lệ tức thì, khung “Hạn kết thúc sẽ đổi từ … thành …” + danh sách các hạn khác đổi, xác nhận khi có cảnh báo như gia hạn muộn hơn hạn T3), tabSuKien (lưới 11 nút mờ kèm lý do, danh sách sự kiện, sửa/xóa có Hoàn tác); core: ganSuKienVaoCuoc (Điều chỉnh QĐ cập nhật trưởng đoàn/nội dung/thời kỳ và lưu giá trị cũ), xoaSuKienKhoiCuoc, moTaSuKien.
+- Test: 421 đạt / 421 tổng; đã thử trong Chromium: tạm dừng 3 ngày (08/12→11/12), gia hạn 20 ngày (→31/12), 21 ngày bị chặn, gia hạn lần 2 bị khóa
+- Giả định đã chọn: Điều chỉnh QĐ: xóa/sửa sự kiện KHÔNG tự hoàn lại thông tin đoàn đã đổi (giá trị cũ lưu trong sự kiện để xem; chỉnh tay ở Sửa thông tin).
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

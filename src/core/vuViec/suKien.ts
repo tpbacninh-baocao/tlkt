@@ -1,6 +1,6 @@
 // Kiểm tra hợp lệ sự kiện và xem trước “hạn sẽ đổi từ … thành …” (SPEC §8, ARCHITECTURE §6).
 import type { CuocKiemTra, LoaiSuKien, NgayISO, SuKien } from '../kieu';
-import { dinhDangNgay, laNgayISO } from '../lich';
+import { dinhDangNgay, laNgayISO, soNgayGiua } from '../lich';
 import { tinhMoc, timMoc, type KetQuaTinhMoc, type NguCanhTinhMoc } from './tinhMoc';
 import type { KetQuaKiemTra } from './rangBuoc';
 
@@ -181,4 +181,40 @@ export function xemTruocSuKien(cuoc: CuocKiemTra, suKienMoi: SuKien, nc: NguCanh
     if (a !== b && !(m.trangThai === 'KHONG_AP_DUNG' && t?.trangThai === 'KHONG_AP_DUNG')) kq.push({ ma: m.ma, ten: m.ten, truoc: b, sau: a });
   }
   return kq;
+}
+
+const ngayVN = (v: unknown): string => (typeof v === 'string' && laNgayISO(v) ? dinhDangNgay(v) : String(v ?? ''));
+const chuoi = (v: unknown): string => (typeof v === 'string' ? v.trim() : '');
+
+/** Mô tả ngắn một sự kiện cho danh sách/lịch sử. */
+export function moTaSuKien(s: SuKien): string {
+  const them = (...p: (string | false | undefined)[]) => p.filter(Boolean).join(' · ');
+  switch (s.loai) {
+    case 'HOAN':
+      return them(`Hoãn từ ${ngayVN(s.ngay)} đến ${ngayVN(s.denNgay)}`, chuoi(s.soVB) && `TB số ${chuoi(s.soVB)}`, chuoi(s.lyDo));
+    case 'TAM_DUNG': {
+      const tu = s.tuNgay as string;
+      const den = s.denNgay as string;
+      const so = laNgayISO(tu) && laNgayISO(den) ? ` (${soNgayGiua(tu, den) + 1} ngày)` : '';
+      return them(`Tạm dừng ${ngayVN(tu)} – ${ngayVN(den)}${so}`, chuoi(s.soVB) && `TB số ${chuoi(s.soVB)}`, chuoi(s.lyDo));
+    }
+    case 'GIA_HAN':
+      return them(`Gia hạn ${String(s.soNgay)} ngày`, `đề nghị ${ngayVN(s.ngayDeNghi)}`, `QĐ ${chuoi(s.soQD) ? 'số ' + chuoi(s.soQD) + ' ' : ''}ngày ${ngayVN(s.ngayQD)}`);
+    case 'DIEU_CHINH':
+      return them(`Điều chỉnh QĐ ${chuoi(s.soQD) ? 'số ' + chuoi(s.soQD) + ' ' : ''}ngày ${ngayVN(s.ngayQD)}`, chuoi(s.noiDung));
+    case 'BAI_BO':
+      return them(`Bãi bỏ QĐ ${chuoi(s.soQD) ? 'số ' + chuoi(s.soQD) + ' ' : ''}ngày ${ngayVN(s.ngayQD)}`, chuoi(s.lyDo));
+    case 'GIAI_TRINH':
+      return them(`NNT giải trình ngày ${ngayVN(s.ngay)}`, chuoi(s.hinhThuc), chuoi(s.ghiChu));
+    case 'PHUC_TAP':
+      return them(`Vụ việc phức tạp (${ngayVN(s.ngay)})`, chuoi(s.lyDo));
+    case 'TOI_PHAM':
+      return them(`Dấu hiệu tội phạm phát hiện ${ngayVN(s.ngayPhatHien)}`, chuoi(s.noiDung));
+    case 'KHONG_NHAN_QD':
+      return them(`NNT không chấp hành (${ngayVN(s.ngay)})`, chuoi(s.ghiChu));
+    case 'TAM_GIU_TL':
+      return them(`Tạm giữ tài liệu ${ngayVN(s.ngay)}`, chuoi(s.noiDung), s.ngayTraDuKien ? `trả dự kiến ${ngayVN(s.ngayTraDuKien)}` : undefined);
+    case 'PHU_LUC_BB':
+      return them(`Phụ lục biên bản ${ngayVN(s.ngay)}`, chuoi(s.noiDung));
+  }
 }

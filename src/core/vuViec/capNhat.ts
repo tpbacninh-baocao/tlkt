@@ -1,5 +1,5 @@
 // Cập nhật thuần (không I/O) một cuộc: đánh dấu xong/bỏ đánh dấu bước, tích checklist, nhật ký iTNK, lý do trễ.
-import type { CuocKiemTra, NgayISO } from '../kieu';
+import type { CuocKiemTra, NgayISO, SuKien } from '../kieu';
 import type { ViecChecklist } from '../checklist';
 
 export interface DuLieuXongBuoc {
@@ -121,4 +121,46 @@ export function nhanBanCuocTho(c: CuocKiemTra, id: string, ma: string, bayGio: s
     taoLuc: bayGio,
     suaLuc: bayGio,
   };
+}
+
+
+/**
+ * Thêm hoặc thay (theo id) một sự kiện vào cuộc. Điều chỉnh QĐ (DIEU_CHINH) cập nhật thông tin đoàn/nội dung
+ * nếu có điền “…Moi”, và lưu lại giá trị cũ trong sự kiện (`truoc`) để xem lịch sử; không đổi hạn.
+ */
+export function ganSuKienVaoCuoc(cuoc: CuocKiemTra, sk: SuKien): CuocKiemTra {
+  let moi: CuocKiemTra = { ...cuoc, suKien: cuoc.suKien };
+  let skLuu: SuKien = sk;
+  if (sk.loai === 'DIEU_CHINH') {
+    const truoc: Record<string, unknown> = {};
+    const chu = (v: unknown) => (typeof v === 'string' && v.trim() ? v.trim() : undefined);
+    const td = chu(sk.truongDoanMoi);
+    const nd = chu(sk.noiDungMoi);
+    const tk = chu(sk.thoiKyMoi);
+    // khi sửa lại một điều chỉnh đã có, giữ nguyên giá trị "trước" ban đầu
+    const cu = cuoc.suKien.find((s) => s.id === sk.id);
+    const truocCu = (cu?.truoc ?? {}) as Record<string, unknown>;
+    if (td) {
+      truoc.truongDoan = truocCu.truongDoan ?? cuoc.truongDoan;
+      moi = { ...moi, truongDoan: td };
+    }
+    if (nd) {
+      truoc.noiDung = truocCu.noiDung ?? cuoc.noiDung;
+      moi = { ...moi, noiDung: nd };
+    }
+    if (tk) {
+      truoc.thoiKy = truocCu.thoiKy ?? cuoc.thoiKy;
+      moi = { ...moi, thoiKy: tk };
+    }
+    if (Object.keys(truoc).length) skLuu = { ...sk, truoc };
+  }
+  // thay tại chỗ nếu đã có (giữ vị trí), ngược lại thêm cuối; sắp ổn định theo thời gian tạo
+  const i = cuoc.suKien.findIndex((s) => s.id === sk.id);
+  const ds = i >= 0 ? cuoc.suKien.map((s, j) => (j === i ? skLuu : s)) : [...cuoc.suKien, skLuu];
+  moi.suKien = ds.sort((a, b) => (a.taoLuc < b.taoLuc ? -1 : a.taoLuc > b.taoLuc ? 1 : 0));
+  return moi;
+}
+
+export function xoaSuKienKhoiCuoc(cuoc: CuocKiemTra, id: string): CuocKiemTra {
+  return { ...cuoc, suKien: cuoc.suKien.filter((s) => s.id !== id) };
 }
