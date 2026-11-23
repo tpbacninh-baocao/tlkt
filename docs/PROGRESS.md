@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T24
-- Nhiệm vụ xong gần nhất: T23
-- `npm run check`: sạch (421 đạt / 421 tổng; đã thử trong Chromium: tạm dừng 3 ngày (08/12→11/12), gia hạn 20 ngày (→31/12), 21 ngày bị chặn, gia hạn lần 2 bị khóa)
+- Nhiệm vụ đang làm: T25
+- Nhiệm vụ xong gần nhất: T24
+- `npm run check`: sạch (422 đạt / 422 tổng; đã thử trong Chromium: lọc iTNK, Sao chép → clipboard đúng nội dung, tích làm giảm 6→5)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -114,6 +114,11 @@
 - Đã làm: ui/chiTiet/formSuKien (11 loại form theo rules, hướng dẫn từng loại, kiểm tra hợp lệ tức thì, khung “Hạn kết thúc sẽ đổi từ … thành …” + danh sách các hạn khác đổi, xác nhận khi có cảnh báo như gia hạn muộn hơn hạn T3), tabSuKien (lưới 11 nút mờ kèm lý do, danh sách sự kiện, sửa/xóa có Hoàn tác); core: ganSuKienVaoCuoc (Điều chỉnh QĐ cập nhật trưởng đoàn/nội dung/thời kỳ và lưu giá trị cũ), xoaSuKienKhoiCuoc, moTaSuKien.
 - Test: 421 đạt / 421 tổng; đã thử trong Chromium: tạm dừng 3 ngày (08/12→11/12), gia hạn 20 ngày (→31/12), 21 ngày bị chặn, gia hạn lần 2 bị khóa
 - Giả định đã chọn: Điều chỉnh QĐ: xóa/sửa sự kiện KHÔNG tự hoàn lại thông tin đoàn đã đổi (giá trị cũ lưu trong sự kiện để xem; chỉnh tay ở Sửa thông tin).
+
+### 2026-11-23 – T24 Tab Nhập hệ thống + màn Nhập liệu còn thiếu
+- Đã làm: ui/chiTiet/tabNhapHeThong + hangNhapLieu (3 nhóm TTR/iTNK/TMS, tiến độ x/y, tích/bỏ tích, chặn tích khi chưa đủ điều kiện kèm lý do, nút Sao chép khối thông tin đúng thứ tự trường), ui/man/nhapLieu (gom mọi cuộc, lọc hệ thống + mức khẩn, nhóm theo cuộc, nhắc chốt số liệu ngày 15/cuối tháng), core/viec/chotSoLieu.
+- Test: 422 đạt / 422 tổng; đã thử trong Chromium: lọc iTNK, Sao chép → clipboard đúng nội dung, tích làm giảm 6→5
+- Giả định đã chọn: Mốc chốt số liệu: ngày 15 và ngày cuối tháng, rơi ngày nghỉ thì lùi về ngày làm việc trước.
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

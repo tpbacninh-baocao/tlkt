@@ -221,3 +221,14 @@ describe('Trạng thái, nhóm, ưu tiên của việc', () => {
     expect(ds.map((v) => v.id)).toEqual(['c', 'b', 'a']);
   });
 });
+
+import { cacMocChot, mocChotGanNhat } from '../src/core/viec';
+
+describe('Mốc chốt số liệu', () => {
+  it('gần nhất là ngày 15 hoặc cuối tháng; lùi về ngày làm việc trước', () => {
+    const k = cacMocChot(lich, '2026-11-23');
+    expect(k.map((m) => [m.ma, m.ngay, m.conLaiNLV])).toEqual([['CHOT_CUOI_THANG', '2026-11-30', 5], ['CHOT_15', '2026-12-15', 16]]);
+    expect(mocChotGanNhat(lich, '2026-11-10')).toMatchObject({ ma: 'CHOT_15', ngay: '2026-11-13', conLaiNLV: 3 }); // 15/11 Chủ nhật → thứ Sáu 13/11
+    expect(mocChotGanNhat(lich, '2026-11-13')).toMatchObject({ ngay: '2026-11-13', conLaiNLV: 0 });
+  });
+});
