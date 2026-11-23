@@ -232,3 +232,24 @@ export function tinhMoc(cuoc: CuocKiemTra, nc: NguCanhTinhMoc): KetQuaTinhMoc {
 export function timMoc(kq: KetQuaTinhMoc, ma: string): MocTinh | undefined {
   return kq.danhSach.find((m) => m.ma === ma);
 }
+
+const THU_TU_GD_BUOC = ['CHUAN_BI', 'CHO_CONG_BO', 'DANG_KIEM_TRA', 'BIEN_BAN', 'CHO_QD_XU_LY', 'SAU_QD', 'BAT_KY'];
+
+/** Chỉ số giai đoạn hiện tại theo mốc thực tế đã có (0 = chuẩn bị … 5 = sau QĐ). */
+export function chiSoGiaiDoanTienDo(cuoc: CuocKiemTra): number {
+  const x = (ma: string) => !!cuoc.buoc[ma]?.xong;
+  if (x('X')) return 5;
+  if (x('B4')) return 4;
+  if (x('T7')) return 3;
+  if (x('Q5')) return 2;
+  if (x('P5')) return 1;
+  return 0;
+}
+
+/**
+ * Bước NỘI BỘ (hoặc không có hạn pháp lý) của một giai đoạn đã qua mà chưa được đánh dấu – ví dụ P2–P4 khi QĐ đã ban hành.
+ * Không nên nhắc/hiện “quá hạn” cho các bước này ở màn Hôm nay, nhắc việc, bản tin (vẫn hiện trong dòng thời gian của cuộc).
+ */
+export function laBuocNoiBoDaQua(cuoc: CuocKiemTra, m: MocTinh): boolean {
+  return (m.noiBo || !m.hanPhapLy) && THU_TU_GD_BUOC.indexOf(m.giaiDoan) < chiSoGiaiDoanTienDo(cuoc);
+}

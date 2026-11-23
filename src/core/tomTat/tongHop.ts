@@ -3,7 +3,7 @@ import type { MocTinh, NgayISO, TrangThaiMoc } from '../kieu';
 import { demNLV } from '../lich';
 import type { ViecChecklist } from '../checklist';
 import { nhanCuoc } from '../nhacViec/anDanh';
-import { diemUuTienMoc, tinhDiem, mucSLA, type MucSLA } from '../vuViec';
+import { diemUuTienMoc, laBuocNoiBoDaQua, tinhDiem, mucSLA, type MucSLA } from '../vuViec';
 import { diemUuTienViec, trangThaiViec } from '../viec/viec';
 import { anDanhHieuLuc, phanTichCuoc, soNhapLieuThieu, tenNgan, type DuLieuTomTat, type PhanTichCuoc } from './phanTich';
 
@@ -83,6 +83,7 @@ export function cacMucViecDangMo(d: DuLieuTomTat, phanTich?: PhanTichCuoc[]): Mu
     for (const m of p.kq.danhSach) {
       if (p.cuoc.buoc[m.ma]?.xong || m.trangThai === 'KHONG_AP_DUNG' || m.duKien) continue;
       if (['hanTinh', 'hangNgay', 'theoDoi', 'tuyChon'].includes(m.loai)) continue;
+      if (laBuocNoiBoDaQua(p.cuoc, m)) continue;
       ds.push(mucTuMoc(p, m, d));
     }
     for (const v of p.checklist) {

@@ -3,7 +3,7 @@
 import type { NgayGio, NgayISO } from '../kieu';
 import { congPhutNgayGio, dinhDangNgay, thuNgan } from '../lich';
 import { chonBoQuyTac } from '../quyTac';
-import { tinhMoc } from '../vuViec/tinhMoc';
+import { laBuocNoiBoDaQua, tinhMoc } from '../vuViec/tinhMoc';
 import { nhanCuoc } from './anDanh';
 import type { DuLieuNhac } from './sinhNhac';
 
@@ -106,7 +106,7 @@ export function sinhSuKienLich(d: DuLieuNhac, tuNgay: NgayISO, denNgay: NgayISO,
     const ten = nhanCuoc(c, d.caiDat.anDanh);
     for (const m of kq.danhSach) {
       if (c.buoc[m.ma]?.xong || m.trangThai === 'KHONG_AP_DUNG' || m.duKien) continue;
-      if (['hanTinh', 'hangNgay', 'theoDoi'].includes(m.loai)) continue;
+      if (['hanTinh', 'hangNgay', 'theoDoi'].includes(m.loai) || laBuocNoiBoDaQua(c, m)) continue;
       const ten2 = m.ten.replace(/\s*\(= [A-Z0-9]+\)/g, '');
       const moTa = `${ten2}\nCăn cứ: ${m.canCu}${m.bieuMau.length ? '\nBiểu mẫu: ' + m.bieuMau.join(', ') : ''}`;
       if (m.hanMucTieu && trong(m.hanMucTieu)) {

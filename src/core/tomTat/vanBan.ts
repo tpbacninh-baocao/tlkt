@@ -11,7 +11,7 @@ import {
 } from '../lich';
 import { suKienGiaHan, tongNgayTamDung } from '../quyTac';
 import { TEN_GIAI_DOAN } from '../vuViec/giaiDoan';
-import { timMoc } from '../vuViec/tinhMoc';
+import { laBuocNoiBoDaQua, timMoc } from '../vuViec/tinhMoc';
 import { anDanhHieuLuc, phanTichCuoc, soNhapLieuThieu, tenNgan, type DuLieuTomTat, type PhanTichCuoc } from './phanTich';
 import { tongHopHomNay, type MucViec } from './tongHop';
 
@@ -230,7 +230,7 @@ export function baoCaoTuan(d: DuLieuTomTat, ngayTrongTuan: NgayISO): string {
   dong.push(`3. Tồn đọng, quá hạn: ${th.quaHan.length}`, ...nhomDong(th.quaHan, 8));
 
   const sau = th.phanTich
-    .flatMap((p) => p.kq.danhSach.filter((m) => !p.cuoc.buoc[m.ma]?.xong && !m.duKien && m.trangThai !== 'KHONG_AP_DUNG' && !['hanTinh', 'hangNgay', 'theoDoi', 'tuyChon'].includes(m.loai)).map((m) => ({ p, m })))
+    .flatMap((p) => p.kq.danhSach.filter((m) => !p.cuoc.buoc[m.ma]?.xong && !m.duKien && m.trangThai !== 'KHONG_AP_DUNG' && !['hanTinh', 'hangNgay', 'theoDoi', 'tuyChon'].includes(m.loai) && !laBuocNoiBoDaQua(p.cuoc, m)).map((m) => ({ p, m })))
     .filter(({ m }) => {
       const h = hanCuaMoc(m);
       return h && h >= dauSau && h <= cuoiSau;

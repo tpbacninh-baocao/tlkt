@@ -10,7 +10,7 @@ import { sinhChecklist, viecConThieu, type ViecChecklist } from '../checklist';
 import { chonBoQuyTac, layBuoc, suKienGiaHan, tongNgayTamDung, type VaQuyTac } from '../quyTac';
 import { dongHoYeuCau } from '../vuViec/dongHo';
 import { tinhGiaiDoan } from '../vuViec/giaiDoan';
-import { tinhMoc, type KetQuaTinhMoc } from '../vuViec/tinhMoc';
+import { laBuocNoiBoDaQua, tinhMoc, type KetQuaTinhMoc } from '../vuViec/tinhMoc';
 import { laNgayTaiDN, viecTiepTheo } from '../vuViec/viecTiepTheo';
 import type { BoQuyTac } from '../kieu';
 
@@ -93,7 +93,7 @@ export function phanTichCuoc(c: CuocKiemTra, d: DuLieuTomTat): PhanTichCuoc {
     taiDNHomNay: laNgayTaiDN(c, kq, lich, homNay),
     nhatKyDaGhiHomNay: !!c.nhatKy[homNay]?.daGhiITNK,
     nhatKyThieu,
-    soBuocQuaHan: kq.danhSach.filter((m) => m.trangThai === 'QUA_HAN' && !m.duKien).length,
+    soBuocQuaHan: kq.danhSach.filter((m) => m.trangThai === 'QUA_HAN' && !m.duKien && !laBuocNoiBoDaQua(c, m)).length,
   };
 }
 

@@ -2,7 +2,7 @@
 import type { CuocKiemTra, MocTinh, NgayISO } from '../kieu';
 import { congNgayThuan, demNLV, laNgayLamViec, type Lich } from '../lich';
 import { tongNgayTamDung } from '../quyTac';
-import type { KetQuaTinhMoc } from './tinhMoc';
+import { laBuocNoiBoDaQua, type KetQuaTinhMoc } from './tinhMoc';
 
 // ---------- Mức SLA hiển thị ----------
 export type MucSLA =
@@ -37,30 +37,16 @@ export function mucSLA(m: MocTinh): MucSLA {
 }
 
 // ---------- Việc tiếp theo ----------
-const THU_TU_GD = ['CHUAN_BI', 'CHO_CONG_BO', 'DANG_KIEM_TRA', 'BIEN_BAN', 'CHO_QD_XU_LY', 'SAU_QD', 'BAT_KY'];
-
-function chiSoGiaiDoanHienTai(cuoc: CuocKiemTra): number {
-  const x = (ma: string) => !!cuoc.buoc[ma]?.xong;
-  if (x('X')) return 5;
-  if (x('B4')) return 4;
-  if (x('T7')) return 3;
-  if (x('Q5')) return 2;
-  if (x('P5')) return 1;
-  return 0;
-}
-
 /**
  * Việc tiếp theo = bước đầu tiên theo thứ tự có loại {bước, mốc, điều kiện (thỏa), theo dõi nộp tiền},
  * chưa xong và áp dụng được. Bước NỘI BỘ (hoặc không có hạn pháp lý) của giai đoạn đã qua bị bỏ qua
  * để không nhắc P1–P4 khi QĐ kiểm tra đã ban hành.
  */
 export function viecTiepTheo(cuoc: CuocKiemTra, kq: KetQuaTinhMoc): MocTinh | undefined {
-  const hienTai = chiSoGiaiDoanHienTai(cuoc);
   return kq.danhSach.find((m) => {
     if (!['buoc', 'moc', 'dieuKien', 'theoDoiNopTien'].includes(m.loai)) return false;
     if (cuoc.buoc[m.ma]?.xong || m.trangThai === 'KHONG_AP_DUNG') return false;
-    if ((m.noiBo || !m.hanPhapLy) && THU_TU_GD.indexOf(m.giaiDoan) < hienTai) return false;
-    return true;
+    return !laBuocNoiBoDaQua(cuoc, m);
   });
 }
 

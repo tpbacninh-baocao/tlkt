@@ -18,7 +18,7 @@ import { sinhChecklist } from '../checklist';
 import { hanCuaKeHoach } from '../keHoach';
 import { chonBoQuyTac, type VaQuyTac } from '../quyTac';
 import { changDangChay, dongHoVuongMac, dongHoYeuCau, hanYeuCauTaiLieu } from '../vuViec/dongHo';
-import { tinhMoc } from '../vuViec/tinhMoc';
+import { laBuocNoiBoDaQua, tinhMoc } from '../vuViec/tinhMoc';
 import { laNgayTaiDN } from '../vuViec/viecTiepTheo';
 import { nhanCuoc } from './anDanh';
 import { canNhacSaoLuu } from './saoLuu';
@@ -168,6 +168,7 @@ function nguonCuaCuoc(c: CuocKiemTra, d: DuLieuNhac, anDanh: boolean, tuNgay: Ng
   for (const m of kq.danhSach) {
     if (c.buoc[m.ma]?.xong || m.trangThai === 'KHONG_AP_DUNG' || m.duKien) continue;
     if (['hanTinh', 'hangNgay', 'theoDoi', 'theoDoiNopTien'].includes(m.loai)) continue;
+    if (laBuocNoiBoDaQua(c, m)) continue;
     const han = m.noiBo ? m.hanMucTieu : m.hanMucTieu ?? m.hanPhapLy;
     if (!han) continue;
     const kieu: KieuHan = m.loai === 'tuyChon' ? 'TUY_CHON' : m.noiBo ? 'NOI_BO' : 'PHAP_LY';

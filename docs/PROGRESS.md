@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T16
-- Nhiệm vụ xong gần nhất: T15
-- `npm run check`: sạch (320 đạt / 320 tổng)
+- Nhiệm vụ đang làm: T17
+- Nhiệm vụ xong gần nhất: T16
+- `npm run check`: sạch (386 đạt / 386 tổng (kiểm thử trên 7 ngày hôm nay khác nhau))
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -79,6 +79,11 @@
 - Đã làm: data/saoLuu: tệp .tlkt.json (TLKT-sao-luu-YYYYMMDD), mã hóa nếu đã bật mật mã (mật mã lúc tạo tệp), nhập Thay thế / Gộp theo suaLuc, báo cáo thêm/cập nhật/giữ nguyên/bỏ qua, kiểm tra tệp hỏng/sai định dạng/phiên bản mới, nhắc sao lưu thứ Sáu 15:45 nếu quá 7 ngày (core/nhacViec/saoLuu + sinhLichNhac).
 - Test: 320 đạt / 320 tổng
 - Giả định đã chọn: Tệp sao lưu mã hóa dùng mật mã tại thời điểm tạo tệp (không phải mật mã hiện tại nếu đã đổi sau đó). Nhắc sao lưu chỉ sinh khi truyền saoLuuCuoi (null = chưa từng sao lưu).
+
+### 2026-11-23 – T16 Dữ liệu mẫu
+- Đã làm: data/mau: 6 cuộc ở 6 giai đoạn (đang KT tại DN, chờ công bố, biên bản, GDLK chờ QĐ có giải trình, bãi bỏ, chuyển tiếp 970 theo dõi nộp tiền) tính theo ngày hôm nay, 1 kế hoạch năm, 10 việc (lặp lại, quá hạn, hôm nay, hộp thu, đã xong, ghim), 3 khối thời gian; themDuLieuMau (không nhân đôi), xoaDuLieuMau (chỉ xóa bản ghi có cờ mẫu), coDuLieuMau. Thêm core laBuocNoiBoDaQua: bỏ bước nội bộ của giai đoạn đã qua khỏi Hôm nay/nhắc/bản tin/.ics.
+- Test: 386 đạt / 386 tổng (kiểm thử trên 7 ngày hôm nay khác nhau)
+- Giả định đã chọn: Cuộc mẫu chuyển tiếp QTKT-970 dùng ngày cố định (bộ 970 chỉ áp cho QĐ trước 01/7/2026). Bước nội bộ (P2–P4, …) của giai đoạn đã qua không còn hiện ‘quá hạn’ ở Hôm nay/nhắc việc nhưng vẫn thấy trong dòng thời gian cuộc.
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.
