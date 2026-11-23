@@ -3,6 +3,7 @@ import { describe, it, expect } from 'vitest';
 import kichBan from './kich-ban-han.json';
 import { congGioLV, lichTronTru, taoLich } from '../src/core/lich';
 import { chonBoQuyTac, giaiBoQuyTac } from '../src/core/quyTac';
+import { nhanDienHan } from '../src/core/viec';
 import { taoCuocRong, tinhMoc, timMoc } from '../src/core/vuViec';
 import type { CuocKiemTra, SuKien } from '../src/core/kieu';
 
@@ -30,9 +31,11 @@ for (const nhom of kichBan.nhom as Nhom[]) {
   describe(nhom.ten, () => {
     const lich = taoLich({ ngayNghiThem: [...(kichBan.ngayNghiMacDinh as string[]), ...(nhom.ngayNghi ?? [])] });
     for (const ca of nhom.ca) {
-      // Nhóm N (nhận diện hạn tiếng Việt): bật ở T09 khi có core/viec/nhanDienHan.
-      const chay = ca.cau === undefined ? it : it.skip;
-      chay(`${ca.id}: ${ca.moTa ?? ca.cau}`, () => {
+      it(`${ca.id}: ${ca.moTa ?? ca.cau}`, () => {
+        if (ca.cau !== undefined) {
+          expect(nhanDienHan(ca.cau, nhom.ngayGoc!, lichTronTru()).han ?? null).toBe(ca.ketQua);
+          return;
+        }
         if (ca.gioLamViec !== undefined) {
           expect(congGioLV(lichTronTru(), ca.dauVao.luc, ca.gioLamViec)).toBe(ca.ketQua);
           return;

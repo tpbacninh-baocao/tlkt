@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T09
-- Nhiệm vụ xong gần nhất: T08
-- `npm run check`: sạch (181 đạt / 189 tổng (8 skip nhóm N))
+- Nhiệm vụ đang làm: T10
+- Nhiệm vụ xong gần nhất: T09
+- `npm run check`: sạch (218 đạt / 218 tổng (N01–N08 đạt thật))
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -49,6 +49,11 @@
 - Đã làm: core/checklist: danh mục từ rules JSON, sinh việc theo mốc/sự kiện/điều kiện (KL hay QĐ xử phạt)/lần nộp tiền, hạn = phát sinh + 1 NLV, chặn tích ITNK_HT khi chưa xong ITNK_KT + ITNK_BCKQ, tên chức năng ghi đè, nhật ký hằng ngày tại DN, nội dung Sao chép thông tin, tiến độ/checklistDu/việc còn thiếu.
 - Test: 181 đạt / 189 tổng (8 skip nhóm N)
 - Giả định đã chọn: Việc chỉ sinh khi mốc đã có ngày THỰC TẾ (mốc dự kiến không sinh). Bãi bỏ: chỉ giữ việc hủy (TTR_HUY, ITNK_HUY), việc khác chưa tích → không áp dụng. Khóa tích: MA hoặc MA#<id sự kiện/lần nộp>.
+
+### 2026-11-23 – T09 Việc ngoài cuộc
+- Đã làm: core/viec: cú pháp lặp (NGAY, TUAN, THANG, THANG:CUOI[-n], QUY:CUOI-n, NAM), lần kế tiếp, hoàn thành + tạo lần sau, mẫu việc thường xuyên + đồng bộ, nhận diện hạn tiếng Việt, nhóm/SLA/điểm ưu tiên. Bật lại 8 ca nhóm N trong acceptance.
+- Test: 218 đạt / 218 tổng (N01–N08 đạt thật)
+- Giả định đã chọn: THANG:CUOI-n trừ n NGÀY LỊCH rồi lùi về ngày làm việc trước. Việc xong muộn → lần kế tiếp bỏ qua các lần đã trôi qua. Điểm ưu tiên việc ngoài cuộc: lãnh đạo giao +2, hệ số 1,5 (LANH_DAO/VAN_BAN/THUONG_XUYEN) hoặc 1 (TU_DAT).
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

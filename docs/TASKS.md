@@ -25,7 +25,7 @@ Tài liệu tham chiếu: SPEC = `docs/SPEC.md` · ARCH = `docs/ARCHITECTURE.md`
   *Chấp nhận:* W01–W04; test vướng mắc; test thời hiệu.
 - [x] **T08 Checklist hệ thống** (`core/checklist`): sinh việc từ `rules/checklist-he-thong.json` theo mốc/sự kiện/điều kiện/lần nộp tiền; hạn = ngày phát sinh + `hanNhapLieuNLV`; nội dung “Sao chép thông tin” theo `saoChep` (ARCH §5); tên chức năng ghi đè được; việc nhật ký hằng ngày.
   *Chấp nhận:* test một cuộc đi từ D0 đến X sinh đúng số việc từng mốc; có GIA_HAN/TAM_DUNG/BAI_BO sinh thêm đúng việc; 2 lần nộp tiền → 2 việc TTR_NOP.
-- [ ] **T09 Việc ngoài cuộc** (`core/viec`): lặp lại (ARCH §7), tạo lần kế tiếp, mẫu từ `rules/mau-viec-thuong-xuyen.json`, **nhận diện hạn tiếng Việt**.
+- [x] **T09 Việc ngoài cuộc** (`core/viec`): lặp lại (ARCH §7), tạo lần kế tiếp, mẫu từ `rules/mau-viec-thuong-xuyen.json`, **nhận diện hạn tiếng Việt**.
   *Chấp nhận:* N01–N08 đạt; test mỗi kiểu `lap`.
 - [ ] **T10 Nhắc việc** (`core/nhacViec`): `sinhLichNhac` theo bảng ARCH §8.1; giờ yên lặng; khóa ổn định; tạo chuỗi `.ics` (RFC 5545: CRLF, gập dòng, escape, UID ổn định, VALARM) và link Google Lịch; ẩn danh.
   *Chấp nhận:* test số nhắc cho 1 hạn; test nhật ký 16:30/17:15/07:45; .ics được kiểm tra cấu trúc bằng test (BEGIN/END cân, dòng ≤ 75 octet).
