@@ -1,6 +1,5 @@
 // Bảng ánh xạ route → màn hình.
 import { route } from '../store';
-import { ManTam } from './manTam';
 import { ManHomNay } from './homNay';
 import { ManCuoc } from './dsCuoc';
 import { ManChiTietCuoc } from './chiTietCuoc';
@@ -11,6 +10,10 @@ import { ManKeHoachNgay } from './keHoachNgay';
 import { ManKeHoachNam } from './keHoachNam';
 import { ManBaoCao } from './baoCao';
 import { ManCaiDat } from './caiDat';
+import { ManCanCu } from './canCu';
+import { ManGioiThieu } from './gioiThieu';
+import { ManKiemThu } from './kiemThu';
+import { ManThungRac } from './thungRac';
 
 export function ManHienTai() {
   const r = route.value;
@@ -35,7 +38,13 @@ export function ManHienTai() {
       return <ManBaoCao />;
     case 'cai-dat':
       return <ManCaiDat />;
-    default:
-      return <ManTam ten={r.man} />;
+    case 'can-cu':
+      return <ManCanCu />;
+    case 'gioi-thieu':
+      return <ManGioiThieu />;
+    case 'kiem-thu':
+      return <ManKiemThu />;
+    case 'thung-rac':
+      return <ManThungRac />;
   }
 }

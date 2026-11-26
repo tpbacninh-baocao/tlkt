@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T32
-- Nhiệm vụ xong gần nhất: T31
-- `npm run check`: sạch (442 đạt / 442 tổng; kiểm tra trên Chromium: sửa số ngày → khôi phục mặc định, đặt/tắt mật mã, sao lưu → xóa mẫu → khôi phục, đổi giao diện tối)
+- Nhiệm vụ đang làm: T33
+- Nhiệm vụ xong gần nhất: T32
+- `npm run check`: sạch (444 đạt / 444 tổng; Chromium: Kiểm thử 39/39 đạt, thùng rác xóa→khôi phục OK)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -151,6 +151,10 @@
 ### 2026-11-23 – T31 Cài đặt
 - Đã làm: Màn Cài đặt 6 nhóm: hồ sơ/giờ làm việc/ngày nghỉ/việc thường xuyên; quy tắc thời hạn sửa từng bước, khôi phục mặc định, chế độ thận trọng, tên chức năng hệ thống; nhắc việc; mật mã (đặt/đổi/tắt, khóa tự động, ẩn danh); giao diện; sao lưu/khôi phục, dữ liệu mẫu, xóa toàn bộ
 - Test: 442 đạt / 442 tổng; kiểm tra trên Chromium: sửa số ngày → khôi phục mặc định, đặt/tắt mật mã, sao lưu → xóa mẫu → khôi phục, đổi giao diện tối
+
+### 2026-11-23 – T32 Căn cứ & hướng dẫn, Kiểm thử, Giới thiệu, Thùng rác
+- Đã làm: Màn Căn cứ (văn bản, bảng quy trình theo giai đoạn có trích dẫn, chuyển tiếp, biểu mẫu, điểm chưa xác nhận, hướng dẫn 5 bước + cài màn hình chính + thêm lịch); màn Kiểm thử chạy lại 39 ca kich-ban-han.json ngay trong trình duyệt (tách bộ chạy dùng chung src/core/kiemThu); Giới thiệu (phiên bản, ngày build); Thùng rác khôi phục/xóa vĩnh viễn
+- Test: 444 đạt / 444 tổng; Chromium: Kiểm thử 39/39 đạt, thùng rác xóa→khôi phục OK
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

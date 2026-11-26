@@ -58,7 +58,7 @@ Tài liệu tham chiếu: SPEC = `docs/SPEC.md` · ARCH = `docs/ARCHITECTURE.md`
 - [x] **T29 Kế hoạch năm** + quản lý kế hoạch + biểu đồ SVG (UI §4.11).
 - [x] **T30 Báo cáo & tóm tắt** + trang in (UI §4.12).
 - [x] **T31 Cài đặt** đủ các nhóm UI §4.13, gồm bảng sửa quy tắc có trích dẫn và Khôi phục mặc định.
-- [ ] **T32 Căn cứ & hướng dẫn** + màn Kiểm thử trong app (UI §4.14, §4.15) + Giới thiệu (phiên bản, ngày build).
+- [x] **T32 Căn cứ & hướng dẫn** + màn Kiểm thử trong app (UI §4.14, §4.15) + Giới thiệu (phiên bản, ngày build).
 
 ## Phase 4 – Nhắc việc, nhập/xuất, PWA
 - [ ] **T33 ⭐ Bộ phát nhắc trong app**: vòng 30 giây, toast + Notification (xin quyền có giải thích), âm báo, “Hoãn 15 phút / 1 giờ / sáng mai”, danh sách nhắc ở chuông 🔔, không phát trùng.

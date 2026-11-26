@@ -431,3 +431,6 @@ table.bang td.so, table.bang th.so { text-align: right; }
   details:not([open]) > *:not(summary) { display: block !important; }
 }
 tr.da-sua td { background: var(--nen-canh-bao); }
+.luoi-thong-tin { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; margin: 8px 0 0; }
+.luoi-thong-tin dt { color: var(--chu-phu); }
+.luoi-thong-tin dd { margin: 0; font-weight: 600; }
