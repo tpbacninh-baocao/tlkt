@@ -3,8 +3,8 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T30
-- Nhiệm vụ xong gần nhất: T29
+- Nhiệm vụ đang làm: T31
+- Nhiệm vụ xong gần nhất: T30
 - `npm run check`: sạch (440 đạt / 440 tổng; -)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
@@ -142,6 +142,10 @@
 
 ### 2026-11-23 – T29 Kế hoạch năm + biểu đồ
 - Đã làm: ui/man/keHoachNam + bieuDo: chọn năm/kế hoạch, 6 ô KPI số cuộc, 6 ô tiền (truy thu, phạt, chậm nộp, giảm khấu trừ, giảm lỗ, đã nộp/phải nộp), biểu đồ SVG tích lũy theo tháng (thực tế vs đường lý tưởng, có bảng thay thế cho trình đọc màn hình) + cột theo giai đoạn, cảnh báo (quá tháng dự kiến, cuối năm Đ15.5.e, hạn công khai 30 ngày, báo cáo chuyên đề), tồn chuyển năm sau; quản lý kế hoạch (thêm/sửa/xóa mềm có Hoàn tác, hạn công khai/báo cáo kèm SLA).
+- Test: 440 đạt / 440 tổng; -
+
+### 2026-11-23 – T30 Báo cáo & tóm tắt + trang in
+- Đã làm: ui/man/baoCao: 4 loại văn bản (bản tin sáng, báo cáo tiến độ đoàn, báo cáo tuần, tóm tắt một cuộc) có xem trước, Sao chép, Soạn email (mailto), In/Lưu PDF; tùy chọn ‘Hiện đầy đủ MST lần này’ khi đang ẩn danh; khối Xuất Excel 5 loại (nối ở T35); CSS @media print ẩn khung điều hướng, chỉ in nội dung (cũng dùng cho In chi tiết cuộc).
 - Test: 440 đạt / 440 tổng; -
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)

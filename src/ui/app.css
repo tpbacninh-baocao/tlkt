@@ -409,3 +409,24 @@ table.bang td.so, table.bang th.so { text-align: right; }
 .luoi-kpi.tien { grid-template-columns: repeat(2, 1fr); }
 @media (min-width: 768px) { .luoi-kpi.tien { grid-template-columns: repeat(3, 1fr); } }
 .luoi-kpi.tien .kpi .so-lon { font-size: 20px; overflow-wrap: normal; white-space: nowrap; }
+
+/* ---------- Báo cáo & in ---------- */
+.luoi-the-bc { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--k2); margin-bottom: var(--k3); }
+@media (min-width: 900px) { .luoi-the-bc { grid-template-columns: repeat(4, 1fr); } }
+.the-bc { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: var(--k3); background: var(--be-mat); border: 2px solid var(--vien); border-radius: var(--bo-the); cursor: pointer; text-align: left; color: var(--chu); }
+.the-bc[aria-selected='true'] { border-color: var(--chinh); background: var(--chinh-nhat); }
+.the-bc .bt { font-size: 24px; }
+.khoi-van-ban { line-height: 1.6; }
+
+@media print {
+  .cot-trai, .cot-phai, .thanh-tren, .thanh-duoi, .nut-noi, .vung-toast, .lop-phu, .menu-them, .khong-in, .bo-qua, .tabs, .nut, .nut-bieu-tuong, .hang-nut { display: none !important; }
+  .khung { display: block; }
+  .noi-dung { max-width: none; padding: 0; }
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .the, .o-phieu, .kpi { box-shadow: none; border: 1px solid #999; break-inside: avoid; background: #fff; backdrop-filter: none; }
+  a { color: inherit; text-decoration: none; }
+  .dau-cuoc { position: static; }
+  .buoc-dong, .the-viec { break-inside: avoid; }
+  details > summary { list-style: none; }
+  details:not([open]) > *:not(summary) { display: block !important; }
+}
