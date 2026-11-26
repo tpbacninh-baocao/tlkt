@@ -5,6 +5,8 @@ import { thuNhac, xinQuyenThongBao } from '../boPhatNhac';
 import { caiDat } from '../store';
 import { Truong } from '../thanhPhan';
 import { apDungGiaoDien } from '../giaoDien';
+import { xuatIcs } from '../xuat';
+import { HuongDanLich } from './huongDan';
 
 function Gio({ nhan, khoa, id }: { nhan: string; khoa: 'gioYenLangTu' | 'gioYenLangDen' | 'banTinSang' | 'nhatKy' | 'nhatKyBaoThuc'; id: string }) {
   return (
@@ -45,6 +47,16 @@ export function CaiDatNhacViec() {
         <Gio nhan="Nhắc lần 2 nếu chưa ghi nhật ký" khoa="nhatKyBaoThuc" id="nh-nk2" />
         <button type="button" class="nut" onClick={thuNhac}>Thử một nhắc</button>
       </section>
+      <section class="the">
+        <h3>Tải lịch .ics</h3>
+        <p class="phu">Mỗi hạn chưa xong là một sự kiện lúc 07:30 ngày hạn, kèm báo thức trước 2 ngày và 1 ngày.</p>
+        <div class="hang-nut">
+          <button type="button" class="nut nut-chinh" onClick={() => void xuatIcs({ loai: '30_NGAY' })}>Tải lịch 30 ngày tới</button>
+          <button type="button" class="nut" onClick={() => void xuatIcs({ loai: 'TAT_CA' })}>Tải tất cả hạn</button>
+        </div>
+        <p class="phu">Muốn xuất riêng một cuộc: mở cuộc → ⋯ → Xuất lịch .ics.</p>
+      </section>
+      <HuongDanLich />
     </div>
   );
 }

@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T34
-- Nhiệm vụ xong gần nhất: T33
-- `npm run check`: sạch (455 đạt / 455 tổng; Chromium: nhắc hiện, hoãn, đã làm, tải lại không phát trùng)
+- Nhiệm vụ đang làm: T35
+- Nhiệm vụ xong gần nhất: T34
+- `npm run check`: sạch (455 đạt / 455 tổng; Chromium: tải .ics hợp lệ (CRLF, VALARM, UID không trùng), link Google Lịch xuất hiện)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -160,6 +160,10 @@
 - Đã làm: Lõi chọn nhắc cần phát/hoãn/bỏ không trùng (core/nhacViec/phat.ts); vòng 30 giây: thẻ nhắc nổi + Notification (xin quyền có giải thích ở chuông) + âm báo; chuông 🔔 liệt kê nhắc 36 giờ gần nhất với Mở / Hoãn 15 phút, 1 giờ, sáng mai / Đã làm; lưu trạng thái qua tải lại
 - Test: 455 đạt / 455 tổng; Chromium: nhắc hiện, hoãn, đã làm, tải lại không phát trùng
 - Giả định đã chọn: Cửa sổ nhắc 36 giờ gần nhất để mở app sau thời gian vắng không bị dồn quá nhiều; “Sáng mai” = ngày làm việc kế tiếp 07:30; “Đã làm” chỉ ẩn nhắc, việc thật vẫn đánh dấu xong ở cuộc/việc
+
+### 2026-11-23 – T34 Xuất lịch
+- Đã làm: Tải .ics (30 ngày tới / tất cả hạn trong Cài đặt → Nhắc việc và menu Lịch; một cuộc ở menu cuộc); nút Thêm Google Lịch ở mọi ThẻViệc, mốc trong dòng thời gian, mục Việc, cột Việc tiếp theo; hướng dẫn iPhone/Android ở Cài đặt và Căn cứ; thẻ nhắc nổi tự ẩn sau 20–60 giây
+- Test: 455 đạt / 455 tổng; Chromium: tải .ics hợp lệ (CRLF, VALARM, UID không trùng), link Google Lịch xuất hiện
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

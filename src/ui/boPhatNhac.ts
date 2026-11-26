@@ -86,6 +86,11 @@ export async function chayBoPhat(): Promise<void> {
     soNhacChuaXem.value += moi.length;
     const noi = moi.slice(0, TOI_DA_THE_NOI);
     theNoi.value = [...noi, ...theNoi.value.filter((t) => !noi.some((n) => n.khoa === t.khoa))].slice(0, TOI_DA_THE_NOI);
+    // Thẻ nổi tự ẩn sau một lúc (vẫn còn ở chuông); báo thức và quá hạn giữ đến khi người dùng xử lý
+    for (const n of noi) {
+      const giay = n.mucDo === 'THONG_TIN' || n.mucDo === 'CANH_BAO' ? 20 : n.mucDo === 'KHAN' ? 60 : 0;
+      if (giay && typeof setTimeout !== 'undefined') setTimeout(() => anTheNoi(n.khoa), giay * 1000);
+    }
 
     if (moi.length > TOI_DA_THE_NOI) {
       hienNotification(`${moi.length} nhắc việc mới`, 'Mở ứng dụng để xem danh sách ở chuông 🔔.', `tlkt-tong-hop`, false);

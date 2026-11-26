@@ -1,4 +1,6 @@
 // Màn Việc (UI §4.9): Hộp thu · Đang làm · Lặp lại · Mẫu · Đã xong; thu nhanh + form chi tiết.
+import { linkGoogleLich } from '../../core/nhacViec';
+import { congPhutNgayGio } from '../../core/lich';
 import { signal } from '@preact/signals';
 import { useState } from 'preact/hooks';
 import type { CongViec, NgayISO } from '../../core/kieu';
@@ -242,6 +244,7 @@ function DongViec({ v }: { v: CongViec }) {
         hanhDong={[
           { nhan: 'Sửa', chay: () => moFormViec(v) },
           { nhan: v.ghim ? 'Bỏ ghim' : 'Ghim lên đầu', chay: () => void luuViec({ ...v, ghim: !v.ghim }) },
+          ...(v.han && !v.xong ? [{ nhan: 'Thêm vào Google Lịch', chay: () => {}, href: linkGoogleLich({ ngay: v.han, gioTu: v.gio, gioDen: v.gio ? congPhutNgayGio(`${v.han}T${v.gio}`, 30).slice(11) : undefined, tieuDe: v.tieuDe, moTa: [v.soVB && `Văn bản: ${v.soVB}`, v.ghiChu].filter(Boolean).join('\n') }) }] : []),
           { nhan: 'Xóa', chay: () => void xoaMem('viec', v.id, 'việc') },
         ]}
       />

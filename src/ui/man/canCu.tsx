@@ -6,7 +6,7 @@ import { dinhDangNgay } from '../../core/lich';
 import type { BoQuyTac, HanDacTa } from '../../core/kieu';
 import { caiDat } from '../store';
 import { Truong } from '../thanhPhan';
-import { HuongDanCaiDatApp } from './huongDan';
+import { HuongDanCaiDatApp, HuongDanLich } from './huongDan';
 
 const DON_VI: Record<string, string> = { NLV: 'ngày làm việc', N: 'ngày', THANG: 'tháng', GIO_LV: 'giờ làm việc' };
 
@@ -144,6 +144,7 @@ export function ManCanCu() {
       </section>
 
       <HuongDanCaiDatApp />
+      <HuongDanLich />
     </div>
   );
 }

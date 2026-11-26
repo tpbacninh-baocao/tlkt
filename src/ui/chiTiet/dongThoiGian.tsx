@@ -6,6 +6,8 @@ import { KIEU_SLA, nhanSLAChiTiet } from '../chuoi';
 import { boDanhDau } from '../hanhDongCuoc';
 import { moGhiLyDo } from '../muc';
 import { diDen, toast, xacNhan } from '../store';
+import { linkGoogleLich, nhanCuoc } from '../../core/nhacViec';
+import { caiDat } from '../store';
 import { NhanSLA, chuNgay, conLaiNLVChu } from '../thanhPhan';
 import { moFormXongBuoc } from './formXong';
 
@@ -111,6 +113,16 @@ function DongBuoc({ pt, m }: { pt: PhanTichCuoc; m: MocTinh }) {
           </button>
         )}
         {lyDo && !xong && coNut && <span class="phu" style={{ maxWidth: 140 }}>{lyDo}</span>}
+        {!xong && !m.duKien && (m.hanMucTieu ?? m.hanPhapLy) && m.trangThai !== 'KHONG_AP_DUNG' && (
+          <a
+            class="nut nut-nho"
+            target="_blank"
+            rel="noopener noreferrer"
+            href={linkGoogleLich({ ngay: (m.hanMucTieu ?? m.hanPhapLy)!, tieuDe: `${nhanCuoc(c, caiDat.value.anDanh)} – ${m.ten.replace(/\s*\(= [A-Z0-9]+\)/g, '')}`, moTa: `Căn cứ: ${m.canCu}` })}
+          >
+            Thêm Google Lịch
+          </a>
+        )}
         {xong && (
           <>
             <button type="button" class="nut nut-nho" onClick={() => moFormXongBuoc(c.id, m.ma)}>

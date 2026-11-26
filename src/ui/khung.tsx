@@ -5,6 +5,7 @@ import { DIEU_HUONG, TEN_APP, TIEU_DE_MAN } from './chuoi';
 import { MenuNoi, TheViec, TrangThaiRong } from './thanhPhan';
 import { caiDat, kho, khoaApp, route, soNhacChuaXem, tongHop, diDen, phienMatMa } from './store';
 import { moThuNhanh } from './thuNhanh';
+import { menuMuc } from './muc';
 import { moChuongNhac } from './chuongNhac';
 import { CotPhaiChiTiet } from './chiTiet/cotPhai';
 
@@ -49,7 +50,7 @@ export function CotPhai() {
       {ds.length === 0 ? (
         <TrangThaiRong tieuDe="Không có việc gấp" moTa="Các hạn trong vài ngày tới sẽ hiện ở đây." xanh />
       ) : (
-        ds.map((m) => <TheViec key={m.khoa} m={m} />)
+        ds.map((m) => <TheViec key={m.khoa} m={m} menu={menuMuc(m)} />)
       )}
     </aside>
   );

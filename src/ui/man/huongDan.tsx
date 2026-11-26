@@ -18,14 +18,38 @@ export function HuongDanCaiDatApp() {
           <li>Bấm <b>⋮</b> → <b>Cài đặt ứng dụng</b> (hoặc <b>Thêm vào màn hình chính</b>) → <b>Cài đặt</b>.</li>
         </ol>
       </details>
-      <details>
-        <summary class="dam">Thêm hạn vào lịch điện thoại để có báo thức</summary>
+    </section>
+  );
+}
+
+/** Hướng dẫn đưa hạn vào Lịch điện thoại để có báo thức khi đã đóng app (iPhone/Android). */
+export function HuongDanLich() {
+  return (
+    <section class="the" aria-label="Hướng dẫn thêm vào lịch điện thoại">
+      <h3>Thêm hạn vào lịch điện thoại</h3>
+      <p class="phu">Trình duyệt không tự báo thức khi app đã đóng. Cách chắc chắn nhất là đưa hạn vào Lịch của điện thoại – Lịch sẽ báo trước 2 ngày, 1 ngày và đúng ngày hạn.</p>
+      <details open>
+        <summary class="dam">iPhone</summary>
         <ol>
-          <li>Trong app, vào <b>Lịch</b> → <b>Xuất lịch (.ics)</b>, chọn một cuộc / tất cả / 30 ngày tới.</li>
-          <li><b>iPhone:</b> mở tệp .ics vừa tải → <b>Thêm tất cả</b> vào lịch. <b>Android:</b> mở tệp bằng Google Lịch → <b>Nhập</b>.</li>
-          <li>Hoặc ở từng việc/mốc bấm <b>Thêm vào Google Lịch</b> để thêm riêng lẻ.</li>
+          <li>Bấm <b>Tải lịch .ics</b> ở trên (bằng Safari).</li>
+          <li>Mở tệp vừa tải (ở mục Tải xuống) → bấm <b>Thêm tất cả</b> → chọn lịch muốn thêm.</li>
+          <li>Nên tạo lịch riêng tên “TLKT” để dễ xóa/nhập lại.</li>
         </ol>
-        <p class="phu">Lịch đã thêm không tự cập nhật khi hạn thay đổi – xuất lại khi cần. App chỉ nhắc được khi đang mở; báo thức lúc đóng app nhờ lịch điện thoại.</p>
+      </details>
+      <details>
+        <summary class="dam">Android</summary>
+        <ol>
+          <li>Cách nhanh: ở từng việc hoặc mốc bấm <b>Thêm Google Lịch</b> – Google Lịch mở sẵn sự kiện, bạn chỉ cần bấm <b>Lưu</b>.</li>
+          <li>Cách hàng loạt: tải tệp .ics, mở <b>calendar.google.com</b> trên trình duyệt → bánh răng → <b>Cài đặt</b> → <b>Nhập & xuất</b> → <b>Nhập</b>.</li>
+        </ol>
+      </details>
+      <details>
+        <summary class="dam">Lưu ý</summary>
+        <ul>
+          <li>Nhập lại tệp mới không làm nhân đôi sự kiện cũ (mỗi hạn có mã riêng cố định).</li>
+          <li>Lịch không tự đổi khi hạn thay đổi – xuất lại sau khi cập nhật mốc quan trọng.</li>
+          <li>Bật “Ẩn danh” (Cài đặt → Bảo mật) nếu không muốn MST/tên NNT xuất hiện trong lịch.</li>
+        </ul>
       </details>
     </section>
   );
