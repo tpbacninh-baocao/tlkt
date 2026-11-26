@@ -75,7 +75,7 @@ export function ManCanCu() {
         {cacGd.map((g) => (
           <details key={g} open={g === 'DANG_KIEM_TRA' || g === 'CHO_CONG_BO'}>
             <summary class="dam">{tenGd(g)}</summary>
-            <div class="cuon-ngang">
+            <div class="cuon-ngang" tabIndex={0} role="region" aria-label="Bảng (cuộn ngang bằng phím mũi tên)">
               <table class="bang">
                 <thead><tr><th>Mã</th><th>Bước</th><th>Hạn</th><th>Căn cứ / biểu mẫu</th></tr></thead>
                 <tbody>
@@ -94,7 +94,7 @@ export function ManCanCu() {
         ))}
         <details>
           <summary class="dam">Chế độ ban hành kết luận / quyết định xử lý (X1–X4)</summary>
-          <div class="cuon-ngang">
+          <div class="cuon-ngang" tabIndex={0} role="region" aria-label="Bảng (cuộn ngang bằng phím mũi tên)">
             <table class="bang">
               <thead><tr><th>Mã</th><th>Trường hợp</th><th>Hạn</th><th>Căn cứ</th></tr></thead>
               <tbody>
@@ -115,7 +115,7 @@ export function ManCanCu() {
 
       <section class="the">
         <h3>Bảng chuyển tiếp (chọn bộ quy tắc theo ngày QĐ kiểm tra)</h3>
-        <div class="cuon-ngang">
+        <div class="cuon-ngang" tabIndex={0} role="region" aria-label="Bảng (cuộn ngang bằng phím mũi tên)">
           <table class="bang">
             <thead><tr><th>Bộ quy tắc</th><th>QĐ kiểm tra ban hành</th><th>Ghi chú</th></tr></thead>
             <tbody>

@@ -47,7 +47,7 @@ export function ManKiemThu() {
         return (
           <section key={n} class="the">
             <h3>{n}</h3>
-            <div class="cuon-ngang">
+            <div class="cuon-ngang" tabIndex={0} role="region" aria-label="Bảng (cuộn ngang bằng phím mũi tên)">
               <table class="bang">
                 <thead><tr><th>Ca</th><th>Mô tả</th><th>Kết quả app</th><th>Kỳ vọng</th><th>Đạt?</th></tr></thead>
                 <tbody>

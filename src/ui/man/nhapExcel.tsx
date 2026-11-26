@@ -141,7 +141,7 @@ function FormNhapKeHoach() {
           </div>
 
           <h4>Ghép cột</h4>
-          <div class="cuon-ngang">
+          <div class="cuon-ngang" tabIndex={0} role="region" aria-label="Bảng (cuộn ngang bằng phím mũi tên)">
             <table class="bang">
               <thead><tr><th>Cột</th><th>Tiêu đề trong tệp</th><th>Ví dụ</th><th>Là</th></tr></thead>
               <tbody>
@@ -166,7 +166,7 @@ function FormNhapKeHoach() {
           {!thieuCot && (
             <>
               <h4>Xem trước ({dong.length} dòng – nhập {nhap.length})</h4>
-              <div class="cuon-ngang">
+              <div class="cuon-ngang" tabIndex={0} role="region" aria-label="Bảng (cuộn ngang bằng phím mũi tên)">
                 <table class="bang" aria-label="Xem trước kế hoạch">
                   <thead><tr><th>Nhập</th><th>Dòng</th><th>Tên NNT</th><th>MST</th><th>Dự kiến</th><th>Trưởng đoàn</th><th>Ghi chú</th></tr></thead>
                   <tbody>

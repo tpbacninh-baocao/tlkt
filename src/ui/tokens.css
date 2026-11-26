@@ -16,7 +16,7 @@
 
   /* Màu trạng thái: nền/biểu tượng và chữ (chữ đậm hơn để đạt AA) */
   --sla-xanh: #16a34a;
-  --sla-xanh-chu: #15803d;
+  --sla-xanh-chu: #136b35;
   --sla-vang: #ca8a04;
   --sla-vang-chu: #8a5a00;
   --sla-cam: #ea580c;
@@ -29,6 +29,7 @@
   --sla-tre: #9ca3af;
   --sla-tre-chu: #5b6270;
   --sla-xam-chu: #5b6270;
+  --tren-do: #ffffff;
   --nen-canh-bao: #fff7e0;
   --chu-canh-bao: #7a4b00;
 }
@@ -58,6 +59,10 @@
   --sla-do-dam: #fecaca;
   --sla-do-dam-nen: #4c1d1d;
   --sla-xong: #22c55e;
+  --tren-do: #1a0505;
+  --ht-ttr: #93c5fd;
+  --ht-itnk: #c4b5fd;
+  --ht-tms: #67e8f9;
   --sla-tre: #94a3b8;
   --sla-tre-chu: #a8b6cb;
   --sla-xam-chu: #a8b6cb;
@@ -93,7 +98,7 @@
   --gd-bai-bo: #6b7280;
   --ht-ttr: #2563eb;
   --ht-itnk: #7c3aed;
-  --ht-tms: #0891b2;
+  --ht-tms: #0e7490;
 
   --co-phu: 12px;
   --co-than: 14px;

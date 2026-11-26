@@ -70,7 +70,7 @@ export function CaiDatQuyTac() {
 
       <section class="the" aria-label="Bảng thời hạn các bước">
         <h3>Thời hạn từng bước</h3>
-        <div class="cuon-ngang">
+        <div class="cuon-ngang" tabIndex={0} role="region" aria-label="Bảng (cuộn ngang bằng phím mũi tên)">
           <table class="bang">
             <thead>
               <tr><th>Bước</th><th>Số</th><th>Đơn vị</th><th>GDLK</th><th>Đệm (NLV)</th><th>Căn cứ</th><th /></tr>

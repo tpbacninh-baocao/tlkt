@@ -47,7 +47,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .nut-bieu-tuong:hover { background: var(--be-mat-2); }
 .huy-hieu {
   position: absolute; top: 4px; right: 2px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px;
-  background: var(--sla-do); color: #fff; font-size: 11px; line-height: 18px; text-align: center; font-weight: 700;
+  background: var(--sla-do); color: var(--tren-do); font-size: 11px; line-height: 18px; text-align: center; font-weight: 700;
 }
 .noi-dung { flex: 1; padding: var(--k4); padding-bottom: calc(96px + env(safe-area-inset-bottom)); max-width: 1000px; width: 100%; margin: 0 auto; }
 .thanh-duoi {
@@ -107,7 +107,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .nut-chinh:hover { filter: brightness(1.08); background: var(--chinh); }
 .nut-nhe { background: transparent; border-color: transparent; color: var(--chinh); }
 .nut-nho { min-height: 36px; padding: 0 var(--k3); font-size: var(--co-phu); }
-.nut-nguy-hiem { background: var(--sla-do); border-color: var(--sla-do); color: #fff; }
+.nut-nguy-hiem { background: var(--sla-do); border-color: var(--sla-do); color: var(--tren-do); }
 .nut-nguy-hiem:hover { background: var(--sla-do); filter: brightness(1.1); }
 .hang-nut { display: flex; flex-wrap: wrap; gap: var(--k2); align-items: center; }
 .hang-nut.phai { justify-content: flex-end; }
@@ -356,7 +356,8 @@ table.bang td.so, table.bang th.so { text-align: right; }
 .hang-thang.tieu div { text-align: center; padding: var(--k2) 0; font-size: var(--co-phu); font-weight: 600; color: var(--chu-phu); background: var(--be-mat-2); }
 .o-lich { position: relative; min-height: 64px; padding: 4px; border: 0; border-top: 1px solid var(--vien); border-left: 1px solid var(--vien); background: transparent; text-align: left; cursor: pointer; color: var(--chu); display: flex; flex-direction: column; gap: 2px; overflow: hidden; }
 .o-lich:first-child { border-left: 0; }
-.o-lich.ngoai { opacity: 0.45; }
+.o-lich.ngoai { color: var(--chu-phu); }
+.o-lich.ngoai .so-ngay { font-weight: 400; }
 .o-lich.nghi { background: var(--be-mat-2); }
 .o-lich.hom-nay .so-ngay { background: var(--chinh); color: var(--tren-chinh); border-radius: 50%; }
 .o-lich.chon { outline: 2px solid var(--chinh); outline-offset: -2px; }
@@ -450,3 +451,4 @@ tr.da-sua td { background: var(--nen-canh-bao); }
 
 /* Che nội dung khi app ra nền (màn hình đa nhiệm) */
 :root[data-che] #app { filter: blur(18px); }
+.cham-lich[data-so]::after { content: attr(data-so); font-size: 10px; margin-left: 2px; }

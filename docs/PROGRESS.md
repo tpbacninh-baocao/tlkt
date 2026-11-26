@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T39
-- Nhiệm vụ xong gần nhất: T38
-- `npm run check`: sạch (490 đạt / 490 tổng; thêm test tin báo lãnh đạo và nhắc tổng kết ngày)
+- Nhiệm vụ đang làm: T40
+- Nhiệm vụ xong gần nhất: T39
+- `npm run check`: sạch (524 đạt / 524 tổng; axe 0 lỗi; 524 test đạt)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -184,6 +184,11 @@
 - Đã làm: Lập docs/DO-PHU-YEU-CAU.md (SPEC §2–§17, UI §4) kèm vị trí mã/test; làm nốt các mục làm được: soạn tin báo lãnh đạo khi quá hạn > 1 ngày LV, nhắc Tổng kết ngày 16:50, che nội dung khi app ra nền, ô “Chỉ cuộc của tôi” ở Kế hoạch năm. Còn Chưa: mẫu quy trình cho bộ phận khác, khóa vân tay/Face ID; Một phần: ẩn danh chỉ che hiển thị, bản đơn vị
 - Test: 490 đạt / 490 tổng; thêm test tin báo lãnh đạo và nhắc tổng kết ngày
 - Giả định đã chọn: Mẫu quy trình bộ phận khác và sinh trắc để giai đoạn sau (SPEC nêu rõ là hướng mở rộng/bản app sau này)
+
+### 2026-11-23 – T39 Hiệu năng & truy cập
+- Đã làm: Gói chính 126 KB gzip (<300 KB; SheetJS tải riêng khi dùng; có cache offline); test tương phản WCAG AA cho toàn bộ cặp màu ở giao diện Sáng và Tối (tests/tuongphan.test.ts); kiểm tra axe-core (WCAG 2.1 A/AA) trên 18 màn × 2 khổ × 2 giao diện → 0 lỗi (e2e/truy-cap.cjs, npm run truy-cap); kiểm tra bàn phím (Tab, bẫy focus, Esc, vòng focus ≥ 2px, phóng chữ 200%); sửa các lỗi tìm thấy: màu chữ xanh/đỏ/nhãn hệ thống ở giao diện tối, huy hiệu đỏ, ô lịch (nhãn, bỏ vai trò sai), bảng cuộn ngang cuộn được bằng bàn phím
+- Test: 524 đạt / 524 tổng; axe 0 lỗi; 524 test đạt
+- Giả định đã chọn: Không đo Lighthouse (không có trong môi trường này); thay bằng axe-core + kiểm tra bàn phím + kiểm tra tương phản; axe-core là thư viện chỉ dùng khi kiểm tra (devDependency)
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

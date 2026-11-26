@@ -128,7 +128,7 @@ export function TabKetQua({ pt }: { pt: PhanTichCuoc }) {
         {c.nopTien.length === 0 ? (
           <TrangThaiRong tieuDe="Chưa có lần nộp nào" />
         ) : (
-          <div class="cuon-ngang">
+          <div class="cuon-ngang" tabIndex={0} role="region" aria-label="Bảng (cuộn ngang bằng phím mũi tên)">
             <table class="bang">
               <thead>
                 <tr>

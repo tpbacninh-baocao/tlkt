@@ -100,8 +100,8 @@ function ChamMau({ ds }: { ds: ReturnType<typeof tongHop.peek>['tatCa'] }) {
   if (!tt) return null;
   const lop = tt === 'QUA_HAN' ? 'sla-do' : tt === 'HOM_NAY' ? 'sla-cam' : tt === 'SAP_DEN' ? 'sla-vang' : 'sla-xanh';
   return (
-    <span class={`cham-lich ${lop}`} aria-hidden="true">
-      ●{ds.length > 1 ? <small>{ds.length}</small> : null}
+    <span class={`cham-lich ${lop}`} aria-hidden="true" data-so={ds.length > 1 ? String(ds.length) : undefined}>
+      ●
     </span>
   );
 }
@@ -136,14 +136,14 @@ function LuoiThang({ theoNgay }: { theoNgay: Map<NgayISO, ReturnType<typeof tong
   const tuan = luoiThang(nam, thang, lich.value);
   const tenCot = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'];
   return (
-    <div class="luoi-thang" role="grid" aria-label={`Tháng ${thang} năm ${nam}`}>
-      <div class="hang-thang tieu" role="row">
+    <div class="luoi-thang" role="group" aria-label={`Tháng ${thang} năm ${nam}`}>
+      <div class="hang-thang tieu" aria-hidden="true">
         {tenCot.map((t) => (
-          <div key={t} role="columnheader">{t}</div>
+          <div key={t}>{t}</div>
         ))}
       </div>
       {tuan.map((h) => (
-        <div key={h[0].ngay} class="hang-thang" role="row">
+        <div key={h[0].ngay} class="hang-thang">
           {h.map((o) => {
             const ds = theoNgay.get(o.ngay) ?? [];
             const co = dsKhoiThoiGian.value.some((k) => k.ngay === o.ngay);
@@ -151,9 +151,8 @@ function LuoiThang({ theoNgay }: { theoNgay: Map<NgayISO, ReturnType<typeof tong
               <button
                 key={o.ngay}
                 type="button"
-                role="gridcell"
                 class={`o-lich ${o.thuocThang ? '' : 'ngoai'} ${o.nghi ? 'nghi' : ''} ${o.ngay === homNay.value ? 'hom-nay' : ''} ${o.ngay === ngayChon.value ? 'chon' : ''}`}
-                aria-label={`${dinhDangNgayThu(o.ngay)}${o.tenNghi ? ', ' + o.tenNghi : ''}${ds.length ? `, ${ds.length} hạn` : ''}`}
+                aria-label={`${tachNgay(o.ngay).ngay}, ${dinhDangNgayThu(o.ngay)}${o.tenNghi ? ', ' + o.tenNghi : ''}${o.lamBu ? ', Làm bù' : ''}${ds.length ? `, ${ds.length} hạn` : ''}`}
                 aria-pressed={o.ngay === ngayChon.value}
                 onClick={() => (ngayChon.value = o.ngay)}
                 onDblClick={() => { cheDo.value = 'NGAY'; ngayLich.value = o.ngay; }}
@@ -309,7 +308,7 @@ export function ManLich() {
         </>
       ) : (
         <>
-          <div class="cuon-ngang">
+          <div class="cuon-ngang" tabIndex={0} role="region" aria-label="Bảng (cuộn ngang bằng phím mũi tên)">
             <LuoiGio ngays={ngays} theoNgay={theoNgay} goiY={goiY} />
           </div>
           <p class="phu">Kéo trên cột ngày (máy tính) hoặc nhấn “＋ Khối” để tạo khối thời gian. Khối viền đứt là gợi ý.</p>
