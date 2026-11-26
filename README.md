@@ -2,6 +2,14 @@
 
 Ứng dụng hỗ trợ công chức kiểm tra thuế tại trụ sở NNT: quản lý vòng đời cuộc kiểm tra, tự tính thời hạn theo QĐ 1161/QĐ-CT, nhắc việc, nhắc nhập TTR/iTNK/TMS, quản lý việc thường xuyên/đột xuất, kế hoạch ngày/năm.
 
+## TRẠNG THÁI: ĐÃ HOÀN THÀNH (phiên bản 1.0.0)
+- **Dùng app:** https://tpbacninh-baocao.github.io/tlkt/ (sau khi Pull Request được merge vào `main`, GitHub Pages tự đăng sau 2–3 phút).
+- **Hướng dẫn cho cán bộ:** [`docs/HUONG-DAN-SU-DUNG.md`](docs/HUONG-DAN-SU-DUNG.md).
+- **Độ phủ yêu cầu:** [`docs/DO-PHU-YEU-CAU.md`](docs/DO-PHU-YEU-CAU.md) · **Tiến độ và điểm cần xác nhận:** [`docs/PROGRESS.md`](docs/PROGRESS.md) · **Ảnh chụp màn hình:** [`docs/anh-chup/`](docs/anh-chup/).
+- Lệnh cho người phát triển: `npm run dev`, `npm run check` (kiểm tra kiểu + test + build), `npm run e2e`, `npm run chup-anh`, `npm run truy-cap`.
+
+---
+
 Thư mục này là **gói bàn giao cho Claude Code**: Claude Code đọc các tài liệu ở đây và tự xây dựng, kiểm thử, đưa app lên mạng. Bạn **không cần cài gì trên máy** và không cần biết lập trình.
 
 ---

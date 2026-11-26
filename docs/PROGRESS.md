@@ -3,10 +3,17 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T40
-- Nhiệm vụ xong gần nhất: T39
-- `npm run check`: sạch (524 đạt / 524 tổng; axe 0 lỗi; 524 test đạt)
-- Link app (GitHub Pages): — (cập nhật sau T40)
+- Nhiệm vụ đang làm: Rà soát cuối (/kiem-tra)
+- Nhiệm vụ xong gần nhất: T40
+- `npm run check`: sạch (524 đạt / 524 tổng; npm run check sạch)
+- Link app (GitHub Pages): https://tpbacninh-baocao.github.io/tlkt/ (hoạt động sau khi Pull Request #1 được merge vào `main`)
+
+## Tổng kết bàn giao (phiên bản 1.0.0)
+- **40/40 nhiệm vụ đã làm.** App chạy hoàn toàn trên thiết bị (IndexedDB, mã hóa tùy chọn), cài được lên màn hình chính, dùng được khi không có mạng.
+- **Kiểm thử:** 524 test tự động đạt (gồm toàn bộ `tests/kich-ban-han.json`); E2E đi hết một cuộc P1→S6; axe-core (WCAG 2.1 AA) 0 lỗi trên 18 màn × 2 khổ × 2 giao diện; gói chính 127 KB gzip.
+- **Tài liệu:** `docs/HUONG-DAN-SU-DUNG.md` (cho cán bộ), `docs/DO-PHU-YEU-CAU.md` (độ phủ), `docs/anh-chup/` (66 ảnh màn hình).
+- **Chưa làm / một phần:** xem mục “Cần người dùng xác nhận” bên dưới và `docs/DO-PHU-YEU-CAU.md`.
+- **Để đăng lên mạng:** merge Pull Request #1 vào `main` (phiên cloud không được đẩy trực tiếp lên `main`).
 
 ## Nhật ký
 ### 2026-11-23 – T01–T02 Khởi tạo (Phase 0)
@@ -189,6 +196,11 @@
 - Đã làm: Gói chính 126 KB gzip (<300 KB; SheetJS tải riêng khi dùng; có cache offline); test tương phản WCAG AA cho toàn bộ cặp màu ở giao diện Sáng và Tối (tests/tuongphan.test.ts); kiểm tra axe-core (WCAG 2.1 A/AA) trên 18 màn × 2 khổ × 2 giao diện → 0 lỗi (e2e/truy-cap.cjs, npm run truy-cap); kiểm tra bàn phím (Tab, bẫy focus, Esc, vòng focus ≥ 2px, phóng chữ 200%); sửa các lỗi tìm thấy: màu chữ xanh/đỏ/nhãn hệ thống ở giao diện tối, huy hiệu đỏ, ô lịch (nhãn, bỏ vai trò sai), bảng cuộn ngang cuộn được bằng bàn phím
 - Test: 524 đạt / 524 tổng; axe 0 lỗi; 524 test đạt
 - Giả định đã chọn: Không đo Lighthouse (không có trong môi trường này); thay bằng axe-core + kiểm tra bàn phím + kiểm tra tương phản; axe-core là thư viện chỉ dùng khi kiểm tra (devDependency)
+
+### 2026-11-23 – T40 Bàn giao
+- Đã làm: Hướng dẫn sử dụng cho cán bộ (docs/HUONG-DAN-SU-DUNG.md, ~2 trang); README cập nhật trạng thái hoàn thành và link app; phiên bản 1.0.0; tổng kết trong PROGRESS
+- Test: 524 đạt / 524 tổng; npm run check sạch
+- Giả định đã chọn: Link app dự kiến https://tpbacninh-baocao.github.io/tlkt/ – chỉ hoạt động sau khi merge Pull Request vào main và bật GitHub Pages (Source: GitHub Actions)
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

@@ -1,7 +1,7 @@
 {
   "name": "tlkt",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Trợ lý Đoàn kiểm tra – ứng dụng PWA hỗ trợ cán bộ kiểm tra thuế",
   "type": "module",
   "scripts": {
