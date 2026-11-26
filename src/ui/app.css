@@ -434,3 +434,13 @@ tr.da-sua td { background: var(--nen-canh-bao); }
 .luoi-thong-tin { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; margin: 8px 0 0; }
 .luoi-thong-tin dt { color: var(--chu-phu); }
 .luoi-thong-tin dd { margin: 0; font-weight: 600; }
+
+/* ---------- Nhắc việc (T33) ---------- */
+.vung-nhac-noi { position: fixed; top: calc(64px + env(safe-area-inset-top)); right: var(--k3); left: var(--k3); z-index: 70; display: flex; flex-direction: column; gap: var(--k2); max-width: 420px; margin-left: auto; pointer-events: none; }
+.vung-nhac-noi .the-nhac { pointer-events: auto; box-shadow: 0 8px 24px rgba(0,0,0,.28); background: var(--nen); }
+.the-nhac { border: 1px solid var(--vien); border-left: 6px solid var(--sla-vang); border-radius: var(--bo-the); padding: var(--k3) var(--k4); display: flex; flex-direction: column; gap: var(--k2); background: var(--nen-the, var(--nen)); }
+.the-nhac.muc-bao_thuc, .the-nhac.muc-qua_han { border-left-color: var(--sla-do); }
+.the-nhac.muc-khan { border-left-color: var(--sla-cam); }
+.the-nhac.muc-canh_bao { border-left-color: var(--sla-vang); }
+.the-nhac.muc-thong_tin { border-left-color: var(--sla-xanh); }
+.danh-sach-nhac { display: flex; flex-direction: column; gap: var(--k3); }

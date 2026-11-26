@@ -2,12 +2,14 @@ import { useEffect } from 'preact/hooks';
 import { KhoaTuDong } from '../data/mat';
 import { apDungGiaoDien } from './giaoDien';
 import { KhungUngDung } from './khung';
+import { VungNhacNoi } from './chuongNhac';
+import { chayBoPhat } from './boPhatNhac';
 import { BangTruotHost, HopXacNhanHost, VungToast } from './lopPhu';
 import { ManHienTai } from './man';
 import { ManKhoa } from './man/manKhoa';
 import { Onboarding } from './man/onboarding';
 import { TrangThaiRong } from './thanhPhan';
-import { capNhatDongHo, caiDat, diaChi, khoaApp, kho, loiKhoiDong, trangThaiApp } from './store';
+import { capNhatDongHo, caiDat, diaChi, dsCuoc, dsViec, khoaApp, kho, loiKhoiDong, trangThaiApp } from './store';
 
 function hookHeThong() {
   useEffect(() => {
@@ -39,6 +41,27 @@ function hookGiaoDien() {
   }, [cd.giaoDien, cd.coChuLon]);
 }
 
+/** Bộ phát nhắc: chạy khi app sẵn sàng, mỗi 30 giây, khi tab hiện lại và khi dữ liệu/cài đặt đổi. */
+function hookBoPhatNhac() {
+  const san = trangThaiApp.value === 'SAN_SANG';
+  const cd = caiDat.value;
+  const nhiVu = dsCuoc.value.length + dsViec.value.length;
+  useEffect(() => {
+    if (!san) return;
+    void chayBoPhat();
+    const t = window.setInterval(() => void chayBoPhat(), 30_000);
+    const hien = () => document.visibilityState === 'visible' && void chayBoPhat();
+    document.addEventListener('visibilitychange', hien);
+    return () => {
+      clearInterval(t);
+      document.removeEventListener('visibilitychange', hien);
+    };
+  }, [san]);
+  useEffect(() => {
+    if (san) void chayBoPhat();
+  }, [san, cd.nhac, cd.anDanh, nhiVu]);
+}
+
 /** Khóa tự động sau N phút không thao tác hoặc khi ẩn tab quá N phút (chỉ khi đã đặt mật mã). */
 function hookKhoaTuDong() {
   const phut = caiDat.value.khoaTuDongPhut;
@@ -66,6 +89,7 @@ export function UngDung() {
   hookHeThong();
   hookGiaoDien();
   hookKhoaTuDong();
+  hookBoPhatNhac();
   const t = trangThaiApp.value;
   let noiDung;
   if (t === 'DANG_TAI') noiDung = <div class="rong" role="status">Đang mở dữ liệu…</div>;
@@ -93,6 +117,7 @@ export function UngDung() {
       {noiDung}
       <BangTruotHost />
       <HopXacNhanHost />
+      <VungNhacNoi />
       <VungToast />
     </>
   );

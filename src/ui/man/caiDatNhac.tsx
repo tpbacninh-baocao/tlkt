@@ -1,7 +1,8 @@
 // Cài đặt → Nhắc việc và Giao diện.
 import { useState } from 'preact/hooks';
 import { suaCaiDat } from '../hanhDong';
-import { caiDat, toast } from '../store';
+import { thuNhac, xinQuyenThongBao } from '../boPhatNhac';
+import { caiDat } from '../store';
 import { Truong } from '../thanhPhan';
 import { apDungGiaoDien } from '../giaoDien';
 
@@ -16,10 +17,7 @@ function Gio({ nhan, khoa, id }: { nhan: string; khoa: 'gioYenLangTu' | 'gioYenL
 export function CaiDatNhacViec() {
   const n = caiDat.value.nhac;
   const [quyen, setQuyen] = useState<string>(typeof Notification === 'undefined' ? 'khong-ho-tro' : Notification.permission);
-  const xin = async () => {
-    if (typeof Notification === 'undefined') return;
-    setQuyen(await Notification.requestPermission());
-  };
+  const xin = async () => setQuyen(await xinQuyenThongBao());
   return (
     <div>
       <section class="the">
@@ -45,7 +43,7 @@ export function CaiDatNhacViec() {
         <Gio nhan="Bản tin buổi sáng" khoa="banTinSang" id="nh-sang" />
         <Gio nhan="Nhắc ghi nhật ký iTNK" khoa="nhatKy" id="nh-nk" />
         <Gio nhan="Nhắc lần 2 nếu chưa ghi nhật ký" khoa="nhatKyBaoThuc" id="nh-nk2" />
-        <button type="button" class="nut" onClick={() => toast('Đây là thông báo thử. Nhắc việc sẽ hiện như thế này.', 'thongTin')}>Thử một thông báo</button>
+        <button type="button" class="nut" onClick={thuNhac}>Thử một nhắc</button>
       </section>
     </div>
   );

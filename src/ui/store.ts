@@ -22,6 +22,8 @@ export const dsKhoiThoiGian = signal<KhoiThoiGian[]>([]);
 export const dsKeHoachNgay = signal<KeHoachNgay[]>([]);
 export const daPhat = signal<Set<string>>(new Set());
 export const saoLuuCuoi = signal<NgayISO | null>(null);
+/** Nhắc đã hoãn: khóa → giờ nhắc lại (lưu ở meta 'nhacHoan'). */
+export const nhacHoan = signal<Record<string, NgayGio>>({});
 
 // ---------- Thời gian ----------
 export const homNay = signal<NgayISO>(homNayTuDate());
@@ -74,6 +76,7 @@ export async function napDuLieu(): Promise<void> {
   if (!k) return;
   ganDuLieu(await k.docTatCa());
   saoLuuCuoi.value = (await k.docMeta<NgayISO>('saoLuuCuoi')) ?? null;
+  nhacHoan.value = (await k.docMeta<Record<string, NgayGio>>('nhacHoan')) ?? {};
 }
 
 export function kho_(): Kho {
