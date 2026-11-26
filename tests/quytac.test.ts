@@ -156,3 +156,29 @@ describe('tinhHan – các dạng đặc tả', () => {
     expect(tinhHan(layBuoc(bo, 'Q1')!.han, moc({ D0: '2026-10-05' }), { ...nc, lich: l2 }).han).toBe('2026-10-09');
   });
 });
+
+import { datVaBuocTruong, datVaCheDoX, datVaThamSoTruong, demMucDaSua } from '../src/core/quyTac';
+
+describe('Chỉnh bản vá từng trường', () => {
+  it('chỉ lưu phần khác mặc định; đặt lại về mặc định thì bản vá tự biến mất', () => {
+    let va = datVaBuocTruong({}, 'QTKT-1161', 'Q1', 'so', 5, 3);
+    expect(va).toEqual({ 'QTKT-1161': { buoc: { Q1: { so: 5 } } } });
+    va = datVaBuocTruong(va, 'QTKT-1161', 'Q1', 'dem', 0, 1);
+    expect(demMucDaSua(va, 'QTKT-1161')).toBe(2);
+    va = datVaBuocTruong(va, 'QTKT-1161', 'Q1', 'so', 3, 3);
+    expect(va['QTKT-1161'].buoc!.Q1).toEqual({ dem: 0 });
+    va = datVaBuocTruong(va, 'QTKT-1161', 'Q1', 'dem', 1, 1);
+    expect(va).toEqual({});
+    expect(demMucDaSua(va, 'QTKT-1161')).toBe(0);
+  });
+  it('tham số và chế độ X; không làm đổi bản vá cũ', () => {
+    const a = datVaThamSoTruong({}, 'QTKT-1161', 'hanNopTienNgay', 15, 10);
+    const b = datVaCheDoX(a, 'QTKT-1161', 'X1', 'so', 8, 7);
+    expect(a['QTKT-1161'].cheDoX).toBeUndefined();
+    expect(b['QTKT-1161']).toEqual({ thamSo: { hanNopTienNgay: 15 }, cheDoX: { X1: { so: 8 } } });
+    const bo = giaiBoQuyTac('QTKT-1161', b);
+    expect(bo.thamSo.hanNopTienNgay).toBe(15);
+    expect(demMucDaSua(b, 'QTKT-1161')).toBe(2);
+    expect(datVaCheDoX(b, 'QTKT-1161', 'X1', 'donVi', 'THANG', 'NLV')['QTKT-1161'].cheDoX!.X1).toEqual({ so: 8, donVi: 'THANG' });
+  });
+});

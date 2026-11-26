@@ -174,3 +174,50 @@ export function layBuoc(bo: BoQuyTac, ma: string): BuocQuyTac | undefined {
 export function hanCuaBuoc(bo: BoQuyTac, ma: string): HanDacTa | null | undefined {
   return layBuoc(bo, ma)?.han;
 }
+
+// ---------- Chỉnh bản vá theo từng trường (chỉ lưu phần KHÁC mặc định; bản vá rỗng tự bị xóa) ----------
+function donDep(va: VaQuyTac, maBo: string): VaQuyTac {
+  const bo = va[maBo];
+  if (!bo) return va;
+  for (const [k, v] of Object.entries(bo.buoc ?? {})) if (!Object.keys(v).length) delete bo.buoc![k];
+  for (const [k, v] of Object.entries(bo.cheDoX ?? {})) if (!Object.keys(v).length) delete bo.cheDoX![k];
+  if (bo.buoc && !Object.keys(bo.buoc).length) delete bo.buoc;
+  if (bo.cheDoX && !Object.keys(bo.cheDoX).length) delete bo.cheDoX;
+  if (bo.thamSo && !Object.keys(bo.thamSo).length) delete bo.thamSo;
+  if (!Object.keys(bo).length) delete va[maBo];
+  return va;
+}
+
+export function datVaBuocTruong<K extends keyof VaBuoc>(va: VaQuyTac, maBo: string, maBuoc: string, truong: K, giaTri: VaBuoc[K], goc: VaBuoc[K]): VaQuyTac {
+  const moi = nhanBan(va);
+  const b = ((moi[maBo] ??= {}).buoc ??= {});
+  const p = (b[maBuoc] ??= {});
+  if (giaTri === goc || giaTri === undefined) delete p[truong];
+  else p[truong] = giaTri;
+  return donDep(moi, maBo);
+}
+
+export function datVaThamSoTruong(va: VaQuyTac, maBo: string, ten: string, giaTri: number | undefined, goc: number | undefined): VaQuyTac {
+  const moi = nhanBan(va);
+  const t = ((moi[maBo] ??= {}).thamSo ??= {});
+  if (giaTri === goc || giaTri === undefined) delete t[ten];
+  else t[ten] = giaTri;
+  return donDep(moi, maBo);
+}
+
+export function datVaCheDoX(va: VaQuyTac, maBo: string, che: string, truong: 'so' | 'donVi', giaTri: number | 'NLV' | 'N' | 'THANG' | undefined, goc: number | 'NLV' | 'N' | 'THANG' | undefined): VaQuyTac {
+  const moi = nhanBan(va);
+  const c = ((moi[maBo] ??= {}).cheDoX ??= {});
+  const p = (c[che] ??= {}) as Record<string, unknown>;
+  if (giaTri === goc || giaTri === undefined) delete p[truong];
+  else p[truong] = giaTri;
+  return donDep(moi, maBo);
+}
+
+/** Số mục đã sửa của một bộ (bước + tham số + chế độ X). */
+export function demMucDaSua(va: VaQuyTac, maBo: string): number {
+  const b = va[maBo];
+  if (!b) return 0;
+  const dem = (o?: Record<string, object>) => Object.values(o ?? {}).reduce((t, p) => t + Object.keys(p).length, 0);
+  return dem(b.buoc as Record<string, object>) + dem(b.cheDoX as Record<string, object>) + Object.keys(b.thamSo ?? {}).length;
+}

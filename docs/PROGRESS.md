@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T31
-- Nhiệm vụ xong gần nhất: T30
-- `npm run check`: sạch (440 đạt / 440 tổng; -)
+- Nhiệm vụ đang làm: T32
+- Nhiệm vụ xong gần nhất: T31
+- `npm run check`: sạch (442 đạt / 442 tổng; kiểm tra trên Chromium: sửa số ngày → khôi phục mặc định, đặt/tắt mật mã, sao lưu → xóa mẫu → khôi phục, đổi giao diện tối)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -147,6 +147,10 @@
 ### 2026-11-23 – T30 Báo cáo & tóm tắt + trang in
 - Đã làm: ui/man/baoCao: 4 loại văn bản (bản tin sáng, báo cáo tiến độ đoàn, báo cáo tuần, tóm tắt một cuộc) có xem trước, Sao chép, Soạn email (mailto), In/Lưu PDF; tùy chọn ‘Hiện đầy đủ MST lần này’ khi đang ẩn danh; khối Xuất Excel 5 loại (nối ở T35); CSS @media print ẩn khung điều hướng, chỉ in nội dung (cũng dùng cho In chi tiết cuộc).
 - Test: 440 đạt / 440 tổng; -
+
+### 2026-11-23 – T31 Cài đặt
+- Đã làm: Màn Cài đặt 6 nhóm: hồ sơ/giờ làm việc/ngày nghỉ/việc thường xuyên; quy tắc thời hạn sửa từng bước, khôi phục mặc định, chế độ thận trọng, tên chức năng hệ thống; nhắc việc; mật mã (đặt/đổi/tắt, khóa tự động, ẩn danh); giao diện; sao lưu/khôi phục, dữ liệu mẫu, xóa toàn bộ
+- Test: 442 đạt / 442 tổng; kiểm tra trên Chromium: sửa số ngày → khôi phục mặc định, đặt/tắt mật mã, sao lưu → xóa mẫu → khôi phục, đổi giao diện tối
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

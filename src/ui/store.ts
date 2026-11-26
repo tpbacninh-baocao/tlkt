@@ -234,3 +234,5 @@ export function dongBang(id?: string): void {
 
 // ---------- Nhắc việc trong app (T33 dùng) ----------
 export const soNhacChuaXem = signal(0);
+/** Tăng mỗi khi bật/đổi/tắt mật mã để giao diện vẽ lại biểu tượng khóa. */
+export const phienMatMa = signal(0);

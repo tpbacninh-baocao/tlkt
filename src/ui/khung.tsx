@@ -3,7 +3,7 @@ import { useState } from 'preact/hooks';
 import type { ComponentChildren } from 'preact';
 import { DIEU_HUONG, TEN_APP, TIEU_DE_MAN } from './chuoi';
 import { MenuNoi, TheViec, TrangThaiRong } from './thanhPhan';
-import { caiDat, kho, khoaApp, route, soNhacChuaXem, tongHop, diDen } from './store';
+import { caiDat, kho, khoaApp, route, soNhacChuaXem, tongHop, diDen, phienMatMa } from './store';
 import { moThuNhanh } from './thuNhanh';
 import { moChuongNhac } from './chuongNhac';
 import { CotPhaiChiTiet } from './chiTiet/cotPhai';
@@ -79,6 +79,7 @@ export function KhungUngDung({ children }: { children: ComponentChildren }) {
   const hienTai = '#' + (r.man === 'cuoc-chi-tiet' ? 'cuoc' : r.man);
   const quaHan = tongHop.value.kpi.quaHan;
   const tieuDe = r.man === 'cai-dat' && r.muc ? TIEU_DE_MAN['cai-dat'] : TIEU_DE_MAN[r.man] ?? TEN_APP;
+  void phienMatMa.value;
   const daMaHoa = kho.value?.daMaHoa() ?? false;
   const chinh = DIEU_HUONG.filter((m) => m.chinh);
   return (

@@ -10,6 +10,7 @@ import { ManViec } from './viec';
 import { ManKeHoachNgay } from './keHoachNgay';
 import { ManKeHoachNam } from './keHoachNam';
 import { ManBaoCao } from './baoCao';
+import { ManCaiDat } from './caiDat';
 
 export function ManHienTai() {
   const r = route.value;
@@ -32,6 +33,8 @@ export function ManHienTai() {
       return <ManKeHoachNam />;
     case 'bao-cao':
       return <ManBaoCao />;
+    case 'cai-dat':
+      return <ManCaiDat />;
     default:
       return <ManTam ten={r.man} />;
   }

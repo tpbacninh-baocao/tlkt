@@ -430,3 +430,4 @@ table.bang td.so, table.bang th.so { text-align: right; }
   details > summary { list-style: none; }
   details:not([open]) > *:not(summary) { display: block !important; }
 }
+tr.da-sua td { background: var(--nen-canh-bao); }
