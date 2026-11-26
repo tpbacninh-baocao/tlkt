@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T36
-- Nhiệm vụ xong gần nhất: T35
-- `npm run check`: sạch (487 đạt / 487 tổng; Chromium: tải mẫu → nhập 3 cuộc, nhập lại báo trùng, tải đủ 5 tệp, nhập ngày nghỉ từ CSV)
+- Nhiệm vụ đang làm: T37
+- Nhiệm vụ xong gần nhất: T36
+- `npm run check`: sạch (487 đạt / 487 tổng; Chromium: service worker kiểm soát trang, tải lại khi ngắt mạng vẫn mở được, xuất Excel offline OK, 0 yêu cầu ra ngoài)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -169,6 +169,11 @@
 - Đã làm: Nhập kế hoạch từ .xlsx/.csv (tự nhận cột, ghép cột, chọn dòng tiêu đề/trang tính, xem trước lỗi–trùng MST, tạo kế hoạch + cuộc); tải tệp mẫu .xlsx/.csv; xuất 5 loại Excel (danh sách cuộc+mốc+SLA, nhập liệu thiếu, thu nộp, tiến độ kế hoạch, việc khác); nhập ngày nghỉ từ tệp; SheetJS tải khi dùng (gói riêng)
 - Test: 487 đạt / 487 tổng; Chromium: tải mẫu → nhập 3 cuộc, nhập lại báo trùng, tải đủ 5 tệp, nhập ngày nghỉ từ CSV
 - Giả định đã chọn: SheetJS bản miễn phí không ghi được in đậm/cố định dòng đầu → dùng độ rộng cột, ô số 1.234.567 và bộ lọc ở dòng tiêu đề; CSV đọc dạng chữ (tránh Excel đoán 03/2027 là ngày); MST thiếu số 0 đầu (Excel làm mất) tự thêm 0 và cảnh báo; trưởng đoàn trùng họ tên trong Cài đặt → tự đánh dấu đã nhận phân công (P1); dòng trùng MST mặc định không nhập
+
+### 2026-11-23 – T36 PWA
+- Đã làm: vite-plugin-pwa (manifest, icon 192/512/maskable/apple-touch sinh từ icon.svg, service worker lưu sẵn toàn bộ gói kể cả SheetJS); phông Be Vietnam Pro cài sẵn (không tải từ mạng); thanh “Có phiên bản mới – Cập nhật ngay”; báo “sẵn sàng dùng offline”; nút Cài app ngay + hướng dẫn thêm vào màn hình chính
+- Test: 487 đạt / 487 tổng; Chromium: service worker kiểm soát trang, tải lại khi ngắt mạng vẫn mở được, xuất Excel offline OK, 0 yêu cầu ra ngoài
+- Giả định đã chọn: Cập nhật phiên bản theo kiểu hỏi người dùng (registerType prompt) để không đổi app giữa lúc đang nhập; kiểm tra bản mới mỗi giờ
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

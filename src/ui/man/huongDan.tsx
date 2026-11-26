@@ -1,8 +1,17 @@
+import { caiApp, daCaiApp, suKienCai } from '../pwa';
 // Hướng dẫn cài app lên màn hình chính và thêm lịch vào điện thoại (dùng ở Căn cứ & hướng dẫn).
 export function HuongDanCaiDatApp() {
   return (
     <section class="the" aria-label="Cài lên màn hình chính">
       <h3>Cài app lên màn hình chính</h3>
+      {daCaiApp.value && <p><b>✓ App đang chạy như ứng dụng đã cài.</b></p>}
+      {suKienCai.value && (
+        <p>
+          <button type="button" class="nut nut-chinh" onClick={() => void caiApp()}>Cài app ngay</button>
+          <span class="phu"> (trình duyệt này hỗ trợ cài trực tiếp)</span>
+        </p>
+      )}
+      <p class="phu">Sau khi cài, app mở như ứng dụng thường và dùng được cả khi không có mạng. Dữ liệu vẫn chỉ nằm trên thiết bị này.</p>
       <details open>
         <summary class="dam">iPhone (Safari)</summary>
         <ol>

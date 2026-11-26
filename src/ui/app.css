@@ -444,3 +444,6 @@ tr.da-sua td { background: var(--nen-canh-bao); }
 .the-nhac.muc-canh_bao { border-left-color: var(--sla-vang); }
 .the-nhac.muc-thong_tin { border-left-color: var(--sla-xanh); }
 .danh-sach-nhac { display: flex; flex-direction: column; gap: var(--k3); }
+
+.thanh-ban-moi { position: sticky; top: 0; z-index: 80; display: flex; flex-wrap: wrap; align-items: center; gap: var(--k3); justify-content: center; padding: var(--k2) var(--k4); background: var(--chu); color: var(--nen); }
+.thanh-ban-moi .nut { color: inherit; }

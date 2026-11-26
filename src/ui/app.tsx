@@ -3,6 +3,7 @@ import { KhoaTuDong } from '../data/mat';
 import { apDungGiaoDien } from './giaoDien';
 import { KhungUngDung } from './khung';
 import { VungNhacNoi } from './chuongNhac';
+import { ThanhBanMoi } from './pwa';
 import { chayBoPhat } from './boPhatNhac';
 import { BangTruotHost, HopXacNhanHost, VungToast } from './lopPhu';
 import { ManHienTai } from './man';
@@ -114,6 +115,7 @@ export function UngDung() {
       <a class="bo-qua" href="#noi-dung" onClick={(e) => { e.preventDefault(); document.getElementById('noi-dung')?.focus(); }}>
         Bỏ qua tới nội dung
       </a>
+      <ThanhBanMoi />
       {noiDung}
       <BangTruotHost />
       <HopXacNhanHost />

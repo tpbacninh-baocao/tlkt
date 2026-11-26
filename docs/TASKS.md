@@ -64,7 +64,7 @@ Tài liệu tham chiếu: SPEC = `docs/SPEC.md` · ARCH = `docs/ARCHITECTURE.md`
 - [x] **T33 ⭐ Bộ phát nhắc trong app**: vòng 30 giây, toast + Notification (xin quyền có giải thích), âm báo, “Hoãn 15 phút / 1 giờ / sáng mai”, danh sách nhắc ở chuông 🔔, không phát trùng.
 - [x] **T34 Xuất lịch**: tải `.ics` (một cuộc / tất cả / 30 ngày tới), nút “Thêm vào Google Lịch” ở mọi ThẻViệc và mốc, trang hướng dẫn iPhone/Android.
 - [x] **T35 Excel**: nhập kế hoạch (ghép cột, xem trước, trùng MST), tải tệp mẫu, xuất 5 loại (ARCH §10); nhập ngày nghỉ.
-- [ ] **T36 PWA**: `vite-plugin-pwa`, manifest, icon, chạy offline, thanh “Có phiên bản mới”, hướng dẫn “Thêm vào màn hình chính”.
+- [x] **T36 PWA**: `vite-plugin-pwa`, manifest, icon, chạy offline, thanh “Có phiên bản mới”, hướng dẫn “Thêm vào màn hình chính”.
 
 ## Phase 5 – Hoàn thiện và bàn giao
 - [ ] **T37 E2E + ảnh chụp**: Playwright (nếu cài được Chromium; nếu không, ghi lý do vào PROGRESS và kiểm thử thủ công bằng `vite preview` + mô tả). Luồng ARCH §11; ảnh 390×844 & 1440×900 của mọi màn vào `docs/anh-chup/`.
