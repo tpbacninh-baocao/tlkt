@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T29
-- Nhiệm vụ xong gần nhất: T28
-- `npm run check`: sạch (440 đạt / 440 tổng; đã thử trong Chromium: tự lưu rồi tải lại còn nguyên, chuyển 3 việc sang ngày mai và hoàn tác)
+- Nhiệm vụ đang làm: T30
+- Nhiệm vụ xong gần nhất: T29
+- `npm run check`: sạch (440 đạt / 440 tổng; -)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -139,6 +139,10 @@
 - Đã làm: ui/man/keHoachNgay: phiếu ‘KẾ HOẠCH MỖI NGÀY’ – chọn ngày/tuần, Việc cần làm (tự đổ từ hạn ≤ ngày + kéo từ Hộp thu), Mục tiêu ≤ 3, Nhắc nhở (tự đổ từ lịch nhắc + ghi thêm), Lịch trong ngày, Ghi chú, Cho ngày mai (+ nút chuyển việc ngoài cuộc chưa xong sang ngày làm việc kế tiếp, có Hoàn tác), Cảm nhận 5 mức; tự lưu sau 600 ms.
 - Test: 440 đạt / 440 tổng; đã thử trong Chromium: tự lưu rồi tải lại còn nguyên, chuyển 3 việc sang ngày mai và hoàn tác
 - Giả định đã chọn: Nút ‘Chuyển sang ngày mai’ chỉ chuyển việc ngoài cuộc (hạn pháp lý của cuộc không đổi được).
+
+### 2026-11-23 – T29 Kế hoạch năm + biểu đồ
+- Đã làm: ui/man/keHoachNam + bieuDo: chọn năm/kế hoạch, 6 ô KPI số cuộc, 6 ô tiền (truy thu, phạt, chậm nộp, giảm khấu trừ, giảm lỗ, đã nộp/phải nộp), biểu đồ SVG tích lũy theo tháng (thực tế vs đường lý tưởng, có bảng thay thế cho trình đọc màn hình) + cột theo giai đoạn, cảnh báo (quá tháng dự kiến, cuối năm Đ15.5.e, hạn công khai 30 ngày, báo cáo chuyên đề), tồn chuyển năm sau; quản lý kế hoạch (thêm/sửa/xóa mềm có Hoàn tác, hạn công khai/báo cáo kèm SLA).
+- Test: 440 đạt / 440 tổng; -
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.
