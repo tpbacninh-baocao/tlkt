@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T37
-- Nhiệm vụ xong gần nhất: T36
-- `npm run check`: sạch (487 đạt / 487 tổng; Chromium: service worker kiểm soát trang, tải lại khi ngắt mạng vẫn mở được, xuất Excel offline OK, 0 yêu cầu ra ngoài)
+- Nhiệm vụ đang làm: T38
+- Nhiệm vụ xong gần nhất: T37
+- `npm run check`: sạch (487 đạt / 487 tổng; Chromium: E2E đạt toàn bộ, 0 lỗi console ở cả hai khổ màn hình)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -174,6 +174,11 @@
 - Đã làm: vite-plugin-pwa (manifest, icon 192/512/maskable/apple-touch sinh từ icon.svg, service worker lưu sẵn toàn bộ gói kể cả SheetJS); phông Be Vietnam Pro cài sẵn (không tải từ mạng); thanh “Có phiên bản mới – Cập nhật ngay”; báo “sẵn sàng dùng offline”; nút Cài app ngay + hướng dẫn thêm vào màn hình chính
 - Test: 487 đạt / 487 tổng; Chromium: service worker kiểm soát trang, tải lại khi ngắt mạng vẫn mở được, xuất Excel offline OK, 0 yêu cầu ra ngoài
 - Giả định đã chọn: Cập nhật phiên bản theo kiểu hỏi người dùng (registerType prompt) để không đổi app giữa lúc đang nhập; kiểm tra bản mới mỗi giờ
+
+### 2026-11-23 – T37 E2E + ảnh chụp
+- Đã làm: Kịch bản Playwright (e2e/luong-chinh.cjs): mở lần đầu → onboarding → dữ liệu mẫu → tạo cuộc mới → đánh dấu xong 22 bước đến giai đoạn Hoàn thành → mở 14 màn, Kiểm thử trong app đạt, không lỗi console; chụp 66 ảnh 390×844 và 1440×900 vào docs/anh-chup (e2e/chup-anh.cjs); thêm npm run e2e và npm run chup-anh
+- Test: 487 đạt / 487 tổng; Chromium: E2E đạt toàn bộ, 0 lỗi console ở cả hai khổ màn hình
+- Giả định đã chọn: Playwright không nằm trong package.json của dự án (cần cài sẵn trong máy chạy) để việc cài đặt và triển khai không nặng thêm
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

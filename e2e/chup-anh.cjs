@@ -59,10 +59,10 @@ const MAN = [
     await di('#cuoc');
     const href = await p.locator('a[href^="#cuoc-"]').first().getAttribute('href');
     await di(href); await chup('21-cuoc-chi-tiet');
-    for (const tab of ['Sự kiện', 'Nhập hệ thống', 'Nhật ký', 'Kết quả & nộp tiền']) {
+    for (const [tab, slug] of [['Sự kiện', 'su-kien'], ['Nhập hệ thống', 'nhap-he-thong'], ['Nhật ký', 'nhat-ky'], ['Kết quả & nộp tiền', 'ket-qua-nop-tien']]) {
       await p.getByRole('tab', { name: new RegExp('^' + tab) }).first().click().catch(() => undefined);
       await p.waitForTimeout(300);
-      await chup('22-cuoc-' + tab.toLowerCase().replace(/[^a-z]+/gi, '-'));
+      await chup('22-cuoc-' + slug);
     }
     // các bảng trượt
     await di('#cuoc');
