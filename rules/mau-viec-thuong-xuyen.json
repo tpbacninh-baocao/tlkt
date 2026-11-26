@@ -1,0 +1,25 @@
+{
+  "$schema_note": "Mẫu việc thường xuyên/đột xuất ngoài cuộc kiểm tra. 'lap' theo cú pháp đơn giản (xem docs/ARCHITECTURE.md mục 7). Người dùng bật/tắt từng mẫu ở màn Việc → Mẫu.",
+  "thuongXuyen": [
+    { "ma": "RS_13", "tieuDe": "Rà soát dữ liệu kiểm tra trên TTR trước chốt số liệu ngày 15", "lap": "THANG:13", "gio": "08:00", "nhom": "Báo cáo", "batMacDinh": true },
+    { "ma": "RS_CUOI", "tieuDe": "Rà soát dữ liệu kiểm tra trên TTR trước chốt số liệu cuối tháng", "lap": "THANG:CUOI-2", "gio": "08:00", "nhom": "Báo cáo", "batMacDinh": true },
+    { "ma": "BC_THANG", "tieuDe": "Nhập báo cáo tháng kết quả kiểm tra (03, 04, 05/QTKT-MC) – hạn trước ngày 01 tháng sau", "lap": "THANG:28", "gio": "08:00", "nhom": "Báo cáo", "batMacDinh": true },
+    { "ma": "BC_NAM", "tieuDe": "Nhập báo cáo năm kết quả kiểm tra – hạn trước 05/01", "lap": "NAM:01-02", "gio": "08:00", "nhom": "Báo cáo", "batMacDinh": true },
+    { "ma": "GIAO_BAN", "tieuDe": "Chuẩn bị nội dung giao ban tuần", "lap": "TUAN:1", "gio": "07:30", "nhom": "Hành chính", "batMacDinh": false },
+    { "ma": "DON_DOC_NOP", "tieuDe": "Tổng hợp, đôn đốc thu nộp sau kiểm tra", "lap": "TUAN:5", "gio": "09:00", "nhom": "Sau kiểm tra", "batMacDinh": true },
+    { "ma": "RS_QUY", "tieuDe": "Rà soát tiến độ kế hoạch kiểm tra quý", "lap": "QUY:CUOI-5", "gio": "08:00", "nhom": "Kế hoạch", "batMacDinh": true }
+  ],
+  "nhomDotXuat": [
+    "Kiểm tra nội bộ",
+    "Tiếp công dân",
+    "Giải quyết khiếu nại",
+    "Giải quyết tố cáo, phản ánh, kiến nghị",
+    "Phòng chống tham nhũng, lãng phí, tiêu cực",
+    "Xác minh tài sản, thu nhập",
+    "Cung cấp số liệu cho Kiểm toán Nhà nước / Thanh tra / Công an",
+    "Kiểm tra lại kết quả kiểm tra của Thuế cơ sở",
+    "Tham gia ý kiến chính sách, quy trình",
+    "Đào tạo, biên soạn tài liệu",
+    "Văn bản lãnh đạo giao khác"
+  ]
+}

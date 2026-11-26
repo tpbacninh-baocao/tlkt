@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm *)",
+      "Bash(npx *)",
+      "Bash(node *)",
+      "Bash(git *)",
+      "Bash(ls *)",
+      "Bash(mkdir *)",
+      "Bash(cat *)",
+      "Edit",
+      "Write"
+    ],
+    "deny": [
+      "Bash(git push --force *)",
+      "Bash(rm -rf /*)"
+    ]
+  }
+}

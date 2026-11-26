@@ -1,0 +1,13 @@
+{
+  "$schema_note": "Ngày nghỉ, ngày làm bù (thứ Bảy/Chủ nhật đi làm). Chỉ nạp sẵn ngày lễ dương lịch cố định; Tết Nguyên đán, Giỗ Tổ, ngày nghỉ bù/hoán đổi phải nhập theo thông báo hằng năm. App hiển thị cảnh báo 'Chưa nhập lịch nghỉ Tết năm X' cho đến khi người dùng xác nhận đã cập nhật năm đó.",
+  "codinh": [
+    { "ngayThang": "01-01", "ten": "Tết Dương lịch" },
+    { "ngayThang": "04-30", "ten": "Ngày Chiến thắng" },
+    { "ngayThang": "05-01", "ten": "Quốc tế Lao động" },
+    { "ngayThang": "09-02", "ten": "Quốc khánh" }
+  ],
+  "theoNam": {
+    "2026": { "daXacNhan": false, "ngayNghi": [], "ngayLamBu": [] },
+    "2027": { "daXacNhan": false, "ngayNghi": [], "ngayLamBu": [] }
+  }
+}

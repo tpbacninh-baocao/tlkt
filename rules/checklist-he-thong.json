@@ -1,0 +1,42 @@
+{
+  "$schema_note": "Danh mục việc nhập liệu trên các hệ thống ngành. Tên chức năng là CẤU HÌNH (người dùng sửa được trong Cài đặt khi phiên bản hệ thống thay đổi). 'khi' = mốc/sự kiện sinh ra việc; 'dieuKien' = chỉ sinh khi thỏa. Hạn mặc định = ngày phát sinh + thamSo.hanNhapLieuNLV (1 NLV).",
+  "heThong": {
+    "TTR": "Ứng dụng hỗ trợ thanh tra, kiểm tra (TTR)",
+    "ITNK": "Nhật ký điện tử thanh tra, kiểm tra (iTNK)",
+    "TMS": "Hệ thống quản lý thuế tập trung (TMS)"
+  },
+  "viec": [
+    { "ma": "TTR_QD", "heThong": "TTR", "chucNang": "Thanh tra kiểm tra doanh nghiệp / Nhập Quyết định TTKT", "khi": "D0", "saoChep": ["mst", "tenNNT", "soQD", "ngayQD", "thoiKy", "noiDung", "truongDoan", "thanhVien"] },
+    { "ma": "ITNK_QD", "heThong": "ITNK", "chucNang": "Nhập thông tin quyết định", "khi": "D0", "saoChep": ["mst", "tenNNT", "soQD", "ngayQD", "thoiKy", "noiDung"] },
+    { "ma": "ITNK_TV", "heThong": "ITNK", "chucNang": "Danh sách thành viên đoàn", "khi": "D0", "saoChep": ["truongDoan", "thanhVien"] },
+    { "ma": "ITNK_GS", "heThong": "ITNK", "chucNang": "Danh sách tổ giám sát", "khi": "D0", "saoChep": ["giamSat"] },
+    { "ma": "ITNK_PC", "heThong": "ITNK", "chucNang": "Phân công nhiệm vụ (hạng mục công việc)", "khi": "Q3", "saoChep": ["thanhVien"] },
+    { "ma": "TTR_CB", "heThong": "TTR", "chucNang": "Lịch trình TTKT – ngày công bố quyết định", "khi": "C", "saoChep": ["mst", "soQD", "ngayCongBo"] },
+    { "ma": "ITNK_CB", "heThong": "ITNK", "chucNang": "Công bố quyết định (nếu trễ hạn phải nhập lý do giải trình)", "khi": "C", "saoChep": ["soQD", "ngayCongBo", "lyDoTreCongBo"] },
+    { "ma": "TMS_CB", "heThong": "TMS", "chucNang": "1.4.1 – Nhập công bố quyết định kiểm tra tại trụ sở NNT", "khi": "C", "saoChep": ["mst", "soQD", "ngayQD", "ngayCongBo"] },
+    { "ma": "TTR_HOAN", "heThong": "TTR", "chucNang": "Nhập thông báo hoãn", "khi": "SK:HOAN", "saoChep": ["mst", "soQD", "soVB", "ngay", "denNgay"] },
+    { "ma": "TTR_TD", "heThong": "TTR", "chucNang": "Tạm dừng thanh tra kiểm tra", "khi": "SK:TAM_DUNG", "saoChep": ["mst", "soQD", "soVB", "tuNgay", "denNgay"] },
+    { "ma": "ITNK_TD", "heThong": "ITNK", "chucNang": "Tạm dừng cuộc", "khi": "SK:TAM_DUNG", "saoChep": ["tuNgay", "denNgay", "lyDo"] },
+    { "ma": "TTR_GH", "heThong": "TTR", "chucNang": "Nhập quyết định bổ sung thời hạn TTKT", "khi": "SK:GIA_HAN", "saoChep": ["mst", "soQD", "soQDGiaHan", "ngayQDGiaHan", "soNgay"] },
+    { "ma": "ITNK_GH", "heThong": "ITNK", "chucNang": "Gia hạn cuộc", "khi": "SK:GIA_HAN", "saoChep": ["soQDGiaHan", "ngayQDGiaHan", "hanMoi"] },
+    { "ma": "TTR_DC", "heThong": "TTR", "chucNang": "Nhập quyết định thanh tra kiểm tra bổ sung", "khi": "SK:DIEU_CHINH", "saoChep": ["mst", "soQD", "soQDDieuChinh", "ngayQDDieuChinh", "noiDungDieuChinh"] },
+    { "ma": "ITNK_DC", "heThong": "ITNK", "chucNang": "Cập nhật danh sách thành viên đoàn / thông tin quyết định", "khi": "SK:DIEU_CHINH", "saoChep": ["truongDoan", "thanhVien"] },
+    { "ma": "TTR_HUY", "heThong": "TTR", "chucNang": "Nhập quyết định hủy", "khi": "SK:BAI_BO", "saoChep": ["mst", "soQD", "soQDBaiBo", "ngayQDBaiBo"] },
+    { "ma": "ITNK_HUY", "heThong": "ITNK", "chucNang": "Bãi bỏ cuộc", "khi": "SK:BAI_BO", "saoChep": ["soQDBaiBo", "ngayQDBaiBo", "lyDo"] },
+    { "ma": "ITNK_KT", "heThong": "ITNK", "chucNang": "Kết thúc cuộc (nếu muộn nhập lý do)", "khi": "K", "saoChep": ["soQD", "ngayKetThuc", "lyDoTreKetThuc"] },
+    { "ma": "TTR_NLV", "heThong": "TTR", "chucNang": "Lịch trình TTKT – ngày làm việc thực tế", "khi": "K", "saoChep": ["mst", "soQD", "dsNgayLamViec"] },
+    { "ma": "TTR_BB", "heThong": "TTR", "chucNang": "Nhập số liệu biên bản thanh tra kiểm tra", "khi": "B", "saoChep": ["mst", "soQD", "ngayKyBB", "ketQua"] },
+    { "ma": "TTR_PLBB", "heThong": "TTR", "chucNang": "Nhập phụ lục biên bản", "khi": "SK:PHU_LUC_BB", "saoChep": ["mst", "soQD", "ngay", "noiDung"] },
+    { "ma": "ITNK_BCKQ", "heThong": "ITNK", "chucNang": "Báo cáo kết quả TTKT (sau khi đã Kết thúc)", "khi": "R", "saoChep": ["tomTatKetQua"] },
+    { "ma": "TTR_KL", "heThong": "TTR", "chucNang": "Nhập kết luận thanh tra kiểm tra", "khi": "X", "dieuKien": "X_LA_KET_LUAN", "saoChep": ["mst", "soQD", "soQDXL", "ngayQDXL", "ketQua"] },
+    { "ma": "TTR_QDXL", "heThong": "TTR", "chucNang": "Nhập Quyết định xử lý (+ nhập hành vi vi phạm)", "khi": "X", "dieuKien": "X_LA_QD_XU_PHAT", "saoChep": ["mst", "soQD", "soQDXL", "ngayQDXL", "ketQua", "hanhViViPham"] },
+    { "ma": "TMS_QDXL", "heThong": "TMS", "chucNang": "4.1 – Nhập quyết định (xử lý)", "khi": "X", "saoChep": ["mst", "soQDXL", "ngayQDXL", "ketQua"] },
+    { "ma": "TMS_NGAYKL", "heThong": "TMS", "chucNang": "1.4.1 – Nhập ngày kết luận", "khi": "X", "saoChep": ["mst", "soQD", "ngayQDXL"] },
+    { "ma": "ITNK_DUYET", "heThong": "ITNK", "chucNang": "Lãnh đạo phê duyệt báo cáo kết quả TTKT (nhắc lãnh đạo)", "khi": "X", "saoChep": [] },
+    { "ma": "ITNK_HT", "heThong": "ITNK", "chucNang": "Hoàn thành cuộc", "khi": "X", "sau": ["ITNK_KT", "ITNK_BCKQ"], "saoChep": ["soQD", "soQDXL", "ngayQDXL"] },
+    { "ma": "TTR_NOP", "heThong": "TTR", "chucNang": "Nhập số thu nộp sau TTKT", "khi": "NOP_TIEN", "lapLai": "mỗi lần NNT nộp", "saoChep": ["mst", "soQDXL", "ngayNop", "soTienNop", "theoSacThue"] }
+  ],
+  "hangNgay": [
+    { "ma": "ITNK_NK", "heThong": "ITNK", "chucNang": "Cập nhật nhật ký đoàn / tiến độ công việc (trưởng đoàn + thành viên); trưởng đoàn phê duyệt kết quả công việc", "khi": "MOI_NGAY_TAI_DN" }
+  ]
+}

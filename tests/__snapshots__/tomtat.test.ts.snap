@@ -1,0 +1,76 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Báo cáo tiến độ đoàn > đầy đủ các mục (snapshot) 1`] = `
+"BÁO CÁO TIẾN ĐỘ ĐOÀN KIỂM TRA
+Ngày 14/10/2026
+Đối tượng: Công ty A (MST …0001) – KT-2026-001 [KH]
+Trưởng đoàn: Nguyễn Văn A
+Giai đoạn: Đang kiểm tra
+Quyết định kiểm tra: số 123/QĐ-CT, ngày 05/10/2026
+Tóm tắt: Đến 14/10/2026, đoàn kiểm tra Công ty A (MST …0001) đang kiểm tra tại trụ sở ngày thứ 3/20; hạn kết thúc tại trụ sở 02/11/2026; hạn đề nghị gia hạn 28/10/2026; còn 2 yêu cầu tài liệu chưa nhận (quá 06 giờ làm việc: 1); nhật ký iTNK đã ghi đủ; đang có 4 bước quá hạn; còn 7 mục nhập liệu hệ thống chưa làm.
+Các mốc chính:
+   – Ban hành QĐ (D0): 05/10/2026 ✓
+   – Công bố QĐ (C): 12/10/2026 ✓
+   – Hạn kết thúc tại trụ sở (E): 02/11/2026 (hạn)
+   – Công khai dự thảo biên bản (K): 02/11/2026 (dự kiến)
+   – Ký biên bản (B): 09/11/2026 (dự kiến)
+   – Ban hành QĐ xử phạt/Kết luận (X): 18/11/2026 (dự kiến)
+Việc tiếp theo: Gửi QĐ kiểm tra cho NNT (hạn 08/10/2026, quá 4 ngày LV)
+Vướng mắc đang chờ ý kiến: 0
+Đề xuất, kiến nghị: …"
+`;
+
+exports[`Báo cáo tuần > kết quả tuần, cuộc đang làm, tồn đọng, kế hoạch tuần sau (snapshot) 1`] = `
+"BÁO CÁO TUẦN – từ 12/10/2026 đến 18/10/2026
+Cán bộ: Nguyễn Văn A – Phòng Kiểm tra
+1. Kết quả trong tuần: 2 việc đã hoàn thành
+   – Công ty A (MST …0001): Công bố QĐ kiểm tra (12/10/2026)
+   – Việc: Báo cáo giao ban (13/10/2026)
+2. Các cuộc đang thực hiện: 1
+   – Công ty A (MST …0001) [Đang kiểm tra]; việc tiếp theo: Phân công công việc thành viên đoàn (hạn 12/10/2026, quá 4 ngày LV)
+3. Tồn đọng, quá hạn: 9
+   – Công ty A (…0001): Phân công công việc thành viên đoàn (hạn 12/10, quá 4 ngày LV)
+   – Công ty A (…0001): Thông báo người giám sát tham dự buổi công bố (hạn 12/10, quá 4 ngày LV)
+   – Công ty A (…0001): Nhập TTR: Thanh tra kiểm tra doanh nghiệp / Nhập Quyết định TTKT (hạn 06/10, quá 8 ngày LV)
+   – Công ty A (…0001): Nhập ITNK: Nhập thông tin quyết định (hạn 06/10, quá 8 ngày LV)
+   – Công ty A (…0001): Nhập ITNK: Danh sách thành viên đoàn (hạn 06/10, quá 8 ngày LV)
+   – Công ty A (…0001): Nhập ITNK: Danh sách tổ giám sát (hạn 06/10, quá 8 ngày LV)
+   – Công ty A (…0001): Nhập TTR: Lịch trình TTKT – ngày công bố quyết định (hạn 13/10, quá 3 ngày LV)
+   – Công ty A (…0001): Nhập ITNK: Công bố quyết định (nếu trễ hạn phải nhập lý do giải trình) (hạn 13/10, quá 3 ngày LV)
+   – … và 1 việc khác
+4. Kế hoạch tuần sau (19/10–25/10): 0 hạn
+5. Nhập liệu hệ thống còn thiếu: 7 mục"
+`;
+
+exports[`Bản tin sáng > gom quá hạn / hôm nay / 3 NLV / tại DN / nhập liệu (snapshot) 1`] = `
+"BẢN TIN SÁNG – Thứ Tư 14/10/2026
+Chào Nguyễn Văn A, tình hình hôm nay:
+• Quá hạn: 17 việc
+   – Công ty A (…0001): Gửi QĐ kiểm tra cho NNT (hạn 08/10, quá 4 ngày LV)
+   – Công ty B (…0002): Gửi QĐ kiểm tra cho NNT (hạn 08/10, quá 4 ngày LV)
+   – Công ty A (…0001): Đôn đốc người giám sát lập Kế hoạch giám sát (hạn 12/10, quá 2 ngày LV)
+   – Công ty A (…0001): Phân công công việc thành viên đoàn (hạn 12/10, quá 2 ngày LV)
+   – Công ty A (…0001): Thông báo người giám sát tham dự buổi công bố (hạn 12/10, quá 2 ngày LV)
+   – … và 12 việc khác
+• Đến hạn hôm nay: 1 việc
+   – Nộp báo cáo tháng (hạn 14/10, hôm nay)
+• 3 ngày làm việc tới: 1 việc
+   – Công ty B (…0002): Công bố QĐ kiểm tra (hạn 19/10, còn 3 ngày LV)
+• Tại doanh nghiệp hôm nay: Công ty A (…0001) – ngày thứ 3/20 – hạn kết thúc 02/11/2026 – chưa ghi nhật ký iTNK
+   – 2 yêu cầu tài liệu chưa nhận (quá hạn: 1)
+• Nhập liệu còn thiếu: 11 mục (TTR/iTNK/TMS)"
+`;
+
+exports[`Tóm tắt một cuộc > các giai đoạn khác (snapshot) 1`] = `
+{
+  "baiBo": "Đến 23/11/2026, QĐ kiểm tra đối với Công ty A (MST …0001) đã bị bãi bỏ ngày 08/10/2026.",
+  "bienBan": "Đến 23/11/2026, đoàn kiểm tra Công ty A (MST …0001) đã công khai dự thảo biên bản ngày 30/10/2026; hạn ký biên bản 06/11/2026; việc tiếp theo: Gửi QĐ kiểm tra cho NNT (hạn 08/10/2026, quá 32 ngày LV); đang có 8 bước quá hạn; còn 9 mục nhập liệu hệ thống chưa làm.",
+  "choCongBo": "Đến 23/11/2026, đoàn kiểm tra Công ty A (MST …0001) đã có QĐ kiểm tra số 123/QĐ-CT ngày 05/10/2026; chờ công bố, hạn công bố 19/10/2026; việc tiếp theo: Gửi QĐ kiểm tra cho NNT (hạn 08/10/2026, quá 32 ngày LV); đang có 3 bước quá hạn; còn 4 mục nhập liệu hệ thống chưa làm.",
+  "choQDXuLy": "Đến 23/11/2026, đoàn kiểm tra Công ty A (MST …0001) đã ký biên bản ngày 03/11/2026; hạn ban hành QĐ xử phạt 12/11/2026 (X1); việc tiếp theo: Gửi QĐ kiểm tra cho NNT (hạn 08/10/2026, quá 32 ngày LV); đang có 8 bước quá hạn; còn 11 mục nhập liệu hệ thống chưa làm.",
+  "chuanBi": "Đến 23/11/2026, đoàn kiểm tra Công ty A (MST …0001) đang chuẩn bị hồ sơ trình ban hành QĐ kiểm tra; việc tiếp theo: Thu thập dữ liệu, phân tích rủi ro, lập Phiếu phân tích, đánh giá rủi ro (hạn 15/09/2026, quá 49 ngày LV); đang có 4 bước quá hạn.",
+  "nopTien": "Đến 23/11/2026, đoàn kiểm tra Công ty A (MST …0001) đã hoàn thành các bước, đang theo dõi nộp tiền: phải nộp 12.500.000 đồng, đã nộp 5.000.000 đồng, còn 7.500.000 đồng; việc tiếp theo: Gửi QĐ kiểm tra cho NNT (hạn 08/10/2026, quá 32 ngày LV); đang có 8 bước quá hạn; còn 16 mục nhập liệu hệ thống chưa làm.",
+  "sauQD": "Đến 23/11/2026, đoàn kiểm tra Công ty A (MST …0001) đã ban hành Kết luận kiểm tra ngày 10/11/2026; việc tiếp theo: Gửi QĐ kiểm tra cho NNT (hạn 08/10/2026, quá 32 ngày LV); đang có 10 bước quá hạn; còn 16 mục nhập liệu hệ thống chưa làm.",
+}
+`;
+
+exports[`Tóm tắt một cuộc > đang kiểm tra – đúng mẫu câu trong SPEC (ngày thứ 3/20, hạn gia hạn 28/10, yêu cầu tài liệu, nhật ký) 1`] = `"Đến 14/10/2026, đoàn kiểm tra Công ty A (MST …0001) đang kiểm tra tại trụ sở ngày thứ 3/20; hạn kết thúc tại trụ sở 02/11/2026; hạn đề nghị gia hạn 28/10/2026; còn 2 yêu cầu tài liệu chưa nhận (quá 06 giờ làm việc: 1); nhật ký iTNK đã ghi đủ; đang có 4 bước quá hạn; còn 7 mục nhập liệu hệ thống chưa làm."`;
