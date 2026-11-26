@@ -20,7 +20,13 @@ function hookHeThong() {
     };
     window.addEventListener('hashchange', doiHash);
     const tick = window.setInterval(() => capNhatDongHo(), 15_000);
-    const khiHienLai = () => document.visibilityState === 'visible' && capNhatDongHo();
+    const khiHienLai = () => {
+      // Che nội dung khi app chuyển ra nền (hình xem trước ở màn hình đa nhiệm) nếu đã đặt mật mã hoặc bật ẩn danh
+      const can = (kho.value?.daMaHoa() ?? false) || caiDat.value.anDanh;
+      if (document.visibilityState === 'hidden' && can) document.documentElement.dataset.che = '1';
+      else delete document.documentElement.dataset.che;
+      if (document.visibilityState === 'visible') capNhatDongHo();
+    };
     document.addEventListener('visibilitychange', khiHienLai);
     return () => {
       window.removeEventListener('hashchange', doiHash);

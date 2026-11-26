@@ -68,7 +68,7 @@ Tài liệu tham chiếu: SPEC = `docs/SPEC.md` · ARCH = `docs/ARCHITECTURE.md`
 
 ## Phase 5 – Hoàn thiện và bàn giao
 - [x] **T37 E2E + ảnh chụp**: Playwright (nếu cài được Chromium; nếu không, ghi lý do vào PROGRESS và kiểm thử thủ công bằng `vite preview` + mô tả). Luồng ARCH §11; ảnh 390×844 & 1440×900 của mọi màn vào `docs/anh-chup/`.
-- [ ] **T38 Rà soát độ phủ yêu cầu**: tạo `docs/DO-PHU-YEU-CAU.md` – bảng mỗi yêu cầu trong SPEC §2–§17 và UI §4 → Đã làm / Một phần / Chưa → vị trí code/test. Làm nốt mọi mục “Chưa”/“Một phần” làm được.
+- [x] **T38 Rà soát độ phủ yêu cầu**: tạo `docs/DO-PHU-YEU-CAU.md` – bảng mỗi yêu cầu trong SPEC §2–§17 và UI §4 → Đã làm / Một phần / Chưa → vị trí code/test. Làm nốt mọi mục “Chưa”/“Một phần” làm được.
 - [ ] **T39 Hiệu năng & truy cập**: bundle chính < 300 KB gzip (SheetJS tải động), Lighthouse PWA/Accessibility ≥ 90 nếu đo được, tương phản AA, bàn phím.
 - [ ] **T40 Bàn giao**: `docs/HUONG-DAN-SU-DUNG.md` (≤ 2 trang, tiếng Việt, cho cán bộ), cập nhật `README.md` (link app), tăng version 1.0.0, ghi PROGRESS tổng kết, push `main` để GitHub Pages triển khai.
 

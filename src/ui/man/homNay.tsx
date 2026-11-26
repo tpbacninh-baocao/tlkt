@@ -6,7 +6,9 @@ import { datNhatKy } from '../hanhDongCuoc';
 import { FormNgayNghiNam } from '../ngayNghiForm';
 import { menuMuc, xongMuc } from '../muc';
 import { bayGio, caiDat, dsKhoiThoiGian, homNay, lich, moBang, phanTichMap, saoLuuCuoi, tongHop, trangThaiApp, cuocConHieuLuc, toast, napDuLieu, kho_ } from '../store';
-import { Kpi, NhomViec, TheViec, TrangThaiRong, NhanHeThong } from '../thanhPhan';
+import { Kpi, KhoiVanBan, NhomViec, NutSaoChep, TheViec, TrangThaiRong, NhanHeThong } from '../thanhPhan';
+import { tinBaoLanhDao } from '../../core/tomTat';
+import { duLieuTomTat } from '../store';
 import { moFormCuoc } from './themCuoc';
 import { moNhapKeHoach } from './nhapExcel';
 import { themDuLieuMau } from '../../data/mau';
@@ -33,6 +35,7 @@ function tomTatYeuCau(cuocId: string): string | undefined {
 
 export function ManHomNay() {
   const th = tongHop.value;
+  const tinLanhDao = tinBaoLanhDao(duLieuTomTat.value);
   const cd = caiDat.value;
   const gio = Number(bayGio.value.slice(11, 13));
   const nam = Number(homNay.value.slice(0, 4));
@@ -120,6 +123,11 @@ export function ManHomNay() {
         <div id="qua-han">
           <NhomViec tieuDe="QUÁ HẠN" dem={k.quaHan} kieu="do">
             {th.quaHan.map((m) => <TheViec key={m.khoa} m={m} onXong={xongMuc} menu={menuMuc(m)} />)}
+            {tinLanhDao && (
+              <button type="button" class="nut nut-nho" onClick={() => moBang({ id: 'tin-lanh-dao', tieuDe: 'Soạn tin báo lãnh đạo', noiDung: () => <div><p class="phu">Có việc quá hạn trên 1 ngày làm việc. Tin dưới đây soạn sẵn – bạn đọc lại, sửa nếu cần rồi tự gửi.</p><KhoiVanBan text={tinLanhDao} /><NutSaoChep lay={() => tinLanhDao} nho={false} /></div> })}>
+                ✉ Soạn tin báo lãnh đạo
+              </button>
+            )}
           </NhomViec>
         </div>
       )}

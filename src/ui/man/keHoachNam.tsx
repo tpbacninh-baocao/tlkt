@@ -14,6 +14,7 @@ import { nhanTheoTrangThai } from '../chuoi';
 
 const nam = signal<number>(tachNgay(homNay.value).nam);
 const khId = signal<string>('');
+const chiCuaToi = signal(false);
 
 const TEN_LOAI_KH: Record<KeHoach['loai'], string> = { KH_NAM: 'Kế hoạch năm', CD_DAU_NAM: 'Chuyên đề đầu năm', CD_PHAT_SINH: 'Chuyên đề phát sinh', DOT_XUAT: 'Đột xuất' };
 
@@ -108,7 +109,8 @@ export function ManKeHoachNam() {
   const khNam = dsKH.filter((k) => k.nam === nam.value);
   const kh = khNam.find((k) => k.id === khId.value);
   const d = { homNay: homNay.value, lich: lich.value, cuoc: cuocConHieuLuc.value, keHoach: dsKH, va: caiDat.value.vaQuyTac as never };
-  const tk = thongKeKeHoach(d, { nam: nam.value, keHoachId: kh?.id });
+  const hoTen = caiDat.value.canBo.hoTen.trim();
+  const tk = thongKeKeHoach(d, { nam: nam.value, keHoachId: kh?.id, truongDoan: chiCuaToi.value && hoTen ? hoTen : undefined });
   const bo = chonBoQuyTac(undefined, homNay.value, undefined, caiDat.value.vaQuyTac as never);
 
   return (
@@ -127,6 +129,12 @@ export function ManKeHoachNam() {
             {khNam.map((k) => <option key={k.id} value={k.id}>{k.ten}</option>)}
           </select>
         </div>
+        {hoTen && (
+          <label class="o-tich" style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+            <input type="checkbox" checked={chiCuaToi.value} onChange={(e) => (chiCuaToi.value = (e.target as HTMLInputElement).checked)} />
+            <span>Chỉ cuộc của tôi (trưởng đoàn: {hoTen})</span>
+          </label>
+        )}
         <span style={{ flex: 1 }} />
         <button type="button" class="nut nut-chinh" onClick={() => moFormKeHoach()}>＋ Kế hoạch</button>
         <button type="button" class="nut" onClick={moNhapKeHoach}>Nhập Excel</button>

@@ -241,3 +241,19 @@ export function baoCaoTuan(d: DuLieuTomTat, ngayTrongTuan: NgayISO): string {
   dong.push(`5. Nhập liệu hệ thống còn thiếu: ${th.kpi.nhapLieuThieu} mục`);
   return dong.join('\n');
 }
+
+/**
+ * Leo thang (SPEC §13): khi có việc quá hạn quá 1 ngày làm việc, soạn sẵn tin báo lãnh đạo/tổ trưởng.
+ * Trả về undefined nếu không có việc nào như vậy. Người dùng tự gửi.
+ */
+export function tinBaoLanhDao(d: DuLieuTomTat): string | undefined {
+  const ds = tongHopHomNay(d).quaHan.filter((m) => m.nlvConLai !== undefined && m.nlvConLai < -1);
+  if (!ds.length) return undefined;
+  const dong: string[] = [`Kính gửi lãnh đạo, em xin báo cáo các việc đang quá hạn (tính đến ${dinhDangNgay(d.homNay)}):`];
+  ds.slice(0, 8).forEach((m, i) => {
+    dong.push(`${i + 1}. ${m.nhanCuoc ? m.nhanCuoc + ' ' + GACH + ' ' : ''}${m.tieuDe}${m.han ? ` (hạn ${dinhDangNgay(m.han)}, quá ${-(m.nlvConLai as number)} ngày làm việc)` : ''}`);
+  });
+  if (ds.length > 8) dong.push(`… và ${ds.length - 8} việc khác.`);
+  dong.push('Em đang xử lý và đề nghị lãnh đạo cho ý kiến chỉ đạo/gia hạn nếu cần. Em xin báo cáo.');
+  return dong.join('\n');
+}

@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T38
-- Nhiệm vụ xong gần nhất: T37
-- `npm run check`: sạch (487 đạt / 487 tổng; Chromium: E2E đạt toàn bộ, 0 lỗi console ở cả hai khổ màn hình)
+- Nhiệm vụ đang làm: T39
+- Nhiệm vụ xong gần nhất: T38
+- `npm run check`: sạch (490 đạt / 490 tổng; thêm test tin báo lãnh đạo và nhắc tổng kết ngày)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -180,6 +180,11 @@
 - Test: 487 đạt / 487 tổng; Chromium: E2E đạt toàn bộ, 0 lỗi console ở cả hai khổ màn hình
 - Giả định đã chọn: Playwright không nằm trong package.json của dự án (cần cài sẵn trong máy chạy) để việc cài đặt và triển khai không nặng thêm
 
+### 2026-11-23 – T38 Rà soát độ phủ yêu cầu
+- Đã làm: Lập docs/DO-PHU-YEU-CAU.md (SPEC §2–§17, UI §4) kèm vị trí mã/test; làm nốt các mục làm được: soạn tin báo lãnh đạo khi quá hạn > 1 ngày LV, nhắc Tổng kết ngày 16:50, che nội dung khi app ra nền, ô “Chỉ cuộc của tôi” ở Kế hoạch năm. Còn Chưa: mẫu quy trình cho bộ phận khác, khóa vân tay/Face ID; Một phần: ẩn danh chỉ che hiển thị, bản đơn vị
+- Test: 490 đạt / 490 tổng; thêm test tin báo lãnh đạo và nhắc tổng kết ngày
+- Giả định đã chọn: Mẫu quy trình bộ phận khác và sinh trắc để giai đoạn sau (SPEC nêu rõ là hướng mở rộng/bản app sau này)
+
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.
 - Cách đếm “kể từ”: ngày sự kiện không tính; hạn ngày lịch/tháng rơi ngày nghỉ → ngày làm việc kế tiếp.
@@ -191,6 +196,10 @@
 - [ ] Lịch nghỉ Tết, Giỗ Tổ, nghỉ bù năm 2026–2027.
 - [ ] Tham số bộ chuyển tiếp QTKT-970.
 - [ ] Hạn nộp tiền theo QĐ xử phạt (mặc định nhận QĐ + 10 ngày).
+- [ ] Mẫu quy trình tự tạo cho bộ phận khác (SPEC §11) – chưa làm, chờ đơn vị chốt nhu cầu (xem `docs/DO-PHU-YEU-CAU.md`).
+- [ ] Khóa bằng vân tay/Face ID – chưa làm (cần app di động); hiện dùng mật mã.
+- [ ] Chế độ ẩn danh chỉ che hiển thị, dữ liệu vẫn lưu đầy đủ trên thiết bị (để tính hạn); nếu cần lưu rút gọn thật sự, báo để đổi.
+- [ ] Kế hoạch năm “bản đơn vị” (nhiều cán bộ): hiện gộp bằng nhập Excel/sao lưu, chưa gộp tự động.
 
 ## Góp ý của người dùng sau khi dùng thử
 <!-- Người dùng ghi vào đây; chạy /sua-loi hoặc /tiep-tuc để Claude xử lý -->

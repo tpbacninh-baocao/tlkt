@@ -447,3 +447,6 @@ tr.da-sua td { background: var(--nen-canh-bao); }
 
 .thanh-ban-moi { position: sticky; top: 0; z-index: 80; display: flex; flex-wrap: wrap; align-items: center; gap: var(--k3); justify-content: center; padding: var(--k2) var(--k4); background: var(--chu); color: var(--nen); }
 .thanh-ban-moi .nut { color: inherit; }
+
+/* Che nội dung khi app ra nền (màn hình đa nhiệm) */
+:root[data-che] #app { filter: blur(18px); }

@@ -308,6 +308,9 @@ export function sinhLichNhac(d: DuLieuNhac, tuNgay: NgayISO, denNgay: NgayISO): 
     if (lv && nh.banTinSang) {
       ra.push({ khoa: `nhip:BANTIN|${ngay}`, luc: ghepNgayGio(ngay, GIO(nh.banTinSang)), mucDo: 'THONG_TIN', tieuDe: 'Bản tin sáng', noiDung: `Bản tin ${dinhDangNgay(ngay)}: việc quá hạn, đến hạn, nhập liệu còn thiếu.`, lienKet: '#hom-nay' });
     }
+    if (lv) {
+      ra.push({ khoa: `nhip:TKNGAY|${ngay}`, luc: ghepNgayGio(ngay, GIO('16:50')), mucDo: 'THONG_TIN', tieuDe: 'Tổng kết ngày', noiDung: 'Tổng kết ngày: chuyển việc chưa xong sang ngày mai, ghi cảm nhận cuối ngày.', lienKet: '#ke-hoach-ngay' });
+    }
     if (thuTrongTuan(ngay) === 5 && lv) {
       ra.push({ khoa: `nhip:RSTUAN|${ngay}`, luc: ghepNgayGio(ngay, GIO('15:30')), mucDo: 'THONG_TIN', tieuDe: 'Rà soát tuần', noiDung: 'Rà soát việc trong tuần, chuyển việc chưa xong sang tuần sau.', lienKet: '#bao-cao' });
     }

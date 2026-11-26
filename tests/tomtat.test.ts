@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { lichTronTru } from '../src/core/lich';
 import { caiDatMacDinh } from '../src/core/caiDat';
 import { taoCuocRong } from '../src/core/vuViec';
-import { baoCaoTienDoDoan, baoCaoTuan, banTinSang, danhTinhCuoc, tomTatMotCuoc, tongHopHomNay, type DuLieuTomTat } from '../src/core/tomTat';
+import { baoCaoTienDoDoan, baoCaoTuan, banTinSang, danhTinhCuoc, tinBaoLanhDao, tomTatMotCuoc, tongHopHomNay, type DuLieuTomTat } from '../src/core/tomTat';
 import type { CongViec, CuocKiemTra } from '../src/core/kieu';
 
 const lich = lichTronTru();
@@ -146,5 +146,20 @@ describe('Báo cáo tuần', () => {
     expect(t).toContain('Việc: Báo cáo giao ban (13/10/2026)');
     expect(t).not.toContain('Gửi QĐ kiểm tra cho NNT'); // Q1 xong tuần trước
     expect(t).toMatchSnapshot();
+  });
+});
+
+describe('Tin báo lãnh đạo (leo thang)', () => {
+  it('chỉ soạn khi có việc quá hạn quá 1 ngày làm việc', () => {
+    const c = cuoc({}, { P5: '2026-10-05' }); // Q1 hạn 08/10
+    expect(tinBaoLanhDao(dl([c], '2026-10-06'))).toBeUndefined(); // chưa có việc nào quá hạn
+    const t = tinBaoLanhDao(dl([c], '2026-10-14'));
+    expect(t).toBeDefined();
+    expect(t).toContain('Kính gửi lãnh đạo');
+    expect(t).toContain('quá');
+    expect(t).toContain('06/10/2026');
+  });
+  it('không có việc quá hạn → không có tin', () => {
+    expect(tinBaoLanhDao(dl([], '2026-10-14'))).toBeUndefined();
   });
 });

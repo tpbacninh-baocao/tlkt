@@ -278,3 +278,10 @@ describe('Link Google Lịch', () => {
     expect(url.searchParams.get('details')).toBe('Đ17.3.c');
   });
 });
+
+describe('Tổng kết ngày', () => {
+  it('16:50 mỗi ngày làm việc, không có vào cuối tuần', () => {
+    const ds = sinhLichNhac(dl([]), '2026-10-09', '2026-10-13').filter((n) => n.khoa.startsWith('nhip:TKNGAY'));
+    expect(ds.map((n) => n.luc)).toEqual(['2026-10-09T16:50', '2026-10-12T16:50', '2026-10-13T16:50']);
+  });
+});
