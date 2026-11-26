@@ -63,7 +63,7 @@ Tài liệu tham chiếu: SPEC = `docs/SPEC.md` · ARCH = `docs/ARCHITECTURE.md`
 ## Phase 4 – Nhắc việc, nhập/xuất, PWA
 - [x] **T33 ⭐ Bộ phát nhắc trong app**: vòng 30 giây, toast + Notification (xin quyền có giải thích), âm báo, “Hoãn 15 phút / 1 giờ / sáng mai”, danh sách nhắc ở chuông 🔔, không phát trùng.
 - [x] **T34 Xuất lịch**: tải `.ics` (một cuộc / tất cả / 30 ngày tới), nút “Thêm vào Google Lịch” ở mọi ThẻViệc và mốc, trang hướng dẫn iPhone/Android.
-- [ ] **T35 Excel**: nhập kế hoạch (ghép cột, xem trước, trùng MST), tải tệp mẫu, xuất 5 loại (ARCH §10); nhập ngày nghỉ.
+- [x] **T35 Excel**: nhập kế hoạch (ghép cột, xem trước, trùng MST), tải tệp mẫu, xuất 5 loại (ARCH §10); nhập ngày nghỉ.
 - [ ] **T36 PWA**: `vite-plugin-pwa`, manifest, icon, chạy offline, thanh “Có phiên bản mới”, hướng dẫn “Thêm vào màn hình chính”.
 
 ## Phase 5 – Hoàn thiện và bàn giao

@@ -3,9 +3,9 @@
 > Claude Code đọc tệp này đầu mỗi phiên và cập nhật sau mỗi nhiệm vụ. Người dùng đọc tệp này để biết đã làm đến đâu.
 
 ## Trạng thái hiện tại
-- Nhiệm vụ đang làm: T35
-- Nhiệm vụ xong gần nhất: T34
-- `npm run check`: sạch (455 đạt / 455 tổng; Chromium: tải .ics hợp lệ (CRLF, VALARM, UID không trùng), link Google Lịch xuất hiện)
+- Nhiệm vụ đang làm: T36
+- Nhiệm vụ xong gần nhất: T35
+- `npm run check`: sạch (487 đạt / 487 tổng; Chromium: tải mẫu → nhập 3 cuộc, nhập lại báo trùng, tải đủ 5 tệp, nhập ngày nghỉ từ CSV)
 - Link app (GitHub Pages): — (cập nhật sau T40)
 
 ## Nhật ký
@@ -164,6 +164,11 @@
 ### 2026-11-23 – T34 Xuất lịch
 - Đã làm: Tải .ics (30 ngày tới / tất cả hạn trong Cài đặt → Nhắc việc và menu Lịch; một cuộc ở menu cuộc); nút Thêm Google Lịch ở mọi ThẻViệc, mốc trong dòng thời gian, mục Việc, cột Việc tiếp theo; hướng dẫn iPhone/Android ở Cài đặt và Căn cứ; thẻ nhắc nổi tự ẩn sau 20–60 giây
 - Test: 455 đạt / 455 tổng; Chromium: tải .ics hợp lệ (CRLF, VALARM, UID không trùng), link Google Lịch xuất hiện
+
+### 2026-11-23 – T35 Excel
+- Đã làm: Nhập kế hoạch từ .xlsx/.csv (tự nhận cột, ghép cột, chọn dòng tiêu đề/trang tính, xem trước lỗi–trùng MST, tạo kế hoạch + cuộc); tải tệp mẫu .xlsx/.csv; xuất 5 loại Excel (danh sách cuộc+mốc+SLA, nhập liệu thiếu, thu nộp, tiến độ kế hoạch, việc khác); nhập ngày nghỉ từ tệp; SheetJS tải khi dùng (gói riêng)
+- Test: 487 đạt / 487 tổng; Chromium: tải mẫu → nhập 3 cuộc, nhập lại báo trùng, tải đủ 5 tệp, nhập ngày nghỉ từ CSV
+- Giả định đã chọn: SheetJS bản miễn phí không ghi được in đậm/cố định dòng đầu → dùng độ rộng cột, ô số 1.234.567 và bộ lọc ở dòng tiêu đề; CSV đọc dạng chữ (tránh Excel đoán 03/2027 là ngày); MST thiếu số 0 đầu (Excel làm mất) tự thêm 0 và cảnh báo; trưởng đoàn trùng họ tên trong Cài đặt → tự đánh dấu đã nhận phân công (P1); dòng trùng MST mặc định không nhập
 
 ## Giả định đã chọn khi chưa có xác nhận (để người dùng xem lại)
 - T1 (20 ngày tại trụ sở) tính theo **ngày lịch**, đổi được trong Cài đặt.

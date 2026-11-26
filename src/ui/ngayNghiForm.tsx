@@ -4,6 +4,7 @@ import { dinhDangNgay, docDanhSachNgay, ngayNghiCuaNam, tenThu } from '../core/l
 import { caiDat, dongBang, lich, toast } from './store';
 import { luuNgayNghiNam } from './hanhDong';
 import { Truong } from './thanhPhan';
+import { docTep } from '../data/excel';
 
 export function FormNgayNghiNam({ nam, khiXong, idBang }: { nam: number; khiXong?: () => void; idBang?: string }) {
   const nghiHienCo = caiDat.value.ngayNghiThem.filter((d) => d.startsWith(`${nam}-`)).map(dinhDangNgay).join('\n');
@@ -18,6 +19,20 @@ export function FormNgayNghiNam({ nam, khiXong, idBang }: { nam: number; khiXong
   const ngoaiNam = [...sai(rN), ...sai(rB)];
   const coThe = loi.length === 0 && ngoaiNam.length === 0;
   const cacLeCoDinh = ngayNghiCuaNam(lich.value, nam).filter((d) => !caiDat.value.ngayNghiThem.includes(d.ngay));
+
+  const nhapTuTep = async (f: File | undefined) => {
+    if (!f) return;
+    try {
+      const ds = await docTep(f);
+      const ngay = ds.flatMap((t) => t.rows.flat()).map((x) => x.trim()).filter(Boolean);
+      const hop = docDanhSachNgay(ngay.join('\n'), nam);
+      if (!hop.ngay.length) throw new Error('Không thấy ngày nào trong tệp (cần định dạng dd/mm/yyyy).');
+      setNghi([...new Set([...docDanhSachNgay(nghi, nam).ngay, ...hop.ngay])].sort().map(dinhDangNgay).join('\n'));
+      toast(`Đã đọc ${hop.ngay.length} ngày từ tệp – kiểm tra rồi bấm Lưu`);
+    } catch (e) {
+      toast(e instanceof Error ? e.message : 'Không đọc được tệp', 'loi');
+    }
+  };
 
   const luu = async () => {
     setDangLuu(true);
@@ -45,6 +60,9 @@ export function FormNgayNghiNam({ nam, khiXong, idBang }: { nam: number; khiXong
       </Truong>
       <Truong nhan="Ngày làm bù (thứ Bảy/Chủ nhật đi làm)" id="lam-bu-nam">
         <textarea id="lam-bu-nam" value={lamBu} rows={3} onInput={(e) => setLamBu((e.target as HTMLTextAreaElement).value)} />
+      </Truong>
+      <Truong nhan="Hoặc nhập từ tệp Excel/CSV (cột chứa ngày nghỉ)" id="nghi-tep">
+        <input id="nghi-tep" type="file" accept=".xlsx,.xls,.csv" onChange={(e) => void nhapTuTep((e.target as HTMLInputElement).files?.[0])} />
       </Truong>
       {rN.ngay.length > 0 && (
         <p class="phu">

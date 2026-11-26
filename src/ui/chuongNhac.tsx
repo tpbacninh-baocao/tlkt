@@ -3,7 +3,7 @@ import { useState } from 'preact/hooks';
 import { TEN_KIEU_HOAN, type KieuHoan, type MucDoNhac, type NhacDenGio } from '../core/nhacViec';
 import { dinhDangNgay } from '../core/lich';
 import { anTheNoi, daLamNhac, dsChuong, hoanNhac, moNhac, theNoi, xinQuyenThongBao } from './boPhatNhac';
-import { dongBang, homNay, moBang, soNhacChuaXem } from './store';
+import { bangMo, dongBang, homNay, hopXacNhan, moBang, soNhacChuaXem } from './store';
 import { TrangThaiRong } from './thanhPhan';
 
 const NHAN_MUC: Record<MucDoNhac, { bieuTuong: string; ten: string }> = {
@@ -69,7 +69,8 @@ export function TheNhac({ n, trongBang }: { n: NhacDenGio; trongBang?: boolean }
 /** Các thẻ nhắc nổi ở góc màn hình khi có nhắc mới. */
 export function VungNhacNoi() {
   const ds = theNoi.value;
-  if (!ds.length) return null;
+  // Khi đang mở bảng/hộp thoại thì không che nội dung; nhắc vẫn còn ở chuông 🔔
+  if (!ds.length || bangMo.value.length || hopXacNhan.value) return null;
   return (
     <div class="vung-nhac-noi" aria-live="assertive">
       {ds.map((n) => (
